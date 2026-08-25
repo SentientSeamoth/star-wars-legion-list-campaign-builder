@@ -1138,6 +1138,30 @@ here.)
 
 ## Resolved
 
+- **2026-08-25** -- Fixed a real launch-crashing bug found during a
+  full audit pass (see `docs/ROADMAP.md`): `0001_init.sql` had been
+  edited in place twice (2026-08-23 Faction rename, 2026-08-24
+  command-card CHECK relaxation) instead of via new numbered
+  migrations. SQLite migrations are tracked as applied-once per
+  database, so any database created before those edits kept the OLD
+  table definitions forever -- confirmed for real by launching the app
+  against this machine's own pre-existing dev database, which crashed
+  immediately with `CHECK constraint failed: category !=
+  'commander-specific' OR commander_unit_id IS NOT NULL`, the exact
+  constraint believed removed two sessions ago. Fixed with
+  `src-tauri/migrations/0004_repair_command_cards_check.sql`, which
+  rebuilds `command_cards` (SQLite's create-new/copy/drop-old/rename
+  procedure) to converge every database to the current schema. New
+  regression test in `db::migrate` reproduces the old constraint,
+  proves it really rejects what the command-card expansion needs, and
+  proves the repair fixes it without losing FK-referencing data.
+  Verified against the actual broken database file, not just a
+  synthetic one -- it now launches clean and both pre-existing
+  profiles on that database survived intact. `cargo test`: 23/23 (one
+  new test). Going forward: `0001_init.sql` does not get edited in
+  place again -- every future schema change is a new numbered
+  migration (noted in the new migration's own header, and in
+  docs/ROADMAP.md's P0 entry).
 - **2026-08-25** -- Upgrade library expansion landed (29 -> 100
   entries): all 29 original generic cards corrected/verified in place,
   66 new generic cards added, and the first 10 named-character/faction

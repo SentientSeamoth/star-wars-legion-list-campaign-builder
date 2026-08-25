@@ -7,6 +7,21 @@ a sentence of "why" if it's not obvious) whenever a real decision gets
 made. Don't log routine implementation details here -- only things that
 would be annoying to accidentally reverse.
 
+- **2026-08-25** — Attempted live GUI click-through testing (screen
+  coordinates + simulated mouse/keyboard via PowerShell) during a full
+  audit pass, as a way to catch real UI bugs beyond what `cargo
+  test`/`npm test` prove. Abandoned it after one click landed on the
+  wrong window (a VS Code panel instead of the app) and typed stray
+  text into an unrelated input -- no actual harm done (nothing was
+  submitted), but blind screen-coordinate automation on a real desktop
+  with unpredictable window layering is too risky for the value it
+  adds here. **Don't retry this approach** -- if live UI verification
+  is needed again, it needs a driver that can confirm window focus
+  before each action (real UI Automation / accessibility-tree
+  targeting, not raw coordinates), not another screenshot-and-guess
+  loop. Code-level verification (build, tests, live launch without
+  interaction) is the fallback and is what backs this pass's findings
+  in `docs/ROADMAP.md`.
 - **2026-08-24** — Structural cleanup pass: adopted **`react-router-dom`
   with `HashRouter`** for real app navigation (no server exists in a
   bundled Tauri webview to handle path rewrites, so hash routing over

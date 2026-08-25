@@ -41,9 +41,9 @@ So: local-first, single SQLite database, no login wall, and a data layer that's 
 
 ## Stack
 
-- **Tauri 2** (Rust core + system webview) instead of Electron — smaller binaries, lower memory footprint, and a Rust backend that's a good fit for the local SQLite layer.
+- **Tauri 2** (Rust core + system webview); smaller binaries, lower memory footprint, and a Rust backend that's a good fit for the local SQLite layer.
 - **React + TypeScript + Vite** for the frontend.
-- **SQLite** as the local database, one file, easy to back up.
+- **SQLite** as the local database, one file easy to back up.
 
 Windows installers (NSIS and MSI) build clean via `npm run tauri build`, plus a portable standalone exe with no install step. Linux support is a stack goal from day one (Tauri supports it natively); Android is feasible later since Tauri 2 targets mobile from the same codebase, but that's not built yet.
 
@@ -108,5 +108,5 @@ This is an unofficial fan-made tool. *Star Wars: Legion* is a trademark of Atomi
 
 ## Authorship
 
-JJusek - Splinter Kaninchen
+JJusek - SentientSeamoth
 v1.0 launched August 25, 2026
