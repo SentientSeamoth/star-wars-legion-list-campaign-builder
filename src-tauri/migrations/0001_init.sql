@@ -163,8 +163,14 @@ CREATE TABLE command_cards (
     name                          TEXT NOT NULL,
     category                      TEXT NOT NULL CHECK (category IN ('generic', 'commander-specific')),
     commander_unit_id             TEXT REFERENCES units(id) ON DELETE RESTRICT,
-    pips                          INTEGER NOT NULL CHECK (pips BETWEEN 1 AND 4),
-    units_activated               TEXT NOT NULL,  -- int-as-text or short phrase, see IntOrText in common.rs
+    -- NULL where a current primary source did not expose the printed pip
+    -- value (added 2026-08-24 by the command-card expansion pass -- see
+    -- each such card's `notes`). 0 is a real printed value used by cards
+    -- explicitly treated as a lower pip cost while building the command
+    -- hand (see e.g. "Sorry About the Mess").
+    pips                          INTEGER CHECK (pips BETWEEN 0 AND 4),
+    -- NULL for the same "source didn't expose it" reason as pips.
+    units_activated               TEXT,  -- int-as-text or short phrase, see IntOrText in common.rs
     unit_activation_restriction   TEXT,
     faction_restriction           TEXT CHECK (faction_restriction IN ('empire','separatist','rebel','republic','shadow_collective') OR faction_restriction IS NULL),
     battle_force_restriction      TEXT,
@@ -173,12 +179,19 @@ CREATE TABLE command_cards (
     roster_verified                INTEGER NOT NULL DEFAULT 0 CHECK (roster_verified IN (0, 1)),
     roster_source                  TEXT,
     source                         TEXT,
-    notes                          TEXT,
+    notes                          TEXT
 
-    -- Mirrors the same rule enforced by the Python build script that
-    -- generated data/command-cards.json: a commander-specific card MUST
-    -- name its commander.
-    CHECK (category != 'commander-specific' OR commander_unit_id IS NOT NULL)
+    -- 2026-08-24: dropped the old "commander-specific MUST name its
+    -- commander" CHECK. Real official card data (the command-card
+    -- expansion pass) disproved the one-card-one-commander assumption it
+    -- encoded: some commander-specific cards are jointly owned by two
+    -- named units (e.g. "Fifth Brother & Seventh Sister"), some by
+    -- either of two ("Jedi Knight or Jedi Knight General"), and a handful
+    -- name a real character (e.g. Grand Admiral Thrawn) who isn't in
+    -- units.json yet. commander_unit_id is populated wherever it
+    -- resolves to exactly one real unit id (117 of 173 commander-specific
+    -- cards as of this pass); the remainder are a documented, honest gap
+    -- -- see docs/TODO.md -- not silently guessed at.
 );
 CREATE INDEX idx_command_cards_commander ON command_cards(commander_unit_id);
 

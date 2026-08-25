@@ -31,10 +31,15 @@
           "type": ["string", "null"],
           "description": "References an id in data/units.json (rank: commander or operative). Required (non-null) when category is 'commander-specific'."
         },
-        "pips": { "type": "integer", "minimum": 1, "maximum": 4 },
+        "pips": {
+          "type": ["integer", "null"],
+          "minimum": 0,
+          "maximum": 4,
+          "description": "Null where a current primary source did not expose the printed pip value (see notes on the card). 0 is used for a card explicitly treated as a lower pip value while building the command hand (see notes) rather than its literal printed cost."
+        },
         "units_activated": {
-          "type": ["integer", "string"],
-          "description": "Number of units the card issues orders to. Some advanced cards use conditional/variable wording instead of a flat integer -- use a short string in that case and flag effect_verified accordingly."
+          "type": ["integer", "string", "null"],
+          "description": "Number of units the card issues orders to. Some advanced cards use conditional/variable wording instead of a flat integer -- use a short string in that case and flag effect_verified accordingly. Null where a current primary source did not expose the order count (see notes on the card)."
         },
         "unit_activation_restriction": {
           "type": ["string", "null"],
@@ -42,7 +47,7 @@
         },
         "faction_restriction": {
           "type": ["string", "null"],
-          "enum": ["empire", "separatist", "rebel", "republic", "mercenary", null]
+          "enum": ["empire", "separatist", "rebel", "republic", "shadow_collective", null]
         },
         "battle_force_restriction": {
           "type": ["string", "null"],

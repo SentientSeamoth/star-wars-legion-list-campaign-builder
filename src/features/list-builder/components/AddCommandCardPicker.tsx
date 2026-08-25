@@ -120,7 +120,7 @@ export default function AddCommandCardPicker({
           >
             {available.map((c) => (
               <option key={c.id} value={c.id}>
-                {c.pips}-pip · {c.name} —{" "}
+                {c.pips ?? "?"}-pip · {c.name} —{" "}
                 {c.category === "generic"
                   ? "Any Commander"
                   : unitsById.get(c.commander_unit_id ?? "")?.name ?? "Unknown Commander"}

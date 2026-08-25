@@ -110,10 +110,10 @@ and CC handoffs instead of getting silently forgotten.
        (Command, Comms, Force, Gear, Grenades, Training), names
        confirmed via a live source. See "Upgrades library gaps" below
        -- this is the least complete library so far, by a wide margin.
-4. [x] Command cards library (`data/command-cards.json`) -- **seed
-       only.** The 4 faction-neutral generic cards (Ambush/Push/
-       Assault/Standing Orders) populated with verified pips and
-       units-activated counts. See "Command cards library gaps" below.
+4. [x] Command cards library (`data/command-cards.json`) -- grown
+       2026-08-24 from the original 4-card generic-only seed to **232
+       cards**, `commander_unit_id` resolved for 117 of the 173
+       commander-specific ones. See "Command cards library gaps" below.
 5. [x] Scenarios/objectives library (`data/scenarios.json`) --
        **thinnest seed yet.** See "Scenarios library gaps" below --
        this one surfaced a genuinely important finding, not just a
@@ -901,27 +901,85 @@ unit batches are already written into the workflow script at
 
 ## Command cards library gaps (data/command-cards.json)
 
-- [ ] **Zero commander-specific cards.** Every commander/operative unit
-      in `units.json` (35 commander-rank + 30 operative-rank = up to
-      65 units) typically owns roughly 2-3 personal command cards.
-      That's potentially 150-200 cards not yet catalogued -- this is
-      by far the largest remaining gap in this library, larger even
-      than the upgrades gap. The schema (`commander_unit_id`) is ready
-      to receive them and already cross-validates against `units.json`
-      ids, so this can be filled incrementally per-commander without a
-      schema change.
-- [ ] Effect text on the 4 generic cards is paraphrased and NOT
-      verified against exact current wording (post-2024-refresh
-      reprints may differ) -- only Standing Orders' "returns to hand"
-      mechanic has higher confidence. Ambush/Push/Assault's
-      `effect_description` says "no additional effect noted in
-      available sources," which itself needs confirming rather than
-      assuming true.
-- [ ] Encountered but not catalogued during research: command cards
-      with narrower-than-faction restrictions (e.g. "501st Legion
-      only," tied to a specific Battle Force build, not just a
-      faction). The schema has a `battle_force_restriction` field
-      ready for these but no examples populated yet.
+- [x] **Commander-specific cards populated -- 2026-08-24.** Grown from
+      the original 4-card generic-only seed to **232 cards** via a
+      command-card expansion pass the project owner ran and provided as
+      a finished `command-cards.json`, sourced from official AMG
+      print-and-play command-card PDFs, the June 17 2026 errata, and
+      2025-2026 release/developer articles. Landed into the app's real
+      schema/types/DB (previously it only existed as the pasted file):
+      - **`commander_unit_id` resolved for 117 of 173 commander-specific
+        cards** by a mechanical resolver matching each card's
+        `unit_activation_restriction` (and, as a same-field fallback,
+        its own name) against the real `data/units.json` roster -- the
+        source pass couldn't do this itself since it didn't have that
+        file. Matches were verified against direct name/subtitle
+        equality only; a broader pass that also scanned each card's
+        flavor-text `effect_description` for character names was tried
+        and discarded after it produced one confirmed wrong match
+        (attributing "Moment of Triumph," a Grand Moff Tarkin card, to
+        Darth Vader because his name appears in the card's flavor text)
+        -- a real example of why this project's "don't guess" rule
+        exists, not just a hypothetical one.
+      - **The remaining 56 are a genuine, categorized gap, not a
+        resolver failure**: ~20 are jointly owned by two named units in
+        one restriction (e.g. "Fifth Brother & Seventh Sister",
+        "Chewbacca & Luke Skywalker") or usable by either of two (e.g.
+        "Jedi Knight or Jedi Knight General", "Kalani or Kraken") --
+        `commander_unit_id` is a single field and can't represent
+        "owned by A or B" without a real schema change (adding a second
+        id column, or an array) that wasn't made this pass; ~20 have a
+        generic order-count restriction ("2 Trooper units", "3 units")
+        with no named owner in the text at all -- these cards are real
+        and do belong to a specific commander in the actual game, the
+        printed restriction text just doesn't say who, and confirming
+        it needs the actual card image, not just this text; the rest
+        name a real character who isn't in `units.json` yet (Grand
+        Admiral Thrawn, General Tagge, Grand Moff Tarkin, Bo-Katan
+        Kryze, The Armorer, Paz Vizsla, Ursa Wren, Rook Kast -- all from
+        packs/battle-forces this project already flagged as
+        incompletely catalogued, e.g. see "Affiliations/Battle
+        Forces/Factions status"'s Mandalorian Clans note above). One
+        exception was hand-verified and added outside the mechanical
+        pass: "The Hand Thing" resolves to Grogu (`grogu`) -- its
+        restriction text says "No units" but its effect text
+        unambiguously names him as the card's subject.
+      - **Schema/DB changes this required, not just data**:
+        `pips`/`units_activated` are now nullable in both
+        `data/schema/command-card.schema.json` and
+        `0001_init.sql`/`types/command_card.rs` -- 15 and 21 cards
+        respectively have a real printed value the source pass's
+        materials didn't expose (each has a `notes` field saying so),
+        and `pips` now allows `0` (one real card, "Sorry About the
+        Mess," is explicitly treated as 1-pip while building the hand
+        but stores its literal printed value). The old DB `CHECK` that
+        required every commander-specific card to have a non-null
+        `commander_unit_id` was **dropped**, not relaxed to a default --
+        real card data disproved the one-card-one-commander assumption
+        it encoded (see the joint/either-or cards above). `faction_restriction`
+        values were normalized from the source pass's full faction
+        names ("Galactic Empire", etc.) to this app's short ids
+        ("empire", etc.) to match the existing `Faction` enum/schema
+        enum -- the schema enum's own `mercenary` was also fixed to
+        `shadow_collective` in the same edit (stale, same pattern as
+        the `faction.schema.json`/`battle-force.schema.json` fix
+        noted elsewhere in this file). UI display of `pips` (the
+        command-hand strip and the add-card picker) falls back to
+        `"?"` for the null cases rather than rendering `null`/`NaN`.
+      - Verified via `npm run validate:data` (9/9 clean), `cargo test`
+        (22/22, including the reseed-twice regression test, which
+        exercises the full 232-card seed against the changed schema
+        twice in a row), and `npm run build`/`npm test` (25/25) --
+        real, not just "the JSON parses."
+      - **Not yet done**: no attempt to fill the ~56-card gap above by
+        guessing at effect text or ownership; no `battle_force_restriction`
+        vs. `commander_unit_id` cross-check against `battle-forces.json`'s
+        own roster lists (a possible future resolver signal for some of
+        the "generic order-count, no named owner" cards). Effect text on
+        the original 4 generic cards is still paraphrased and mostly
+        unverified against exact current wording, same caveat as before
+        this pass -- only Standing Orders' "returns to hand" mechanic has
+        higher confidence.
 - [ ] Should double check whether the newer 2025-era commander kits
       (Customizable Jedi General/Knight, etc.) changed the "each
       commander has ~3 personal cards" assumption -- some newer units
@@ -1036,6 +1094,19 @@ here.)
 
 ## Resolved
 
+- **2026-08-24** -- Command-card library expansion landed (4 -> 232
+  cards) and `commander_unit_id` resolved for 117 of 173
+  commander-specific cards against the real `units.json` roster,
+  including a schema/DB relaxation (`pips`/`units_activated` now
+  nullable, the old "commander-specific must name a commander" `CHECK`
+  dropped) that real card data required. See "Command cards library
+  gaps" below for the full breakdown, including exactly which 56 cards
+  are still unresolved and why (joint/either-or ownership one field
+  can't represent, or a named character not yet in `units.json`) and
+  the one wrong match a broader resolver attempt produced and that got
+  discarded before landing. Verified via `npm run validate:data` (9/9),
+  `cargo test` (22/22, reseed-twice regression included), and
+  `npm run build`/`npm test` (25/25).
 - **2026-08-24** -- Structural/code-gap cleanup pass, run in waves per
   the project owner's request, ending in this verification pass (all
   green: `cargo test` 22/22, `npm run build` clean, `npm test` 25/25,

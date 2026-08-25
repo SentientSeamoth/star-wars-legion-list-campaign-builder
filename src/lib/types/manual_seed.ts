@@ -176,8 +176,9 @@ export interface CommandCard {
   category: CommandCardCategory;
   /** References Unit.id in units.json. Required when category === "commander-specific". */
   commander_unit_id: string | null;
-  pips: number;
-  units_activated: IntOrText;
+  /** Null where a current primary source did not expose the printed pip value (see notes). */
+  pips: number | null;
+  units_activated: IntOrText | null;
   unit_activation_restriction: string | null;
   faction_restriction: Faction | null;
   battle_force_restriction: string | null;

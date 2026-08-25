@@ -543,7 +543,7 @@ export default function ArmyCreationScreen({ userId }: ArmyCreationScreenProps) 
                       className="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-mono font-bold text-slate-900"
                       style={{ background: faction.accent || faction.hue }}
                     >
-                      {c.pips}
+                      {c.pips ?? "?"}
                     </span>
                     <button
                       onClick={() => toggleCommandCard(c.id)}

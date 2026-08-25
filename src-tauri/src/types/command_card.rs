@@ -26,8 +26,15 @@ pub struct CommandCard {
     #[serde(default)]
     pub commander_unit_id: Option<String>,
 
-    pub pips: u8,
-    pub units_activated: IntOrText,
+    /// `None` where a current primary source did not expose the printed
+    /// pip value at data-build time (see the card's `notes`) -- added
+    /// 2026-08-24 when a real command-card expansion pass produced several
+    /// such cards. Was a bare `u8` before this.
+    #[serde(default)]
+    pub pips: Option<u8>,
+
+    #[serde(default)]
+    pub units_activated: Option<IntOrText>,
 
     #[serde(default)]
     pub unit_activation_restriction: Option<String>,

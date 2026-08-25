@@ -418,7 +418,7 @@ fn seed_command_cards(conn: &Connection) -> Result<(), Box<dyn std::error::Error
                 enum_str(&c.category),
                 c.commander_unit_id,
                 c.pips,
-                int_or_text(&c.units_activated),
+                c.units_activated.as_ref().map(int_or_text),
                 c.unit_activation_restriction,
                 c.faction_restriction.as_ref().map(enum_str),
                 c.battle_force_restriction,
