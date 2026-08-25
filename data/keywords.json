@@ -1637,6 +1637,26 @@
       "description": "The first time a unit with this keyword enters play, that unit suffers X wounds.",
       "verified": true,
       "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass, sourced from swgametools.gyozaguy.com/legion/keywords."
+    },
+    {
+      "id": "smoke-x",
+      "name": "Smoke X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": null,
+      "description": "Place X smoke tokens at range 1 of the unit; smoke tokens block line of sight for the rest of the round. Sourced only from an upgrade card's own printed effect text (Smoke Grenades: \"perform the Smoke 1 action\") during the 2026-08-24 upgrade-expansion landing pass -- no keyword-glossary primary source was checked for the exact token-placement/duration wording.",
+      "verified": false,
+      "verification_note": "Added 2026-08-24 because the Smoke Grenades and Smoke Screen (command card) cards reference this keyword; not cross-checked against an official rules glossary. See docs/TODO.md."
+    },
+    {
+      "id": "mechanized-infantry",
+      "name": "Mechanized Infantry",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "Sourced only from the Clone Commander Cody upgrade card's own printed grant (2026-08-24 upgrade-expansion landing pass) -- no keyword-glossary primary source was checked for its actual rules text.",
+      "verified": false,
+      "verification_note": "Added 2026-08-24 because the Clone Commander Cody upgrade grants this keyword; not cross-checked against an official rules glossary. See docs/TODO.md."
     }
   ]
 }

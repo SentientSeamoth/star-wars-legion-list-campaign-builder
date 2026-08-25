@@ -105,10 +105,10 @@ and CC handoffs instead of getting silently forgotten.
 1. [x] Keywords library (`data/keywords.json`) -- built, partially verified.
 2. [x] Units library (`data/units.json`) -- roster built and verified;
        stats still need populating (see above).
-3. [x] Upgrades library (`data/upgrades.json`) -- **seed only.** 29
-       generic (non-faction) cards populated across 6 categories
-       (Command, Comms, Force, Gear, Grenades, Training), names
-       confirmed via a live source. See "Upgrades library gaps" below
+3. [x] Upgrades library (`data/upgrades.json`) -- grown 2026-08-25 from
+       29 generic cards to **100 entries** across 12 categories,
+       including the first 10 named-character/faction heavy-weapon
+       upgrades. See "Upgrades library gaps" below
        -- this is the least complete library so far, by a wide margin.
 4. [x] Command cards library (`data/command-cards.json`) -- grown
        2026-08-24 from the original 4-card generic-only seed to **232
@@ -987,34 +987,78 @@ unit batches are already written into the workflow script at
 
 ## Upgrades library gaps (data/upgrades.json)
 
-- [ ] **Zero entries** for 9 of 15 categories: Armament, Crew,
-      Generator, Hardpoint, Heavy Weapon, Ordnance, Personnel,
-      Programming, Pilot. These are almost entirely faction- and
+- [x] **Expanded from 29 to 100 entries -- 2026-08-25.** The project
+      owner ran a primary-source expansion pass (current AMG Generic
+      Upgrade Cards PDF, New Universal Upgrades PDF, and the Galactic
+      Empire Upgrade Cards PDF, all April 2026, with June 17 2026 errata
+      applied) and provided the finished `upgrades.json` as a file.
+      Landed into the app's real schema/DB (previously it only existed
+      as the pasted content): all 29 original generic cards got
+      corrected/verified `points`/`effect_description` values in place
+      (e.g. Concussion Grenades corrected from a stale 5-point seed
+      value to the current 3, Vigilance from 12 to 9), 66 new
+      faction-neutral generic cards were added across
+      Command/Comms/Force/Gear/Grenades/Generator/Ordnance/Training/
+      Programming, and 10 new named-character/faction "heavy-weapon"
+      upgrades were added (5 unique -- Agent Kallus, Clone Captain Rex,
+      Cassian Andor, Seventh Sister, Fifth Brother, Obi-Wan Kenobi,
+      Clone Commander Cody, Chewbacca, General Grievous, Asajj Ventress,
+      Jyn Erso, Luke Skywalker -- plus 5 non-unique Galactic Empire
+      Stormtrooper weapon options). Corrected 2 mojibake-corrupted
+      strings while landing this (`"EMP \"Droid Poppers\""` and several
+      curly-apostrophe corruptions), same class of encoding bug as the
+      "PadmÃ©" fix noted elsewhere in this file.
+      - **Real bug caught and fixed, not just data entry**: 8 of the new
+        cards' `keywords_granted` values didn't match any real
+        `data/keywords.json` id (`cache-dodge-x`, `coordinate-trooper`,
+        `ai-aim`, `ai-dodge`, `ai-attack-move`, `immune-pierce`,
+        `smoke-x`, `mechanized-infantry`) -- and unlike
+        `command_cards.commander_unit_id`, this field genuinely IS
+        FK-enforced at seed time (`upgrade_keywords_granted.keyword_id
+        REFERENCES keywords(id)`), so seeding crashed with a real
+        `FOREIGN KEY constraint failed` error (`cargo test` caught it:
+        6 of 22 tests failed). 6 of the 8 were naming mismatches against
+        an existing broader/parameterized keyword already in the
+        library and got remapped (`cache-dodge-x`->`cache`,
+        `coordinate-trooper`->`coordinate-unit-name-type`, the three
+        `ai-*` ids -> the single parameterized `ai` keyword,
+        `immune-pierce`->`immune-x`). The remaining 2 (`smoke-x`,
+        `mechanized-infantry`) are real keywords genuinely absent from
+        `keywords.json` -- added as new entries sourced only from the
+        upgrade cards' own printed effect text, `verified: false`,
+        same honest-placeholder pattern as the keyword-resolution
+        pass's unresolved entries (see "Keyword resolution pass" near
+        the top of this file) -- not cross-checked against an official
+        glossary. `keywords.json` is now 165 entries (was 163).
+      - Verified via `npm run validate:data` (9/9), `cargo test` (22/22,
+        including the reseed-twice regression -- this is what actually
+        proved the FK fix, not just that the JSON parses), and
+        `npm run build`/`npm test` (25/25, unaffected -- upgrades.json
+        isn't consumed by any typed frontend surface yet).
+      - **Not yet done**: `weapon_profile` still only populated where
+        the source pass was confident in the exact dice/keyword
+        transcription (e.g. `door-gunners`' Mounted Blaster dice count
+        was deliberately left out, `extra-supplies`' effect text left
+        blank) -- same "don't guess from a card image" discipline as
+        everywhere else in this project.
+- [ ] **Still zero entries** for 8 of 15 categories: Armament, Crew
+      (only 1 entry so far, Door Gunners), Hardpoint, Ordnance (4
+      entries, all generic), Personnel (1 entry, Pyke Syndicate Foot
+      Soldier Squad), Programming (3 entries, all generic/Vehicle-only),
+      Pilot, Doctrine. These are almost entirely faction- and
       unit-specific cards (one set per unit expansion), which is most
-      of the actual card pool in the game -- the 29 generic cards
-      seeded so far are a small fraction of the total.
+      of the actual card pool in the game.
 - [ ] A newer 191-card "Upgrades Card Pack" (SWQ144, released Sept 19
       2025) reportedly adds generic **Generator** and **Programming**
       cards to the non-faction pool, on top of the original 60-card
       pack's Command/Comms/Force/Gear/Grenades/Training. Exact card
       names in that expanded pack were not found in this pass.
-- [x] **Effect-text/points research pass -- 2026-08-24.** 27 of the 29
-      generic cards now have a real `effect_description`
-      (`effect_verified: true`); 11 have a real `points` value where one
-      clean, uncontested figure was found (many others have conflicting
-      figures across points-update eras -- left `null`/unverified rather
-      than guess which is current, see each card's `notes`). Still
-      `null`/`false`: `comms-relay` (nothing usable found),
-      `fragmentation-grenades` and `duck-and-cover` (source text was
-      incomplete/partial, not confident enough to publish). The
-      **faction/unit-specific cards from the gap above are still
-      entirely unresearched** -- this pass only covered the 29 generic
-      ones already seeded.
-- [ ] `keywords_granted` and `weapon_profile` are now populated for 9 and
-      1 of the 29 generic cards respectively (2026-08-24 pass, where the
-      granted keyword/weapon was unambiguous from the sourced effect
-      text) -- still `null` on the rest and on every non-generic card,
-      same reasoning as above.
+- [ ] **Faction-specific coverage (beyond the 10 Galactic Empire/named-
+      character heavy-weapon cards added 2026-08-25) is still almost
+      entirely unresearched** for Galactic Republic, Rebel Alliance,
+      Separatist Alliance, Mercenary/Shadow Collective, and Mandalorian
+      upgrade pools -- explicitly flagged as incomplete in this data's
+      own `_meta`.
 - [ ] A new upgrade card **sub-type called "Doctrine"** was found
       during research (introduced with the Customizable Jedi General &
       Knight kit, Sept 2025) -- added to the schema's category enum but
@@ -1094,6 +1138,19 @@ here.)
 
 ## Resolved
 
+- **2026-08-25** -- Upgrade library expansion landed (29 -> 100
+  entries): all 29 original generic cards corrected/verified in place,
+  66 new generic cards added, and the first 10 named-character/faction
+  heavy-weapon upgrades added. Caught and fixed a real seed-time bug in
+  the process -- 8 of the new cards' `keywords_granted` values didn't
+  match any real `keywords.json` id, and that field genuinely is
+  FK-enforced at seed time (unlike `command_cards.commander_unit_id`),
+  so `cargo test` failed 6/22 with `FOREIGN KEY constraint failed`
+  until fixed: 6 were remapped to an existing broader keyword, 2 were
+  real gaps added as new honest `verified: false` keyword entries
+  (`keywords.json` now 165). See "Upgrades library gaps" below for the
+  full breakdown. Verified via `npm run validate:data` (9/9), `cargo
+  test` (22/22), `npm run build`/`npm test` (25/25, unaffected).
 - **2026-08-24** -- Command-card library expansion landed (4 -> 232
   cards) and `commander_unit_id` resolved for 117 of 173
   commander-specific cards against the real `units.json` roster,
