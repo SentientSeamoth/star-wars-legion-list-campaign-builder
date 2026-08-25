@@ -50,7 +50,7 @@ pub fn list_command_cards() -> Result<Vec<CommandCard>, AppError> {
 /// Flattens the library's 5 separate arrays (see ScenarioLibrary's own doc
 /// comment for why the JSON keeps them separate) into one Vec -- each item
 /// already carries its own `category`, so the frontend filters on that the
-/// same way it already filters CommandCard by `category`/`commander_unit_id`.
+/// same way it already filters CommandCard by `category`/`commander_unit_ids`.
 #[tauri::command]
 pub fn list_scenarios() -> Result<Vec<ScenarioObjective>, AppError> {
     let lib: ScenarioLibrary = serde_json::from_str(SCENARIOS_JSON)?;

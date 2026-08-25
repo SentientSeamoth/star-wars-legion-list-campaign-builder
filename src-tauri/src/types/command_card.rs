@@ -11,20 +11,38 @@ pub enum CommandCardCategory {
     CommanderSpecific,
 }
 
+/// Only meaningful when `commander_unit_ids` has 2+ entries -- see that
+/// field's doc comment. Added 2026-08-25 when real card data (joint-owner
+/// cards like "Fifth Brother & Seventh Sister" vs. either-owner cards like
+/// "Jedi Knight or Jedi Knight General") proved a single nullable id
+/// couldn't represent every card's real ownership shape.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "lowercase")]
+pub enum CommandCardOwnership {
+    All,
+    Any,
+}
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct CommandCard {
     pub id: String,
     pub name: String,
     pub category: CommandCardCategory,
 
-    /// References Unit.id in data/units.json. Required (Some) when
-    /// `category` is CommanderSpecific. This is the one cross-reference
-    /// already checked at data-build time (see build script notes in
-    /// docs/DECISIONS.md) -- when writing the db layer, keep enforcing this
-    /// as a real SQLite foreign key (see migrations/0001_init.sql), not just
-    /// a convention.
+    /// References Unit.id(s) in data/units.json. Empty = not yet resolved
+    /// to a real unit -- a documented gap (see the card's `notes`), not a
+    /// claim that the card has no owner. One entry is the common case for
+    /// a resolved commander-specific card. Two entries means either joint
+    /// ownership (both required) or either-ownership (one suffices) --
+    /// see `commander_ownership`. Real per-row foreign keys into
+    /// `units(id)` are enforced via the `command_card_commanders` join
+    /// table (migrations/0005_command_card_commanders.sql), not just a
+    /// convention -- was a single `Option<String>` column before this.
     #[serde(default)]
-    pub commander_unit_id: Option<String>,
+    pub commander_unit_ids: Vec<String>,
+
+    #[serde(default)]
+    pub commander_ownership: Option<CommandCardOwnership>,
 
     /// `None` where a current primary source did not expose the printed
     /// pip value at data-build time (see the card's `notes`) -- added

@@ -25,11 +25,18 @@
         "category": {
           "type": "string",
           "enum": ["generic", "commander-specific"],
-          "description": "generic = usable by any commander in any army (subject to faction_restriction/battle_force_restriction if set); commander-specific = only usable if commander_unit_id's unit is in the army."
+          "description": "generic = usable by any commander in any army (subject to faction_restriction/battle_force_restriction if set); commander-specific = only usable if the owner(s) in commander_unit_ids are in the army, per commander_ownership."
         },
-        "commander_unit_id": {
+        "commander_unit_ids": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": [],
+          "description": "References id(s) in data/units.json. Empty array = not yet resolved to a real unit (a documented gap, not a claim of 'no owner' -- see notes). One entry is the common case. Two entries means either joint ownership (both required -- see commander_ownership: 'all', e.g. 'Fifth Brother & Seventh Sister') or either-ownership (one suffices -- commander_ownership: 'any', e.g. 'Jedi Knight or Jedi Knight General')."
+        },
+        "commander_ownership": {
           "type": ["string", "null"],
-          "description": "References an id in data/units.json (rank: commander or operative). Required (non-null) when category is 'commander-specific'."
+          "enum": ["all", "any", null],
+          "description": "Only meaningful when commander_unit_ids has 2+ entries. 'all' = every listed unit must be in the army (joint ownership). 'any' = at least one listed unit must be in the army (either-ownership). Null/omitted when commander_unit_ids has 0 or 1 entries, where the distinction is moot."
         },
         "pips": {
           "type": ["integer", "null"],

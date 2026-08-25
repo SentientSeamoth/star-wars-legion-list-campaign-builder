@@ -21,6 +21,13 @@ interface RankSectionProps {
   unitsById: Map<string, Unit>;
   upgradesById: Map<string, Upgrade>;
   availableUnits: Unit[];
+  /** unit id -> total physical miniatures owned, derived from collection
+   *  tracking. `null` means the profile has no collection data recorded at
+   *  all -- ownership UI stays hidden rather than falsely flagging every
+   *  unit as "not owned" for a profile that's never used the Collection
+   *  screen. See docs/ROADMAP.md's P1 "collection tracking and list
+   *  building don't talk to each other" entry. */
+  ownedCountByUnitId: Map<string, number> | null;
   /** Real backend rank-count validation for this rank -- see
    *  commands/list_validation.rs. `null` means "not checked yet" (no
    *  saved list to validate against, or Custom mode has no rank
@@ -53,6 +60,7 @@ export default function RankSection({
   unitsById,
   upgradesById,
   availableUnits,
+  ownedCountByUnitId,
   issues,
   open,
   onToggle,
@@ -130,6 +138,8 @@ export default function RankSection({
             const allUpgradeCostsKnown = equippedUpgrades.every(
               (u) => u.points_verified && u.points != null
             );
+            const owned = ownedCountByUnitId?.get(entry.unitId) ?? 0;
+            const shortfall = ownedCountByUnitId != null && owned < entry.count;
             return (
               <div
                 key={entry.localKey}
@@ -143,6 +153,11 @@ export default function RankSection({
                   {equippedUpgrades.length > 0 && (
                     <span className="text-[10px] text-slate-500">
                       {equippedUpgrades.map((u) => u.name).join(", ")}
+                    </span>
+                  )}
+                  {shortfall && (
+                    <span className="text-[10px] text-amber-400">
+                      only {owned} owned, need {entry.count}
                     </span>
                   )}
                 </button>
@@ -187,6 +202,7 @@ export default function RankSection({
           {picking ? (
             <AddUnitPicker
               units={availableUnits}
+              ownedCountByUnitId={ownedCountByUnitId}
               onAdd={(unitId) => {
                 onAddUnit(unitId);
                 setPicking(false);

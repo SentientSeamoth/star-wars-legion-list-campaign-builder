@@ -115,6 +115,8 @@ export default function ArmyCreationScreen({ userId }: ArmyCreationScreenProps) 
     commandCards,
     scenarios,
     savedLists,
+    hasCollectionData,
+    ownedCountByUnitId,
     listId,
     armyName,
     setArmyName,
@@ -481,6 +483,7 @@ export default function ArmyCreationScreen({ userId }: ArmyCreationScreenProps) 
               unitsById={unitsById}
               upgradesById={upgradesById}
               availableUnits={availableUnitsForRank(rank.id)}
+              ownedCountByUnitId={hasCollectionData ? ownedCountByUnitId : null}
               issues={validationIssues ? validationIssues.filter((i) => i.rank === rank.id) : null}
               open={!!openSections[rank.id]}
               onToggle={() =>

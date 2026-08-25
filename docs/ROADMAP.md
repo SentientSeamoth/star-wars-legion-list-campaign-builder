@@ -41,36 +41,64 @@ right.
       migration's own header comment): `0001_init.sql` does not get
       edited in place again now that real installs exist -- every
       future schema change is a new numbered migration.
+
 ## P1 — Core functionality gaps (the app does less than it claims)
 
 - [ ] **Command hand and battle deck are still previews, not the real
-      thing, for most factions.** The command-card library is 232
-      entries now, but a legal 7-card hand (2×1-pip + 2×2-pip +
-      2×3-pip + Standing Orders, no duplicates) needs enough
-      commander-specific cards per character to actually fill it —
-      still thin outside the pattern established for characters
-      already covered. Battle deck is worse: `data/scenarios.json` has
-      3 confirmed Primary Objective cards and zero Secondary/Advantage
-      cards, against a real 9-card (3+3+3) deck requirement. Both
-      pickers are honestly banner-flagged as previews in the UI
-      already — the gap is content, not code.
-- [ ] **`upgrade_bar` is null for all 155 units.** The per-unit upgrade
-      picker (`UnitDetailModal.tsx`) is explicitly "best-effort"
-      because there's no real slot data to validate against — any
-      unit can currently be offered any upgrade category, not just the
-      ones its card actually has slots for.
-- [ ] **Collection tracking and list building don't talk to each
-      other.** You can track what you own and you can build a list,
-      but nothing flags "you don't have a model for this unit" while
-      building a list, or filters the unit picker to owned-only. This
-      was named as a goal in the original architecture plan and never
-      built.
-- [ ] **56 of 232 command cards still have no resolved
-      `commander_unit_id`** (joint-owner cards like "Fifth Brother &
-      Seventh Sister," either-or cards, and a few named characters —
-      Grand Admiral Thrawn, Grand Moff Tarkin, Bo-Katan Kryze, others —
-      not yet in `units.json` at all). Full detail in `docs/TODO.md`'s
-      "Command cards library gaps."
+      thing, for most factions -- blocked on content, not code.** The
+      command-card library is 232 entries now, but a legal 7-card hand
+      (2×1-pip + 2×2-pip + 2×3-pip + Standing Orders, no duplicates)
+      needs enough commander-specific cards per character to actually
+      fill it -- still thin outside the pattern established for
+      characters already covered. Battle deck is worse:
+      `data/scenarios.json` has 3 confirmed Primary Objective cards and
+      zero Secondary/Advantage cards, against a real 9-card (3+3+3)
+      deck requirement. Both pickers are honestly banner-flagged as
+      previews in the UI already. **Waiting on the project owner's
+      scenarios.json content pass** before this can move further.
+- [ ] **`upgrade_bar` is null for all 155 units -- blocked on content,
+      not code.** The per-unit upgrade picker (`UnitDetailModal.tsx`)
+      is explicitly "best-effort" because there's no real slot data to
+      validate against. No source material for this exists yet.
+- [x] **Collection tracking and list building now talk to each other
+      -- built 2026-08-25.** `useArmyListBuilder` fetches the same
+      `getUserUnitOwnership`/`listOwnedExpansions` data the Collection
+      screen uses. `RankSection.tsx` flags a shortfall ("only 2 owned,
+      need 4") on any list entry that exceeds what the profile owns.
+      `AddUnitPicker.tsx` annotates every unit in the add-unit dropdown
+      with its owned count and adds an "Owned only" filter checkbox.
+      Deliberately gated behind `hasCollectionData` (true only once a
+      profile has recorded at least one owned expansion) so a profile
+      that's never touched the Collection screen sees the builder
+      exactly as before, not a wall of false "not owned" warnings.
+      Verified via `npm run build` (clean) and `npm test` (25/25,
+      unaffected -- no test coverage added here, see P4 below). Not
+      live-clicked-through in the running app this pass (see this
+      doc's intro).
+- [x] **56 unresolved command cards -- 15 more resolved 2026-08-25,
+      41 remain (a real content gap, not a code gap).** Real card data
+      proved a single `commander_unit_id` column couldn't represent
+      every card's ownership shape: some cards are jointly owned by two
+      named units, both required ("Fifth Brother & Seventh Sister"),
+      and some are owned by either of two, one sufficing ("Jedi Knight
+      or Jedi Knight General"). Replaced with a real
+      `command_card_commanders` join table (migration
+      `0005_command_card_commanders.sql`) plus a `commander_ownership`
+      ("all"/"any") column, and used it to resolve 11 joint-owner cards
+      and 4 either-owner cards against the real `units.json` roster.
+      `AddCommandCardPicker.tsx`'s scope-gating logic now checks
+      "all owners present" vs. "any owner present" correctly instead of
+      just a single id. The remaining 41 are a genuine data gap (named
+      characters not yet in `units.json` -- Grand Admiral Thrawn, Grand
+      Moff Tarkin, Bo-Katan Kryze, others -- or generic restriction text
+      with no named owner at all) -- not resolvable without more source
+      material. Full breakdown in `docs/TODO.md`'s "Command cards
+      library gaps." Verified via new regression tests in `db::migrate`
+      (one reproduces the old single-column schema and proves the
+      migration moves its data into the join table AND allows a second
+      owner the old schema never could; `cargo test` 24/24 including
+      the reseed-twice regression), `npm run validate:data` (9/9), and
+      `npm run build`/`npm test` (25/25).
 
 ## P2 — Data completeness (large, ongoing, the biggest bucket)
 

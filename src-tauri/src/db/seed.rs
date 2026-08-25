@@ -195,7 +195,7 @@ fn seed_units(conn: &Connection) -> Result<(), Box<dyn std::error::Error>> {
             .is_some_and(|kws| !kws.is_empty() && kws.len() == resolved_keyword_ids.len());
 
         // Real UPSERT, not INSERT OR REPLACE -- units.id is referenced with
-        // ON DELETE RESTRICT by command_cards.commander_unit_id,
+        // ON DELETE RESTRICT by command_card_commanders.unit_id,
         // army_list_entries.unit_id, expansion_contents_units.unit_id, and
         // unit_ownership_overrides.unit_id. Once a real army list or
         // collection override references a unit (exactly what happens in
@@ -393,14 +393,14 @@ fn seed_command_cards(conn: &Connection) -> Result<(), Box<dyn std::error::Error
         // seed_keywords above.
         conn.execute(
             "INSERT INTO command_cards
-             (id, name, category, commander_unit_id, pips, units_activated,
+             (id, name, category, commander_ownership, pips, units_activated,
               unit_activation_restriction, faction_restriction, battle_force_restriction,
               effect_description, effect_verified, roster_verified, roster_source, source, notes)
              VALUES (?1,?2,?3,?4,?5,?6,?7,?8,?9,?10,?11,?12,?13,?14,?15)
              ON CONFLICT(id) DO UPDATE SET
                name = excluded.name,
                category = excluded.category,
-               commander_unit_id = excluded.commander_unit_id,
+               commander_ownership = excluded.commander_ownership,
                pips = excluded.pips,
                units_activated = excluded.units_activated,
                unit_activation_restriction = excluded.unit_activation_restriction,
@@ -416,7 +416,7 @@ fn seed_command_cards(conn: &Connection) -> Result<(), Box<dyn std::error::Error
                 c.id,
                 c.name,
                 enum_str(&c.category),
-                c.commander_unit_id,
+                c.commander_ownership.as_ref().map(enum_str),
                 c.pips,
                 c.units_activated.as_ref().map(int_or_text),
                 c.unit_activation_restriction,
@@ -430,6 +430,17 @@ fn seed_command_cards(conn: &Connection) -> Result<(), Box<dyn std::error::Error
                 c.notes,
             ],
         )?;
+
+        conn.execute(
+            "DELETE FROM command_card_commanders WHERE command_card_id = ?1",
+            params![c.id],
+        )?;
+        for unit_id in &c.commander_unit_ids {
+            conn.execute(
+                "INSERT OR REPLACE INTO command_card_commanders (command_card_id, unit_id) VALUES (?1, ?2)",
+                params![c.id, unit_id],
+            )?;
+        }
     }
     Ok(())
 }

@@ -20,6 +20,7 @@ import {
   listUnits,
   listUpgrades,
 } from "../../../lib/api/reference";
+import { getUserUnitOwnership, listOwnedExpansions } from "../../../lib/api/collection";
 import { validateList } from "../../../lib/api/listValidation";
 import type {
   ArmyList,
@@ -76,6 +77,13 @@ export function useArmyListBuilder(userId: string) {
   const [commandCards, setCommandCards] = useState<CommandCard[]>([]);
   const [scenarios, setScenarios] = useState<ScenarioObjective[]>([]);
   const [savedLists, setSavedLists] = useState<ArmyList[]>([]);
+  // Whether this profile has recorded ANY collection ownership at all --
+  // gates the "you don't have a model for this" UI on/off. A profile that
+  // has never touched the Collection screen should see the builder exactly
+  // as before, not a wall of false "not owned" warnings for units it never
+  // claimed to track.
+  const [hasCollectionData, setHasCollectionData] = useState(false);
+  const [ownedCountByUnitId, setOwnedCountByUnitId] = useState<Map<string, number>>(new Map());
 
   const [listId, setListId] = useState<string | null>(null);
   const [armyName, setArmyName] = useState(DEFAULT_NAME);
@@ -94,15 +102,25 @@ export function useArmyListBuilder(userId: string) {
     async function init() {
       setLoading(true);
       try {
-        const [allUnits, lists, allKeywords, allUpgrades, allCommandCards, allScenarios] =
-          await Promise.all([
-            listUnits(),
-            listListsForUser(userId),
-            listKeywords(),
-            listUpgrades(),
-            listCommandCards(),
-            listScenarios(),
-          ]);
+        const [
+          allUnits,
+          lists,
+          allKeywords,
+          allUpgrades,
+          allCommandCards,
+          allScenarios,
+          ownedExpansions,
+          ownership,
+        ] = await Promise.all([
+          listUnits(),
+          listListsForUser(userId),
+          listKeywords(),
+          listUpgrades(),
+          listCommandCards(),
+          listScenarios(),
+          listOwnedExpansions(userId),
+          getUserUnitOwnership(userId),
+        ]);
         if (cancelled) return;
         setUnits(allUnits);
         setSavedLists(lists);
@@ -110,6 +128,8 @@ export function useArmyListBuilder(userId: string) {
         setUpgrades(allUpgrades);
         setCommandCards(allCommandCards);
         setScenarios(allScenarios);
+        setHasCollectionData(ownedExpansions.length > 0);
+        setOwnedCountByUnitId(new Map(ownership.map((o) => [o.unit_id, o.total_owned])));
         setLoading(false);
       } catch (err) {
         if (cancelled) return;
@@ -400,6 +420,8 @@ export function useArmyListBuilder(userId: string) {
     commandCards,
     scenarios,
     savedLists,
+    hasCollectionData,
+    ownedCountByUnitId,
     listId,
     armyName,
     setArmyName,

@@ -169,13 +169,19 @@ export interface UpgradeLibrary {
 // ---------- command_card.rs ----------
 
 export type CommandCardCategory = "generic" | "commander-specific";
+export type CommandCardOwnership = "all" | "any";
 
 export interface CommandCard {
   id: string;
   name: string;
   category: CommandCardCategory;
-  /** References Unit.id in units.json. Required when category === "commander-specific". */
-  commander_unit_id: string | null;
+  /** References Unit.id(s) in units.json. Empty = not yet resolved (a
+   *  documented gap, not "no owner"). Two entries means either joint
+   *  ownership (commander_ownership: "all") or either-ownership
+   *  ("any") -- see that field. */
+  commander_unit_ids: string[];
+  /** Only meaningful when commander_unit_ids has 2+ entries. */
+  commander_ownership: CommandCardOwnership | null;
   /** Null where a current primary source did not expose the printed pip value (see notes). */
   pips: number | null;
   units_activated: IntOrText | null;

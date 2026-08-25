@@ -10,6 +10,7 @@ const MIGRATION_0001: &str = include_str!("../../migrations/0001_init.sql");
 const MIGRATION_0002: &str = include_str!("../../migrations/0002_collection.sql");
 const MIGRATION_0003: &str = include_str!("../../migrations/0003_campaigns.sql");
 const MIGRATION_0004: &str = include_str!("../../migrations/0004_repair_command_cards_check.sql");
+const MIGRATION_0005: &str = include_str!("../../migrations/0005_command_card_commanders.sql");
 
 /// (version, name, sql), applied in order. Numbered to match the
 /// migrations/ directory per db/_PURPOSE.md -- once shipped, a migration's
@@ -19,6 +20,7 @@ const MIGRATIONS: &[(i64, &str, &str)] = &[
     (2, "0002_collection", MIGRATION_0002),
     (3, "0003_campaigns", MIGRATION_0003),
     (4, "0004_repair_command_cards_check", MIGRATION_0004),
+    (5, "0005_command_card_commanders", MIGRATION_0005),
 ];
 
 pub fn run(conn: &Connection) -> rusqlite::Result<()> {
@@ -146,5 +148,111 @@ mod tests {
             )
             .unwrap();
         assert!(ambush_still_there, "pre-existing command_cards row should survive the rebuild");
+    }
+
+    /// Migration 0005 replaces the single-owner `commander_unit_id` column
+    /// with a real `command_card_commanders` join table, because real card
+    /// data (resolved 2026-08-25) proved some cards need TWO owners (joint
+    /// or either-ownership) -- a shape the old column could never
+    /// represent at all. Starts from a post-0004 schema (nullable pips/
+    /// units_activated, relaxed CHECK, but still the single
+    /// commander_unit_id column) since that's the real state any database
+    /// migrated through 0004 but not yet 0005 would be in.
+    #[test]
+    fn moves_single_owner_data_into_the_join_table_and_allows_multiple_owners() {
+        let conn = Connection::open_in_memory().unwrap();
+        conn.execute_batch("PRAGMA foreign_keys = ON;").unwrap();
+
+        conn.execute_batch(
+            "CREATE TABLE units (id TEXT PRIMARY KEY);
+             INSERT INTO units (id) VALUES ('fifth-brother'), ('seventh-sister');
+
+             CREATE TABLE command_cards (
+                 id                            TEXT PRIMARY KEY,
+                 name                          TEXT NOT NULL,
+                 category                      TEXT NOT NULL CHECK (category IN ('generic', 'commander-specific')),
+                 commander_unit_id             TEXT REFERENCES units(id) ON DELETE RESTRICT,
+                 pips                          INTEGER CHECK (pips BETWEEN 0 AND 4),
+                 units_activated               TEXT,
+                 unit_activation_restriction   TEXT,
+                 faction_restriction           TEXT,
+                 battle_force_restriction      TEXT,
+                 effect_description            TEXT,
+                 effect_verified               INTEGER NOT NULL DEFAULT 0,
+                 roster_verified               INTEGER NOT NULL DEFAULT 0,
+                 roster_source                 TEXT,
+                 source                        TEXT,
+                 notes                         TEXT
+             );
+
+             CREATE TABLE expansion_contents_command_cards (
+                 expansion_id     TEXT NOT NULL,
+                 command_card_id  TEXT NOT NULL REFERENCES command_cards(id) ON DELETE RESTRICT,
+                 quantity         INTEGER NOT NULL DEFAULT 1,
+                 PRIMARY KEY (expansion_id, command_card_id)
+             );
+
+             INSERT INTO command_cards (id, name, category, commander_unit_id, pips, units_activated, effect_verified, roster_verified)
+             VALUES ('die-at-my-hand', 'Die at My Hand', 'commander-specific', 'fifth-brother', 3, '1', 1, 1);
+
+             INSERT INTO expansion_contents_command_cards (expansion_id, command_card_id)
+             VALUES ('some-pack', 'die-at-my-hand');",
+        )
+        .unwrap();
+
+        conn.execute_batch(MIGRATION_0005).unwrap();
+
+        // The pre-existing single-owner row's data must have moved into
+        // the new join table.
+        let owner: String = conn
+            .query_row(
+                "SELECT unit_id FROM command_card_commanders WHERE command_card_id = 'die-at-my-hand'",
+                [],
+                |row| row.get(0),
+            )
+            .expect("existing commander_unit_id data should be backfilled into the join table");
+        assert_eq!(owner, "fifth-brother");
+
+        // The old column must be gone (this insert would have silently
+        // dropped a would-be second owner before 0005 -- there was nowhere
+        // to put it).
+        let old_column_gone = conn.execute(
+            "UPDATE command_cards SET commander_unit_id = 'x' WHERE id = 'die-at-my-hand'",
+            [],
+        );
+        assert!(old_column_gone.is_err(), "commander_unit_id column should no longer exist");
+
+        // The whole point: a card can now have a SECOND owner, which the
+        // old schema could never represent.
+        conn.execute(
+            "INSERT INTO command_card_commanders (command_card_id, unit_id) VALUES ('die-at-my-hand', 'seventh-sister')",
+            [],
+        )
+        .expect("join table should allow a second owner for a joint-ownership card");
+        conn.execute(
+            "UPDATE command_cards SET commander_ownership = 'all' WHERE id = 'die-at-my-hand'",
+            [],
+        )
+        .expect("commander_ownership column should exist and accept 'all'");
+
+        let owner_count: i64 = conn
+            .query_row(
+                "SELECT COUNT(*) FROM command_card_commanders WHERE command_card_id = 'die-at-my-hand'",
+                [],
+                |row| row.get(0),
+            )
+            .unwrap();
+        assert_eq!(owner_count, 2);
+
+        // The FK-referencing child table must still resolve after the
+        // rebuild.
+        let survived: String = conn
+            .query_row(
+                "SELECT command_card_id FROM expansion_contents_command_cards WHERE expansion_id = 'some-pack'",
+                [],
+                |row| row.get(0),
+            )
+            .expect("expansion_contents_command_cards row should survive the rebuild");
+        assert_eq!(survived, "die-at-my-hand");
     }
 }

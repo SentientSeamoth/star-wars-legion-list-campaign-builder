@@ -6,14 +6,13 @@
     "priority_rule": "Whoever plays the command card with the fewest pips wins priority for the round and acts first in the Activation Phase; ties are broken by a defense die roll (see keywords.json/rules notes on 'Command Phase').",
     "priority_rule_verified": true,
     "last_reviewed": "2026-08-24",
-    "verification_status": "Expanded 2026-08-24 from the original 4-card generic seed using current Atomic Mass Games print-and-play command-card PDFs, the June 17 2026 errata, and official 2025-2026 release/developer articles. Current official cards were added where roster status could be verified; fields remain null where a current primary source did not expose the value reliably. Newly added commander-specific entries intentionally leave commander_unit_id null because the app's units.json ID mapping was not available in the uploaded file/library. Cards explicitly removed by the June 17 2026 errata are excluded. Existing seed data was preserved except for fields populated or corrected during this command-card expansion pass. commander_unit_id resolved 2026-08-24 for 117 of the commander-specific cards by matching unit_activation_restriction against the real data/units.json roster (a mechanical resolver, not the source pass -- that pass explicitly lacked this file). See docs/TODO.md for the exact unresolved list and reasons (duo/either-or ownership the single-id field cannot represent, or a named character not yet catalogued in units.json)."
+    "verification_status": "Expanded 2026-08-24 from the original 4-card generic seed using current Atomic Mass Games print-and-play command-card PDFs, the June 17 2026 errata, and official 2025-2026 release/developer articles. Current official cards were added where roster status could be verified; fields remain null where a current primary source did not expose the value reliably. Newly added commander-specific entries intentionally leave commander_unit_id null because the app's units.json ID mapping was not available in the uploaded file/library. Cards explicitly removed by the June 17 2026 errata are excluded. Existing seed data was preserved except for fields populated or corrected during this command-card expansion pass. commander_unit_id resolved 2026-08-24 for 117 of the commander-specific cards by matching unit_activation_restriction against the real data/units.json roster (a mechanical resolver, not the source pass -- that pass explicitly lacked this file). See docs/TODO.md for the exact unresolved list and reasons (duo/either-or ownership the single-id field cannot represent, or a named character not yet catalogued in units.json). commander_unit_id (single, nullable) replaced 2026-08-25 with commander_unit_ids (array) + commander_ownership (all/any) -- real card data proved joint-owner and either-owner cards exist and a single id cannot represent them. 15 more cards resolved this pass (11 joint + 4 either-or) using the real units.json roster; commander_ownership is null except on those 15. See docs/TODO.md."
   },
   "command_cards": [
     {
       "id": "ambush",
       "name": "Ambush",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": null,
@@ -24,13 +23,14 @@
       "roster_verified": true,
       "roster_source": "Multiple convergent sources (FFG 2018 article, wiki card pages, community rules summaries), confirmed 2026-08-22",
       "source": "Legion Core Set (all four generics ship in the Core Set and remain in the current card pool per 2025 Updated Battle Cards reprints)",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "push",
       "name": "Push",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": null,
@@ -41,13 +41,14 @@
       "roster_verified": true,
       "roster_source": "Multiple convergent sources (FFG 2018 article, wiki card pages, community rules summaries), confirmed 2026-08-22",
       "source": "Legion Core Set (all four generics ship in the Core Set and remain in the current card pool per 2025 Updated Battle Cards reprints)",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "assault",
       "name": "Assault",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 3,
       "units_activated": 3,
       "unit_activation_restriction": null,
@@ -58,13 +59,14 @@
       "roster_verified": true,
       "roster_source": "Multiple convergent sources (FFG 2018 article, wiki card pages, community rules summaries), confirmed 2026-08-22",
       "source": "Legion Core Set (all four generics ship in the Core Set and remain in the current card pool per 2025 Updated Battle Cards reprints)",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "standing-orders",
       "name": "Standing Orders",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 4,
       "units_activated": 1,
       "unit_activation_restriction": null,
@@ -75,13 +77,14 @@
       "roster_verified": true,
       "roster_source": "Multiple convergent sources (FFG 2018 article, wiki card pages, community rules summaries), confirmed 2026-08-22",
       "source": "Legion Core Set (all four generics ship in the Core Set and remain in the current card pool per 2025 Updated Battle Cards reprints)",
-      "notes": "The 'returns to your hand' mechanic is directly and consistently confirmed across sources; this is the one effect description in this generic seed with higher confidence."
+      "notes": "The 'returns to your hand' mechanic is directly and consistently confirmed across sources; this is the one effect description in this generic seed with higher confidence.",
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "pinned-down",
       "name": "Pinned Down",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": null,
@@ -92,13 +95,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "covert-observation",
       "name": "Covert Observation",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": null,
@@ -109,13 +113,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "coordinated-fire",
       "name": "Coordinated Fire",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 3,
       "units_activated": 3,
       "unit_activation_restriction": null,
@@ -126,13 +131,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "unrelenting-fire",
       "name": "Unrelenting Fire",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 1,
       "units_activated": 2,
       "unit_activation_restriction": null,
@@ -143,13 +149,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "overwhelming-barrage",
       "name": "Overwhelming Barrage",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 1,
       "units_activated": 2,
       "unit_activation_restriction": null,
@@ -160,13 +167,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "debark-for-ground-assault",
       "name": "Debark for Ground Assault",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 3,
       "units_activated": 3,
       "unit_activation_restriction": null,
@@ -177,13 +185,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "drive-them-out",
       "name": "Drive Them Out",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "1 Vehicle unit",
@@ -194,13 +203,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "we-need-reinforcements",
       "name": "We Need Reinforcements",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": "2 Trooper units",
@@ -211,13 +221,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "constantly-alert",
       "name": "Constantly Alert",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 3,
       "units_activated": 3,
       "unit_activation_restriction": null,
@@ -228,13 +239,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "come-and-prove-it",
       "name": "Come and Prove It",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 1,
       "units_activated": 2,
       "unit_activation_restriction": "Fifth Brother & Seventh Sister",
@@ -245,13 +257,17 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "fifth-brother",
+        "seventh-sister"
+      ],
+      "commander_ownership": "all"
     },
     {
       "id": "unexpected-but-not-unwelcome",
       "name": "Unexpected, but not Unwelcome",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": "Fifth Brother & Seventh Sister",
@@ -262,13 +278,17 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "fifth-brother",
+        "seventh-sister"
+      ],
+      "commander_ownership": "all"
     },
     {
       "id": "you-hide-your-fear-well",
       "name": "You Hide Your Fear Well",
       "category": "commander-specific",
-      "commander_unit_id": "seventh-sister",
       "pips": 3,
       "units_activated": 3,
       "unit_activation_restriction": "Seventh Sister & 2 units",
@@ -279,13 +299,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "seventh-sister"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "i-care-not-for-your-struggles",
       "name": "I Care Not for Your Struggles",
       "category": "commander-specific",
-      "commander_unit_id": "fifth-brother",
       "pips": 3,
       "units_activated": 3,
       "unit_activation_restriction": "Fifth Brother & 2 Trooper units",
@@ -296,13 +319,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "fifth-brother"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "you-would-question-me",
       "name": "You Would Question Me?",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": "Fifth Brother & Seventh Sister",
@@ -313,13 +339,17 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "fifth-brother",
+        "seventh-sister"
+      ],
+      "commander_ownership": "all"
     },
     {
       "id": "die-at-my-hand",
       "name": "Die at My Hand",
       "category": "commander-specific",
-      "commander_unit_id": "moff-gideon",
       "pips": 3,
       "units_activated": 1,
       "unit_activation_restriction": "Moff Gideon",
@@ -330,13 +360,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "moff-gideon"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "you-have-something-i-want",
       "name": "You Have Something I Want",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": "2 units",
@@ -347,13 +380,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "moment-of-consideration",
       "name": "Moment of Consideration",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 3,
       "unit_activation_restriction": "3 units",
@@ -364,13 +398,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "voracious-ambition",
       "name": "Voracious Ambition",
       "category": "commander-specific",
-      "commander_unit_id": "director-orson-krennic",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Director Orson Krennic",
@@ -381,13 +416,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "director-orson-krennic"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "deploy-the-garrison",
       "name": "Deploy the Garrison",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": "2 Trooper units",
@@ -398,13 +436,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "annihilation-looms",
       "name": "Annihilation Looms",
       "category": "commander-specific",
-      "commander_unit_id": "director-orson-krennic",
       "pips": 3,
       "units_activated": 3,
       "unit_activation_restriction": "Director Orson Krennic & 2 units",
@@ -415,13 +454,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "director-orson-krennic"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "maximum-firepower",
       "name": "Maximum Firepower",
       "category": "commander-specific",
-      "commander_unit_id": "general-veers",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "General Veers",
@@ -432,13 +474,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "general-veers"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "evasive-maneuvers",
       "name": "Evasive Maneuvers",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": "2 Vehicle units",
@@ -449,13 +494,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "imperial-discipline",
       "name": "Imperial Discipline",
       "category": "commander-specific",
-      "commander_unit_id": "general-veers",
       "pips": 3,
       "units_activated": 3,
       "unit_activation_restriction": "General Veers & 2 units",
@@ -466,13 +512,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "general-veers"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "vader-s-might",
       "name": "Vader's Might",
       "category": "commander-specific",
-      "commander_unit_id": "darth-vader",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Darth Vader",
@@ -483,13 +532,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "darth-vader"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "implacable",
       "name": "Implacable",
       "category": "commander-specific",
-      "commander_unit_id": "darth-vader",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Darth Vader",
@@ -500,13 +552,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "darth-vader"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "new-ways-to-motivate-them",
       "name": "New Ways to Motivate Them",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": "2 Trooper units",
@@ -517,13 +572,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "fear-and-dead-men",
       "name": "Fear and Dead Men",
       "category": "commander-specific",
-      "commander_unit_id": "darth-vader",
       "pips": 3,
       "units_activated": 1,
       "unit_activation_restriction": "Darth Vader",
@@ -534,13 +590,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "darth-vader"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "darkness-descends",
       "name": "Darkness Descends",
       "category": "commander-specific",
-      "commander_unit_id": "darth-vader",
       "pips": 3,
       "units_activated": 1,
       "unit_activation_restriction": "Darth Vader",
@@ -551,13 +610,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "darth-vader"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "master-of-evil",
       "name": "Master of Evil",
       "category": "commander-specific",
-      "commander_unit_id": "darth-vader",
       "pips": 3,
       "units_activated": 3,
       "unit_activation_restriction": "Darth Vader & 2 units",
@@ -568,13 +630,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "darth-vader"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "face-me",
       "name": "Face Me!",
       "category": "commander-specific",
-      "commander_unit_id": "agent-kallus",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Agent Kallus",
@@ -585,13 +650,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "agent-kallus"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "isb-investigation",
       "name": "ISB Investigation",
       "category": "commander-specific",
-      "commander_unit_id": "agent-kallus",
       "pips": 1,
       "units_activated": 2,
       "unit_activation_restriction": "Agent Kallus & 1 unit",
@@ -602,13 +670,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "agent-kallus"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "ruthless-tactics",
       "name": "Ruthless Tactics",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 3,
       "unit_activation_restriction": "3 units",
@@ -619,13 +690,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "pulse-scan",
       "name": "Pulse Scan",
       "category": "commander-specific",
-      "commander_unit_id": "iden-versio",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Iden Versio",
@@ -636,13 +708,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "iden-versio"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "incapacitate",
       "name": "Incapacitate",
       "category": "commander-specific",
-      "commander_unit_id": "iden-versio",
       "pips": 2,
       "units_activated": 1,
       "unit_activation_restriction": "Iden Versio",
@@ -653,13 +728,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "iden-versio"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "tactical-strike",
       "name": "Tactical Strike",
       "category": "commander-specific",
-      "commander_unit_id": "iden-versio",
       "pips": 2,
       "units_activated": 3,
       "unit_activation_restriction": "Iden Versio & 2 Trooper units",
@@ -670,13 +748,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "iden-versio"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "concussive-blast",
       "name": "Concussive Blast",
       "category": "commander-specific",
-      "commander_unit_id": "iden-versio",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Iden Versio",
@@ -687,13 +768,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "iden-versio"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "gunner-infantry",
       "name": "Gunner, Infantry!",
       "category": "commander-specific",
-      "commander_unit_id": "major-marquand",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Major Marquand",
@@ -704,13 +788,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "major-marquand"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "squadron-on-me",
       "name": "Squadron, On Me",
       "category": "commander-specific",
-      "commander_unit_id": "major-marquand",
       "pips": 2,
       "units_activated": 1,
       "unit_activation_restriction": "Major Marquand",
@@ -721,13 +808,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "major-marquand"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "armored-cavalry",
       "name": "Armored Cavalry",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 3,
       "units_activated": 3,
       "unit_activation_restriction": "3 Vehicle units",
@@ -738,13 +828,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Empire Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "inexorable-advance",
       "name": "Inexorable Advance",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 3,
       "units_activated": 3,
       "unit_activation_restriction": "3 Corps Trooper units",
@@ -755,13 +846,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Customizable Imperial Officer & Agent article (2025-08-26); expansion current in 2026",
       "source": "Imperial Specialists / Customizable Imperial Officer & Agent",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "fearsome-oration",
       "name": "Fearsome Oration",
       "category": "commander-specific",
-      "commander_unit_id": "imperial-agent",
       "pips": null,
       "units_activated": 1,
       "unit_activation_restriction": "Imperial Agent",
@@ -772,13 +864,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Customizable Imperial Officer & Agent article (2025-08-26); expansion current in 2026",
       "source": "Imperial Specialists / Customizable Imperial Officer & Agent",
-      "notes": "Pip count left null because the official article text available to this review did not state it."
+      "notes": "Pip count left null because the official article text available to this review did not state it.",
+      "commander_unit_ids": [
+        "imperial-agent"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "the-empire-does-not-tolerate-failure",
       "name": "The Empire Does Not Tolerate Failure",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": null,
       "unit_activation_restriction": "Imperial High Command Commander",
@@ -789,13 +884,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Scene to Stats: Imperial High Command (2026-03-05); expansion current in 2026",
       "source": "Imperial High Command",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "architects-of-their-own-destruction",
       "name": "Architects of Their Own Destruction",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 1,
       "units_activated": null,
       "unit_activation_restriction": "Grand Admiral Thrawn",
@@ -806,13 +902,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Scene to Stats: Imperial High Command (2026-03-05); expansion current in 2026",
       "source": "Imperial High Command",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "we-must-wait-and-watch",
       "name": "We Must Wait and Watch",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": null,
       "units_activated": null,
       "unit_activation_restriction": "Grand Admiral Thrawn",
@@ -823,13 +920,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Scene to Stats: Imperial High Command (2026-03-05); expansion current in 2026",
       "source": "Imperial High Command",
-      "notes": "Pip count left null because the official article description used for this pass did not state it."
+      "notes": "Pip count left null because the official article description used for this pass did not state it.",
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "i-want-you-to-know-failure",
       "name": "I Want You to Know Failure",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 3,
       "units_activated": null,
       "unit_activation_restriction": "Grand Admiral Thrawn",
@@ -840,13 +938,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Scene to Stats: Imperial High Command (2026-03-05); expansion current in 2026",
       "source": "Imperial High Command",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "i-have-graphs-and-the-command",
       "name": "I Have Graphs AND the Command",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": null,
       "units_activated": null,
       "unit_activation_restriction": "General Tagge",
@@ -857,13 +956,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Scene to Stats: Imperial High Command (2026-03-05); expansion current in 2026",
       "source": "Imperial High Command",
-      "notes": "Pip count left null because the official article description used for this pass did not state it."
+      "notes": "Pip count left null because the official article description used for this pass did not state it.",
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "canny-adversary",
       "name": "Canny Adversary",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": null,
       "units_activated": null,
       "unit_activation_restriction": "General Tagge",
@@ -874,13 +974,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Scene to Stats: Imperial High Command (2026-03-05); expansion current in 2026",
       "source": "Imperial High Command",
-      "notes": "Pip count left null because the official article description used for this pass did not state it."
+      "notes": "Pip count left null because the official article description used for this pass did not state it.",
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "moment-of-triumph",
       "name": "Moment of Triumph",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": null,
       "units_activated": null,
       "unit_activation_restriction": "Grand Moff Tarkin",
@@ -891,13 +992,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Scene to Stats: Imperial High Command (2026-03-05); expansion current in 2026",
       "source": "Imperial High Command",
-      "notes": "Pip count left null because the official article description used for this pass did not state it."
+      "notes": "Pip count left null because the official article description used for this pass did not state it.",
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "fear-will-keep-them-in-line",
       "name": "Fear Will Keep Them in Line",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": null,
       "units_activated": null,
       "unit_activation_restriction": "Grand Moff Tarkin",
@@ -908,13 +1010,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Scene to Stats: Imperial High Command (2026-03-05); expansion current in 2026",
       "source": "Imperial High Command",
-      "notes": "Pip count left null because the official article description used for this pass did not state it."
+      "notes": "Pip count left null because the official article description used for this pass did not state it.",
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "synchronized-offensive",
       "name": "Synchronized Offensive",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "1 Vehicle unit",
@@ -925,13 +1028,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "daring-defense",
       "name": "Daring Defense",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 3,
       "unit_activation_restriction": "3 Trooper units",
@@ -942,13 +1046,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "air-support",
       "name": "Air Support",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 1,
       "unit_activation_restriction": null,
@@ -959,13 +1064,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "get-in-position",
       "name": "Get in Position",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": "2 Trooper units",
@@ -976,13 +1082,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "attack-of-the-clones",
       "name": "Attack of the Clones",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 3,
       "units_activated": 3,
       "unit_activation_restriction": "3 Clone Trooper units",
@@ -993,13 +1100,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "tactical-planning",
       "name": "Tactical Planning",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 3,
       "units_activated": 2,
       "unit_activation_restriction": null,
@@ -1010,13 +1118,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "leaders-of-the-501st",
       "name": "Leaders of the 501st",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 3,
       "unit_activation_restriction": null,
@@ -1027,13 +1136,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "lead-from-the-front",
       "name": "Lead from the Front",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": null,
@@ -1044,13 +1154,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "sneak-attack",
       "name": "Sneak Attack",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": null,
@@ -1061,13 +1172,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "recon-division",
       "name": "Recon Division",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 1,
       "units_activated": 2,
       "unit_activation_restriction": null,
@@ -1078,13 +1190,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "flexible-strategy",
       "name": "Flexible Strategy",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 3,
       "unit_activation_restriction": null,
@@ -1095,13 +1208,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "bring-it-down",
       "name": "Bring It Down!",
       "category": "commander-specific",
-      "commander_unit_id": "clone-commander-cody",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Clone Commander Cody",
@@ -1112,13 +1226,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "clone-commander-cody"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "have-i-ever-let-you-down",
       "name": "Have I Ever Let You Down?",
       "category": "commander-specific",
-      "commander_unit_id": "clone-commander-cody",
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": "Clone Commander Cody & 1 Trooper unit",
@@ -1129,13 +1246,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "clone-commander-cody"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "combined-arms",
       "name": "Combined Arms",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 4,
       "unit_activation_restriction": "2 Trooper units & 2 Vehicle units",
@@ -1146,13 +1266,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "defiance",
       "name": "Defiance",
       "category": "commander-specific",
-      "commander_unit_id": "chewbacca",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Chewbacca",
@@ -1163,13 +1284,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "chewbacca"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "size-matters-not",
       "name": "Size Matters Not",
       "category": "commander-specific",
-      "commander_unit_id": "yoda",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Yoda",
@@ -1180,13 +1304,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "yoda"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "there-is-no-try",
       "name": "There Is No Try",
       "category": "commander-specific",
-      "commander_unit_id": "yoda",
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": "Yoda & 1 Trooper unit",
@@ -1197,13 +1324,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "yoda"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "luminous-beings-are-we",
       "name": "Luminous Beings Are We",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 3,
       "units_activated": null,
       "unit_activation_restriction": "Eligible units",
@@ -1214,13 +1344,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "diplomatic-cover",
       "name": "Diplomatic Cover",
       "category": "commander-specific",
-      "commander_unit_id": "padm-amidala",
       "pips": 3,
       "units_activated": 1,
       "unit_activation_restriction": "Padmé Amidala",
@@ -1231,13 +1362,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "padm-amidala"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "our-fate-is-in-your-hands",
       "name": "Our Fate Is in Your Hands",
       "category": "commander-specific",
-      "commander_unit_id": "padm-amidala",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Padmé Amidala",
@@ -1248,13 +1382,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "padm-amidala"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "aggressive-negotiations",
       "name": "Aggressive Negotiations",
       "category": "commander-specific",
-      "commander_unit_id": "padm-amidala",
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": "Padmé Amidala & 1 Trooper unit",
@@ -1265,13 +1402,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "padm-amidala"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "we-re-not-programmed",
       "name": "We're Not Programmed",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 3,
       "units_activated": 4,
       "unit_activation_restriction": "4 Clone Trooper units",
@@ -1282,13 +1422,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "call-me-captain",
       "name": "Call Me Captain",
       "category": "commander-specific",
-      "commander_unit_id": "clone-captain-rex",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Clone Captain Rex",
@@ -1299,13 +1440,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "clone-captain-rex"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "take-that-clankers",
       "name": "Take That, Clankers!",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": "2 Trooper units",
@@ -1316,13 +1460,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "general-skywalker",
       "name": "General Skywalker",
       "category": "commander-specific",
-      "commander_unit_id": "anakin-skywalker",
       "pips": 3,
       "units_activated": 3,
       "unit_activation_restriction": "Anakin Skywalker & 2 units",
@@ -1333,13 +1478,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "anakin-skywalker"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "this-is-where-the-fun-begins",
       "name": "This Is Where the Fun Begins",
       "category": "commander-specific",
-      "commander_unit_id": "anakin-skywalker",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Anakin Skywalker",
@@ -1350,13 +1498,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "anakin-skywalker"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "you-underestimate-my-power",
       "name": "You Underestimate My Power",
       "category": "commander-specific",
-      "commander_unit_id": "anakin-skywalker",
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": "Anakin Skywalker & 1 unit",
@@ -1367,13 +1518,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "anakin-skywalker"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "general-kenobi",
       "name": "General Kenobi",
       "category": "commander-specific",
-      "commander_unit_id": "obi-wan-kenobi",
       "pips": 3,
       "units_activated": 3,
       "unit_activation_restriction": "Obi-Wan Kenobi & 2 units",
@@ -1384,13 +1538,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "obi-wan-kenobi"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "hello-there",
       "name": "Hello There!",
       "category": "commander-specific",
-      "commander_unit_id": "obi-wan-kenobi",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Obi-Wan Kenobi",
@@ -1401,13 +1558,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "obi-wan-kenobi"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "knowledge-and-defense",
       "name": "Knowledge and Defense",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": "2 Trooper units",
@@ -1418,13 +1578,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "impromptu-immolation",
       "name": "Impromptu Immolation",
       "category": "commander-specific",
-      "commander_unit_id": "r2-d2",
       "pips": 3,
       "units_activated": 1,
       "unit_activation_restriction": "R2-D2",
@@ -1435,13 +1596,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24; also verified in current Rebel Alliance command-card PDF",
       "source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24; Atomic Mass Games Rebel Alliance Command Cards v1.2",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "r2-d2"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "smoke-screen",
       "name": "Smoke Screen",
       "category": "commander-specific",
-      "commander_unit_id": "r2-d2",
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": "R2-D2 & 1 Trooper unit",
@@ -1452,13 +1616,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24; also verified in current Rebel Alliance command-card PDF",
       "source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24; Atomic Mass Games Rebel Alliance Command Cards v1.2",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "r2-d2"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "blast-off",
       "name": "Blast Off!",
       "category": "commander-specific",
-      "commander_unit_id": "r2-d2",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "R2-D2",
@@ -1469,13 +1636,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24; also verified in current Rebel Alliance command-card PDF",
       "source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24; Atomic Mass Games Rebel Alliance Command Cards v1.2",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "r2-d2"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "size-matters-sometimes",
       "name": "Size Matters Sometimes",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": "Chewbacca & Yoda",
@@ -1486,13 +1656,17 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "chewbacca-republic",
+        "yoda"
+      ],
+      "commander_ownership": "all"
     },
     {
       "id": "we-do-what-we-do",
       "name": "We Do What We Do",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 3,
       "units_activated": 1,
       "unit_activation_restriction": "The Bad Batch",
@@ -1503,13 +1677,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24; Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Galactic Republic Command Cards v1.3 (November 2025), current on AMG rules page 2026-08-24; Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "revenge-is-not-the-jedi-way",
       "name": "Revenge Is Not the Jedi Way",
       "category": "commander-specific",
-      "commander_unit_id": "ahsoka-tano",
       "pips": 2,
       "units_activated": 1,
       "unit_activation_restriction": "Ahsoka Tano, Padawan Commander",
@@ -1520,13 +1695,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Scene to Stats: Ahsoka Tano – Padawan Commander (2025-04-15); product current in 2026",
       "source": "Commander & Padawan Ahsoka Tano",
-      "notes": "Special pip rule: pips is stored as 2 because that is the command-hand construction value; the card has 4 pips when played for priority."
+      "notes": "Special pip rule: pips is stored as 2 because that is the command-hand construction value; the card has 4 pips when played for priority.",
+      "commander_unit_ids": [
+        "ahsoka-tano"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "i-go-where-i-m-needed",
       "name": "I Go Where I'm Needed",
       "category": "commander-specific",
-      "commander_unit_id": "ahsoka-tano",
       "pips": 3,
       "units_activated": 3,
       "unit_activation_restriction": "Ahsoka Tano, Padawan Commander & 2 units",
@@ -1537,13 +1715,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Scene to Stats: Ahsoka Tano – Padawan Commander (2025-04-15); product current in 2026",
       "source": "Commander & Padawan Ahsoka Tano",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "ahsoka-tano"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "you-are-beaten",
       "name": "You Are Beaten",
       "category": "commander-specific",
-      "commander_unit_id": "ahsoka-tano",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Ahsoka Tano, Padawan Commander",
@@ -1554,13 +1735,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Scene to Stats: Ahsoka Tano – Padawan Commander (2025-04-15); product current in 2026",
       "source": "Commander & Padawan Ahsoka Tano",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "ahsoka-tano"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "flow-of-the-force",
       "name": "Flow of the Force",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Jedi Knight or Jedi Knight General",
@@ -1571,13 +1755,17 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Scene to Stats: Customizable Jedi General and Knight (2025-09-23); expansion current in 2026",
       "source": "Customizable Jedi General & Knight",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "jedi-knight",
+        "jedi-knight-general"
+      ],
+      "commander_ownership": "any"
     },
     {
       "id": "affirmative-general",
       "name": "Affirmative, General!",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": null,
       "units_activated": null,
       "unit_activation_restriction": "Jedi Knight or Jedi Knight General",
@@ -1588,13 +1776,17 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Scene to Stats: Customizable Jedi General and Knight (2025-09-23); expansion current in 2026",
       "source": "Customizable Jedi General & Knight",
-      "notes": "Pip count left null because the official article description used for this pass did not state it."
+      "notes": "Pip count left null because the official article description used for this pass did not state it.",
+      "commander_unit_ids": [
+        "jedi-knight",
+        "jedi-knight-general"
+      ],
+      "commander_ownership": "any"
     },
     {
       "id": "force-of-will",
       "name": "Force of Will",
       "category": "commander-specific",
-      "commander_unit_id": "ki-adi-mundi",
       "pips": 3,
       "units_activated": null,
       "unit_activation_restriction": "Ki-Adi-Mundi",
@@ -1605,13 +1797,16 @@
       "roster_verified": true,
       "roster_source": "Legion Helper current command-card roster (August 2026) cross-checked against August 2026 Jedi Council release coverage",
       "source": "Jedi Council Pack",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "ki-adi-mundi"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "i-don-t-believe-in-chance",
       "name": "I Don't Believe in Chance",
       "category": "commander-specific",
-      "commander_unit_id": "plo-koon",
       "pips": 2,
       "units_activated": 3,
       "unit_activation_restriction": "Plo Koon & 2 units",
@@ -1622,13 +1817,16 @@
       "roster_verified": true,
       "roster_source": "Legion Helper current command-card roster (August 2026) cross-checked against August 2026 Jedi Council release coverage",
       "source": "Jedi Council Pack",
-      "notes": "Roster and pip/order count verified from current August 2026 release coverage; effect left blank in this pass rather than reconstructing partial text."
+      "notes": "Roster and pip/order count verified from current August 2026 release coverage; effect left blank in this pass rather than reconstructing partial text.",
+      "commander_unit_ids": [
+        "plo-koon"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "this-party-s-over",
       "name": "This Party's Over",
       "category": "commander-specific",
-      "commander_unit_id": "mace-windu",
       "pips": null,
       "units_activated": null,
       "unit_activation_restriction": "Mace Windu",
@@ -1639,13 +1837,16 @@
       "roster_verified": true,
       "roster_source": "Legion Helper current command-card roster (August 2026) cross-checked against August 2026 Jedi Council release coverage",
       "source": "Jedi Council Pack",
-      "notes": "Pip and order count left null in this pass."
+      "notes": "Pip and order count left null in this pass.",
+      "commander_unit_ids": [
+        "mace-windu"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "unity-wins-wars",
       "name": "Unity Wins Wars",
       "category": "commander-specific",
-      "commander_unit_id": "shaak-ti",
       "pips": 3,
       "units_activated": null,
       "unit_activation_restriction": "Shaak Ti",
@@ -1656,13 +1857,16 @@
       "roster_verified": true,
       "roster_source": "Legion Helper current command-card roster (August 2026) cross-checked against August 2026 Jedi Council release coverage",
       "source": "Jedi Council Pack",
-      "notes": "Only the broad effect and 3-pip value were supported by the current release coverage reviewed; exact effect left intentionally generalized."
+      "notes": "Only the broad effect and 3-pip value were supported by the current release coverage reviewed; exact effect left intentionally generalized.",
+      "commander_unit_ids": [
+        "shaak-ti"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "a-disturbance-in-the-force",
       "name": "A Disturbance in the Force",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": null,
       "unit_activation_restriction": null,
@@ -1673,13 +1877,14 @@
       "roster_verified": true,
       "roster_source": "Legion Helper current command-card roster (August 2026) cross-checked against August 2026 Jedi Council release coverage",
       "source": "Jedi Council Pack",
-      "notes": "Roster and 2-pip value verified from August 2026 release coverage; exact order line and effect left blank."
+      "notes": "Roster and 2-pip value verified from August 2026 release coverage; exact order line and effect left blank.",
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "wisdom-of-the-council",
       "name": "Wisdom of the Council",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 1,
       "units_activated": null,
       "unit_activation_restriction": null,
@@ -1690,13 +1895,14 @@
       "roster_verified": true,
       "roster_source": "Legion Helper current command-card roster (August 2026) cross-checked against August 2026 Jedi Council release coverage",
       "source": "Jedi Council Pack",
-      "notes": "Roster and 1-pip value verified from August 2026 release coverage; exact order line and effect left blank."
+      "notes": "Roster and 1-pip value verified from August 2026 release coverage; exact order line and effect left blank.",
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "sabotaged-communications",
       "name": "Sabotaged Communications",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": null,
@@ -1707,13 +1913,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
       "source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "covering-fire",
       "name": "Covering Fire",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 3,
       "unit_activation_restriction": null,
@@ -1724,13 +1931,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
       "source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "turning-the-tide",
       "name": "Turning the Tide",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": null,
@@ -1741,13 +1949,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
       "source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "hold-at-any-cost",
       "name": "Hold at Any Cost",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 3,
       "units_activated": 3,
       "unit_activation_restriction": null,
@@ -1758,13 +1967,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
       "source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "delaying-tactics",
       "name": "Delaying Tactics",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": null,
@@ -1775,13 +1985,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
       "source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "courage-of-the-rebellion",
       "name": "Courage of the Rebellion",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": null,
@@ -1792,13 +2003,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
       "source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "i-am-no-jedi",
       "name": "I Am No Jedi",
       "category": "commander-specific",
-      "commander_unit_id": "ahsoka-tano",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Ahsoka Tano, Fulcrum",
@@ -1809,13 +2021,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
       "source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "ahsoka-tano"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "swift-protector",
       "name": "Swift Protector",
       "category": "commander-specific",
-      "commander_unit_id": "ahsoka-tano",
       "pips": 2,
       "units_activated": 1,
       "unit_activation_restriction": "Ahsoka Tano, Fulcrum",
@@ -1826,13 +2041,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
       "source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "ahsoka-tano"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "a-new-beginning",
       "name": "A New Beginning",
       "category": "commander-specific",
-      "commander_unit_id": "ahsoka-tano",
       "pips": 3,
       "units_activated": 3,
       "unit_activation_restriction": "Ahsoka Tano, Fulcrum & 2 units",
@@ -1843,13 +2061,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
       "source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "ahsoka-tano"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "family-reunion",
       "name": "Family Reunion",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": "Ahsoka Tano, Fulcrum & Sabine Wren",
@@ -1860,13 +2081,17 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
       "source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "ahsoka-tano",
+        "sabine-wren"
+      ],
+      "commander_ownership": "all"
     },
     {
       "id": "sacrifice",
       "name": "Sacrifice",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": "K-2SO & Cassian Andor",
@@ -1877,13 +2102,17 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
       "source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "k-2so",
+        "cassian-andor"
+      ],
+      "commander_ownership": "all"
     },
     {
       "id": "explosions",
       "name": "Explosions!",
       "category": "commander-specific",
-      "commander_unit_id": "sabine-wren",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Sabine Wren",
@@ -1894,13 +2123,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
       "source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "sabine-wren"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "symbol-of-rebellion",
       "name": "Symbol of Rebellion",
       "category": "commander-specific",
-      "commander_unit_id": "sabine-wren",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Sabine Wren",
@@ -1911,13 +2143,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
       "source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "sabine-wren"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "legacy-of-mandalore",
       "name": "Legacy of Mandalore",
       "category": "commander-specific",
-      "commander_unit_id": "sabine-wren",
       "pips": 2,
       "units_activated": 3,
       "unit_activation_restriction": "Sabine Wren & 2 Trooper units",
@@ -1928,13 +2163,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
       "source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "sabine-wren"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "common-cause",
       "name": "Common Cause",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 3,
       "units_activated": 2,
       "unit_activation_restriction": "Chewbacca & Luke Skywalker",
@@ -1945,13 +2183,17 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
       "source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "chewbacca",
+        "luke-skywalker"
+      ],
+      "commander_ownership": "all"
     },
     {
       "id": "brains-and-brawn",
       "name": "Brains and Brawn",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": "Chewbacca & Leia Organa",
@@ -1962,13 +2204,17 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
       "source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "chewbacca",
+        "leia-organa"
+      ],
+      "commander_ownership": "all"
     },
     {
       "id": "notorious-scoundrels",
       "name": "Notorious Scoundrels",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": "Chewbacca & Han Solo",
@@ -1979,13 +2225,17 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
       "source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "chewbacca",
+        "han-solo"
+      ],
+      "commander_ownership": "all"
     },
     {
       "id": "sorry-about-the-mess",
       "name": "Sorry About the Mess",
       "category": "commander-specific",
-      "commander_unit_id": "han-solo",
       "pips": 0,
       "units_activated": 1,
       "unit_activation_restriction": "Han Solo",
@@ -1996,13 +2246,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
       "source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "han-solo"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "reckless-diversion",
       "name": "Reckless Diversion",
       "category": "commander-specific",
-      "commander_unit_id": "han-solo",
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": "Han Solo & 1 unit",
@@ -2013,13 +2266,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
       "source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "han-solo"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "change-of-plans",
       "name": "Change of Plans",
       "category": "commander-specific",
-      "commander_unit_id": "han-solo",
       "pips": 2,
       "units_activated": 3,
       "unit_activation_restriction": "Han Solo & 2 units",
@@ -2030,13 +2286,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
       "source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "han-solo"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "coordinated-bombardment",
       "name": "Coordinated Bombardment",
       "category": "commander-specific",
-      "commander_unit_id": "leia-organa",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Leia Organa",
@@ -2047,13 +2306,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
       "source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "leia-organa"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "a-beautiful-friendship",
       "name": "A Beautiful Friendship",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 1,
       "units_activated": 2,
       "unit_activation_restriction": "Leia Organa & Wicket",
@@ -2064,13 +2326,17 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
       "source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "leia-organa",
+        "wicket"
+      ],
+      "commander_ownership": "all"
     },
     {
       "id": "no-time-for-sorrows",
       "name": "No Time for Sorrows",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": "2 Trooper units",
@@ -2081,13 +2347,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
       "source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "somebody-has-to-save-our-skins",
       "name": "Somebody Has to Save Our Skins",
       "category": "commander-specific",
-      "commander_unit_id": "leia-organa",
       "pips": 3,
       "units_activated": 3,
       "unit_activation_restriction": "Leia Organa & 2 units",
@@ -2098,13 +2365,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
       "source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "leia-organa"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "son-of-skywalker",
       "name": "Son of Skywalker",
       "category": "commander-specific",
-      "commander_unit_id": "luke-skywalker",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Luke Skywalker",
@@ -2115,13 +2385,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
       "source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "luke-skywalker"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "my-ally-is-the-force",
       "name": "My Ally Is the Force",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": "2 Trooper units",
@@ -2132,13 +2405,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
       "source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "return-of-the-jedi",
       "name": "Return of the Jedi",
       "category": "commander-specific",
-      "commander_unit_id": "luke-skywalker",
       "pips": 3,
       "units_activated": 3,
       "unit_activation_restriction": "Luke Skywalker & 2 units",
@@ -2149,13 +2423,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
       "source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "luke-skywalker"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "full-of-surprises",
       "name": "Full of Surprises",
       "category": "commander-specific",
-      "commander_unit_id": "luke-skywalker",
       "pips": 2,
       "units_activated": 1,
       "unit_activation_restriction": "Luke Skywalker",
@@ -2166,13 +2443,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
       "source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "luke-skywalker"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "you-serve-your-master-well",
       "name": "You Serve Your Master Well",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Luke Skywalker, Jedi Knight",
@@ -2183,13 +2463,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
       "source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "i-am-a-jedi",
       "name": "I Am a Jedi",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 3,
       "units_activated": 1,
       "unit_activation_restriction": "Luke Skywalker, Jedi Knight",
@@ -2200,13 +2481,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
       "source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "crack-shot",
       "name": "Crack Shot",
       "category": "commander-specific",
-      "commander_unit_id": "cassian-andor",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Cassian Andor",
@@ -2217,13 +2499,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
       "source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "cassian-andor"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "last-stand",
       "name": "Last Stand",
       "category": "commander-specific",
-      "commander_unit_id": "cassian-andor",
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": "Cassian Andor & 1 Trooper unit",
@@ -2234,13 +2519,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
       "source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "cassian-andor"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "volunteer-mission",
       "name": "Volunteer Mission",
       "category": "commander-specific",
-      "commander_unit_id": "cassian-andor",
       "pips": 3,
       "units_activated": 3,
       "unit_activation_restriction": "Cassian Andor & 2 Trooper units",
@@ -2251,13 +2539,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
       "source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "cassian-andor"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "i-rebel",
       "name": "I Rebel",
       "category": "commander-specific",
-      "commander_unit_id": "jyn-erso",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Jyn Erso",
@@ -2268,13 +2559,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
       "source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "jyn-erso"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "trust-goes-both-ways",
       "name": "Trust Goes Both Ways",
       "category": "commander-specific",
-      "commander_unit_id": "jyn-erso",
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": "Jyn Erso & 1 Trooper unit",
@@ -2285,13 +2579,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
       "source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "jyn-erso"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "rebellions-are-built-on-hope",
       "name": "Rebellions Are Built on Hope",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 3,
       "units_activated": 3,
       "unit_activation_restriction": "3 Trooper units",
@@ -2302,13 +2599,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
       "source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "corellian-spike",
       "name": "Corellian Spike",
       "category": "commander-specific",
-      "commander_unit_id": "lando-calrissian",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Lando Calrissian",
@@ -2319,13 +2617,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
       "source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "lando-calrissian"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "ace-up-his-sleeve",
       "name": "Ace Up His Sleeve",
       "category": "commander-specific",
-      "commander_unit_id": "lando-calrissian",
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": "Lando Calrissian & 1 unit",
@@ -2336,13 +2637,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
       "source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "lando-calrissian"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "idiot-s-array",
       "name": "Idiot's Array",
       "category": "commander-specific",
-      "commander_unit_id": "lando-calrissian",
       "pips": 3,
       "units_activated": 3,
       "unit_activation_restriction": "Lando Calrissian & 2 units",
@@ -2353,13 +2657,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
       "source": "Atomic Mass Games Rebel Alliance Command Cards v1.2 (April 2025), current on AMG rules page 2026-08-24, with June 17 2026 errata applied where relevant",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "lando-calrissian"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "diversionary-tactics",
       "name": "Diversionary Tactics",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 3,
       "units_activated": 3,
       "unit_activation_restriction": "3 Trooper units",
@@ -2370,13 +2677,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Customizable Rebel Officer & Agent article (2025-08-26); expansion current in 2026",
       "source": "Rebel Specialists / Customizable Rebel Officer & Agent",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "battlefield-reconnaissance",
       "name": "Battlefield Reconnaissance",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": null,
@@ -2387,13 +2695,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Customizable Rebel Officer & Agent article (2025-08-26); expansion current in 2026",
       "source": "Rebel Specialists / Customizable Rebel Officer & Agent",
-      "notes": "2-pip and two-order behavior cross-checked against current 2025-2026 play sources; exact order restriction left null."
+      "notes": "2-pip and two-order behavior cross-checked against current 2025-2026 play sources; exact order restriction left null.",
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "see-you-in-hell",
       "name": "See You in Hell",
       "category": "commander-specific",
-      "commander_unit_id": "han-solo",
       "pips": null,
       "units_activated": 1,
       "unit_activation_restriction": "Han Solo, Reluctant Hero",
@@ -2404,13 +2713,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Scene to Stats: Captain Solo & Commander Skywalker on Tauntauns (2026-03-05); expansion current in 2026",
       "source": "Captain Solo & Commander Skywalker on Tauntauns",
-      "notes": "Pip count left null because the official article description used for this pass did not state it."
+      "notes": "Pip count left null because the official article description used for this pass did not state it.",
+      "commander_unit_ids": [
+        "han-solo"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "on-patrol",
       "name": "On Patrol",
       "category": "commander-specific",
-      "commander_unit_id": "luke-skywalker",
       "pips": null,
       "units_activated": null,
       "unit_activation_restriction": "Luke Skywalker, Commander Skywalker",
@@ -2421,13 +2733,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Scene to Stats: Captain Solo & Commander Skywalker on Tauntauns (2026-03-05); expansion current in 2026",
       "source": "Captain Solo & Commander Skywalker on Tauntauns",
-      "notes": "Pip and exact order count left null because the official article description used for this pass did not state them."
+      "notes": "Pip and exact order count left null because the official article description used for this pass did not state them.",
+      "commander_unit_ids": [
+        "luke-skywalker"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "not-out-of-it-yet",
       "name": "Not Out of it Yet",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": null,
       "units_activated": 2,
       "unit_activation_restriction": "Han Solo & Luke Skywalker",
@@ -2438,13 +2753,17 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Scene to Stats: Captain Solo & Commander Skywalker on Tauntauns (2026-03-05); expansion current in 2026",
       "source": "Captain Solo & Commander Skywalker on Tauntauns",
-      "notes": "Pip count left null because the official article description used for this pass did not state it."
+      "notes": "Pip count left null because the official article description used for this pass did not state it.",
+      "commander_unit_ids": [
+        "han-solo",
+        "luke-skywalker"
+      ],
+      "commander_ownership": "all"
     },
     {
       "id": "mechanized-incursion",
       "name": "Mechanized Incursion",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "1 Vehicle unit",
@@ -2455,13 +2774,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "roger-roger",
       "name": "Roger, Roger!",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 3,
       "unit_activation_restriction": "3 Droid Trooper units",
@@ -2472,13 +2792,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "orbital-strike",
       "name": "Orbital Strike",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 1,
       "unit_activation_restriction": null,
@@ -2489,13 +2810,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "ai-coordination",
       "name": "AI Coordination",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": null,
@@ -2506,13 +2828,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "unrelenting-assault",
       "name": "Unrelenting Assault",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": null,
@@ -2523,13 +2846,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "unstoppable-advance",
       "name": "Unstoppable Advance",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 3,
       "units_activated": 3,
       "unit_activation_restriction": null,
@@ -2540,13 +2864,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "duel-of-the-fates",
       "name": "Duel of the Fates",
       "category": "commander-specific",
-      "commander_unit_id": "maul",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Maul, Impatient Apprentice",
@@ -2557,13 +2882,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "maul"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "the-phantom-menace",
       "name": "The Phantom Menace",
       "category": "commander-specific",
-      "commander_unit_id": "maul",
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": "Maul, Impatient Apprentice & 1 Trooper unit",
@@ -2574,13 +2902,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "maul"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "at-last",
       "name": "At Last",
       "category": "commander-specific",
-      "commander_unit_id": "maul",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Maul, Impatient Apprentice",
@@ -2591,13 +2922,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "maul"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "let-the-executions-begin",
       "name": "Let the Executions Begin!",
       "category": "commander-specific",
-      "commander_unit_id": "poggle-the-lesser",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Poggle the Lesser",
@@ -2608,13 +2942,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "poggle-the-lesser"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "we-serve-the-queen",
       "name": "We Serve the Queen",
       "category": "commander-specific",
-      "commander_unit_id": "poggle-the-lesser",
       "pips": 2,
       "units_activated": 1,
       "unit_activation_restriction": "Poggle the Lesser",
@@ -2625,13 +2962,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "poggle-the-lesser"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "we-make-weapons",
       "name": "We Make Weapons",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 3,
       "units_activated": 4,
       "unit_activation_restriction": "4 Droid Trooper units",
@@ -2642,13 +2982,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "brutal-enforcer",
       "name": "Brutal Enforcer",
       "category": "commander-specific",
-      "commander_unit_id": "sun-fac",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Sun Fac",
@@ -2659,13 +3000,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "sun-fac"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "the-jedi-shall-fall",
       "name": "The Jedi Shall Fall",
       "category": "commander-specific",
-      "commander_unit_id": "asajj-ventress",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Asajj Ventress",
@@ -2676,13 +3020,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "asajj-ventress"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "i-am-fear",
       "name": "I Am Fear",
       "category": "commander-specific",
-      "commander_unit_id": "asajj-ventress",
       "pips": 2,
       "units_activated": 1,
       "unit_activation_restriction": "Asajj Ventress",
@@ -2693,13 +3040,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "asajj-ventress"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "yes-my-master",
       "name": "Yes, My Master",
       "category": "commander-specific",
-      "commander_unit_id": "asajj-ventress",
       "pips": 3,
       "units_activated": 0,
       "unit_activation_restriction": "Asajj Ventress",
@@ -2710,13 +3060,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "asajj-ventress"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "you-disappoint-me",
       "name": "You Disappoint Me",
       "category": "commander-specific",
-      "commander_unit_id": "count-dooku",
       "pips": 2,
       "units_activated": 3,
       "unit_activation_restriction": "Count Dooku & 2 units",
@@ -2727,13 +3080,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "count-dooku"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "double-the-fall",
       "name": "Double the Fall",
       "category": "commander-specific",
-      "commander_unit_id": "count-dooku",
       "pips": 3,
       "units_activated": 2,
       "unit_activation_restriction": "Count Dooku & 1 unit",
@@ -2744,13 +3100,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "count-dooku"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "fear-surprise-intimidation",
       "name": "Fear, Surprise, Intimidation",
       "category": "commander-specific",
-      "commander_unit_id": "count-dooku",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Count Dooku",
@@ -2761,13 +3120,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "count-dooku"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "the-sith-will-rule",
       "name": "The Sith Will Rule",
       "category": "commander-specific",
-      "commander_unit_id": "count-dooku",
       "pips": 2,
       "units_activated": 1,
       "unit_activation_restriction": "Count Dooku",
@@ -2778,13 +3140,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "count-dooku"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "trained-in-your-jedi-arts",
       "name": "Trained in Your Jedi Arts",
       "category": "commander-specific",
-      "commander_unit_id": "general-grievous",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "General Grievous",
@@ -2795,13 +3160,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "general-grievous"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "supreme-commander",
       "name": "Supreme Commander",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": "2 Trooper units",
@@ -2812,13 +3180,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "crush-them",
       "name": "Crush Them!",
       "category": "commander-specific",
-      "commander_unit_id": "general-grievous",
       "pips": 3,
       "units_activated": 3,
       "unit_activation_restriction": "General Grievous & 2 units",
@@ -2829,13 +3198,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "general-grievous"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "they-too-will-suffer",
       "name": "They Too Will Suffer",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Kalani or Kraken",
@@ -2846,13 +3218,17 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "kalani",
+        "kraken"
+      ],
+      "commander_ownership": "any"
     },
     {
       "id": "preservation-protocols",
       "name": "Preservation Protocols",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": "2 Droid Trooper or AI units",
@@ -2863,13 +3239,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "do-not-underestimate-our-means",
       "name": "Do Not Underestimate Our Means",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 3,
       "units_activated": 3,
       "unit_activation_restriction": "3 Droid Trooper or AI units",
@@ -2880,13 +3257,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Separatist Alliance Command Cards v1.2 (April 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "i-ll-do-it-myself",
       "name": "I'll Do it Myself!",
       "category": "commander-specific",
-      "commander_unit_id": "general-grievous",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "General Grievous",
@@ -2897,13 +3275,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Scene to Stats: General Grievous TSMEU-6 Wheel Bike (2025-10-23); current 2026 play cross-check",
       "source": "General Grievous' TSMEU-6 Wheel Bike",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "general-grievous"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "pincer-attack",
       "name": "Pincer Attack",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": "2 Vehicle units",
@@ -2914,13 +3295,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Scene to Stats: General Grievous TSMEU-6 Wheel Bike (2025-10-23); current 2026 play cross-check",
       "source": "General Grievous' TSMEU-6 Wheel Bike",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "full-throttle",
       "name": "Full Throttle",
       "category": "commander-specific",
-      "commander_unit_id": "general-grievous",
       "pips": 3,
       "units_activated": 3,
       "unit_activation_restriction": "General Grievous & 2 Vehicle units",
@@ -2931,13 +3313,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Scene to Stats: General Grievous TSMEU-6 Wheel Bike (2025-10-23); current 2026 play cross-check",
       "source": "General Grievous' TSMEU-6 Wheel Bike",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "general-grievous"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "exterminate",
       "name": "Exterminate",
       "category": "commander-specific",
-      "commander_unit_id": "super-tactical-command-droid",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Super Tactical Command Droid",
@@ -2948,13 +3333,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Scene to Stats: Customizable Super Tactical Droids (2025-09-24); current 2026 play cross-check",
       "source": "Customizable Super Tactical Command Droid",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "super-tactical-command-droid"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "tactical-download",
       "name": "Tactical Download",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 3,
       "units_activated": 3,
       "unit_activation_restriction": "3 AI or Droid Trooper units",
@@ -2965,13 +3353,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Scene to Stats: Customizable Super Tactical Droids (2025-09-24); current 2026 play cross-check",
       "source": "Customizable Super Tactical Command Droid",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "ploy",
       "name": "Ploy",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 1,
       "units_activated": 0,
       "unit_activation_restriction": "No units",
@@ -2982,13 +3371,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
-      "notes": "Requires a Mercenary Commander or Operative to be nominated, as shown on the current card."
+      "notes": "Requires a Mercenary Commander or Operative to be nominated, as shown on the current card.",
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "aggression",
       "name": "Aggression",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": "2 units",
@@ -2999,13 +3389,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
-      "notes": "Requires a Mercenary Commander or Operative to be nominated, as shown on the current card."
+      "notes": "Requires a Mercenary Commander or Operative to be nominated, as shown on the current card.",
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "discretion",
       "name": "Discretion",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 3,
       "units_activated": 3,
       "unit_activation_restriction": "3 units",
@@ -3016,13 +3407,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
-      "notes": "Requires a Mercenary Commander or Operative to be nominated, as shown on the current card."
+      "notes": "Requires a Mercenary Commander or Operative to be nominated, as shown on the current card.",
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "marked-for-elimination",
       "name": "Marked for Elimination",
       "category": "commander-specific",
-      "commander_unit_id": "gar-saxon",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Gar Saxon",
@@ -3033,13 +3425,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "gar-saxon"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "fight-another-day",
       "name": "Fight Another Day",
       "category": "commander-specific",
-      "commander_unit_id": "gar-saxon",
       "pips": 2,
       "units_activated": 3,
       "unit_activation_restriction": "Gar Saxon & 2 Trooper units",
@@ -3050,13 +3445,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "gar-saxon"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "victory-or-death",
       "name": "Victory or Death!",
       "category": "commander-specific",
-      "commander_unit_id": "gar-saxon",
       "pips": 3,
       "units_activated": 3,
       "unit_activation_restriction": "Gar Saxon & 2 Trooper units",
@@ -3067,13 +3465,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "gar-saxon"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "his-eminence",
       "name": "His Eminence",
       "category": "commander-specific",
-      "commander_unit_id": "maul",
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": "Maul & 1 unit",
@@ -3084,13 +3485,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "maul"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "witch-magick",
       "name": "Witch Magick",
       "category": "commander-specific",
-      "commander_unit_id": "maul",
       "pips": 3,
       "units_activated": 1,
       "unit_activation_restriction": "Maul",
@@ -3101,13 +3505,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "maul"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "seize-what-power-we-can",
       "name": "Seize What Power We Can",
       "category": "commander-specific",
-      "commander_unit_id": "maul",
       "pips": 3,
       "units_activated": 3,
       "unit_activation_restriction": "Maul & 2 units",
@@ -3118,13 +3525,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "maul"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "i-m-your-worst-nightmare",
       "name": "I'm Your Worst Nightmare",
       "category": "commander-specific",
-      "commander_unit_id": "cad-bane",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Cad Bane",
@@ -3135,13 +3545,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "cad-bane"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "i-make-the-rules-now",
       "name": "I Make the Rules Now",
       "category": "commander-specific",
-      "commander_unit_id": "cad-bane",
       "pips": 2,
       "units_activated": 1,
       "unit_activation_restriction": "Cad Bane",
@@ -3152,13 +3565,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "cad-bane"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "i-m-in-control",
       "name": "I'm in Control",
       "category": "commander-specific",
-      "commander_unit_id": "cad-bane",
       "pips": 3,
       "units_activated": 2,
       "unit_activation_restriction": "Cad Bane & 1 unit",
@@ -3169,13 +3585,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "cad-bane"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "merciless-munitions",
       "name": "Merciless Munitions",
       "category": "commander-specific",
-      "commander_unit_id": "bossk",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Bossk",
@@ -3186,13 +3605,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "bossk"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "reptilian-rampage",
       "name": "Reptilian Rampage",
       "category": "commander-specific",
-      "commander_unit_id": "bossk",
       "pips": 2,
       "units_activated": 1,
       "unit_activation_restriction": "Bossk",
@@ -3203,13 +3625,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "bossk"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "lying-in-wait",
       "name": "Lying in Wait",
       "category": "commander-specific",
-      "commander_unit_id": "bossk",
       "pips": 3,
       "units_activated": 1,
       "unit_activation_restriction": "Bossk",
@@ -3220,13 +3645,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "bossk"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "the-hand-thing",
       "name": "The Hand Thing",
       "category": "commander-specific",
-      "commander_unit_id": "grogu",
       "pips": 2,
       "units_activated": 0,
       "unit_activation_restriction": "No units",
@@ -3237,13 +3665,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "grogu"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "rule-with-respect",
       "name": "Rule with Respect",
       "category": "commander-specific",
-      "commander_unit_id": "boba-fett",
       "pips": 3,
       "units_activated": 3,
       "unit_activation_restriction": "Boba Fett & 2 units",
@@ -3254,13 +3685,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "boba-fett"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "making-his-way-in-the-galaxy",
       "name": "Making His Way in the Galaxy",
       "category": "commander-specific",
-      "commander_unit_id": "boba-fett",
       "pips": 2,
       "units_activated": 1,
       "unit_activation_restriction": "Boba Fett",
@@ -3271,13 +3705,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "boba-fett"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "a-simple-man",
       "name": "A Simple Man",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "1 unit",
@@ -3288,13 +3725,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "z-6-jetpack-rocket",
       "name": "Z-6 Jetpack Rocket",
       "category": "commander-specific",
-      "commander_unit_id": "boba-fett",
       "pips": 2,
       "units_activated": 1,
       "unit_activation_restriction": "Boba Fett",
@@ -3305,13 +3743,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "boba-fett"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "whipcord-launcher",
       "name": "Whipcord Launcher",
       "category": "commander-specific",
-      "commander_unit_id": "boba-fett",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Boba Fett",
@@ -3322,13 +3763,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "boba-fett"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "independent-programming",
       "name": "Independent Programming",
       "category": "commander-specific",
-      "commander_unit_id": "ig-88",
       "pips": 3,
       "units_activated": 1,
       "unit_activation_restriction": "IG-88",
@@ -3339,13 +3783,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "ig-88"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "focused-on-the-kill",
       "name": "Focused on the Kill",
       "category": "commander-specific",
-      "commander_unit_id": "ig-88",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "IG-88",
@@ -3356,13 +3803,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "ig-88"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "a-machine-made-for-killing",
       "name": "A Machine Made for Killing",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 3,
       "units_activated": 3,
       "unit_activation_restriction": "IG-11 or IG-88 & 2 units",
@@ -3373,13 +3823,17 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "ig-11",
+        "ig-88"
+      ],
+      "commander_ownership": "any"
     },
     {
       "id": "mechanical-carnage",
       "name": "Mechanical Carnage",
       "category": "commander-specific",
-      "commander_unit_id": "ig-11",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "IG-11",
@@ -3390,13 +3844,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "ig-11"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "anti-capture-protocols",
       "name": "Anti-Capture Protocols",
       "category": "commander-specific",
-      "commander_unit_id": "ig-11",
       "pips": 2,
       "units_activated": 1,
       "unit_activation_restriction": "IG-11",
@@ -3407,13 +3864,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "ig-11"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "this-is-the-way",
       "name": "This is the Way",
       "category": "commander-specific",
-      "commander_unit_id": "din-djarin",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Din Djarin",
@@ -3424,13 +3884,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "din-djarin"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "i-like-those-odds",
       "name": "I Like Those Odds",
       "category": "commander-specific",
-      "commander_unit_id": "din-djarin",
       "pips": 2,
       "units_activated": 1,
       "unit_activation_restriction": "Din Djarin",
@@ -3441,13 +3904,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "din-djarin"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "whistling-birds",
       "name": "Whistling Birds",
       "category": "commander-specific",
-      "commander_unit_id": "din-djarin",
       "pips": 3,
       "units_activated": 1,
       "unit_activation_restriction": "Din Djarin",
@@ -3458,13 +3924,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "din-djarin"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "speak-softly-and-drive-a-big-tank",
       "name": "Speak Softly and Drive a Big Tank",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": "2 Vehicle units",
@@ -3475,13 +3944,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "i-smell-profit",
       "name": "I Smell Profit",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 3,
       "units_activated": 3,
       "unit_activation_restriction": "3 units",
@@ -3492,13 +3962,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "insolence-we-are-pirates",
       "name": "Insolence?! We are Pirates!",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 4,
       "units_activated": 1,
       "unit_activation_restriction": "Hondo Ohnaka",
@@ -3509,13 +3980,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mercenary Command Cards v1.2 / Ohnaka Gang v1.0 (May 2026), current on AMG rules page 2026-08-24",
-      "notes": "Printed as a 4-pip card; the card itself says to treat it as 1 pip while building a Command Hand."
+      "notes": "Printed as a 4-pip card; the card itself says to treat it as 1 pip while building a Command Hand.",
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "that-s-just-good-business",
       "name": "That's Just Good Business",
       "category": "commander-specific",
-      "commander_unit_id": "hondo-ohnaka",
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": "Hondo Ohnaka & 1 unit",
@@ -3526,13 +3998,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Scene to Stats: Hondo Ohnaka & Weequay Pirates (2026-03-17), current release as of 2026-08-24",
       "source": "Atomic Mass Games Scene to Stats: Hondo Ohnaka & Weequay Pirates (2026-03-17), current release as of 2026-08-24",
-      "notes": "Hondo Ohnaka is a Mercenary Operative available to all four primary factions."
+      "notes": "Hondo Ohnaka is a Mercenary Operative available to all four primary factions.",
+      "commander_unit_ids": [
+        "hondo-ohnaka"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "stories-so-many-of-them-true",
       "name": "Stories, So Many of Them True",
       "category": "commander-specific",
-      "commander_unit_id": "hondo-ohnaka",
       "pips": 3,
       "units_activated": 1,
       "unit_activation_restriction": "Hondo Ohnaka",
@@ -3543,13 +4018,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Scene to Stats: Hondo Ohnaka & Weequay Pirates (2026-03-17), current release as of 2026-08-24",
       "source": "Atomic Mass Games Scene to Stats: Hondo Ohnaka & Weequay Pirates (2026-03-17), current release as of 2026-08-24",
-      "notes": "Hondo Ohnaka is a Mercenary Operative available to all four primary factions."
+      "notes": "Hondo Ohnaka is a Mercenary Operative available to all four primary factions.",
+      "commander_unit_ids": [
+        "hondo-ohnaka"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "log-traps",
       "name": "Log Traps",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 1,
       "units_activated": 0,
       "unit_activation_restriction": "No units",
@@ -3560,13 +4038,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mercenary Ewok Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mercenary Ewok Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "for-the-tribe",
       "name": "For the Tribe",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 3,
       "units_activated": 3,
       "unit_activation_restriction": "3 Ewok Trooper units",
@@ -3577,13 +4056,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mercenary Ewok Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mercenary Ewok Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "arboreal-assault",
       "name": "Arboreal Assault",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 1,
       "units_activated": 2,
       "unit_activation_restriction": "2 Ewok Trooper units",
@@ -3594,13 +4074,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mercenary Ewok Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mercenary Ewok Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "hiding-in-plain-sight",
       "name": "Hiding in Plain Sight",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": "2 Ewok Trooper units",
@@ -3611,13 +4092,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mercenary Ewok Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mercenary Ewok Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "courageous-counterattack",
       "name": "Courageous Counterattack",
       "category": "commander-specific",
-      "commander_unit_id": "wicket",
       "pips": 3,
       "units_activated": 3,
       "unit_activation_restriction": "Wicket & 2 units",
@@ -3628,13 +4110,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mercenary Ewok Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mercenary Ewok Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "wicket"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "sneaky-scouting",
       "name": "Sneaky Scouting",
       "category": "commander-specific",
-      "commander_unit_id": "wicket",
       "pips": 2,
       "units_activated": 1,
       "unit_activation_restriction": "Wicket",
@@ -3645,13 +4130,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mercenary Ewok Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mercenary Ewok Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "wicket"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "close-call",
       "name": "Close Call",
       "category": "commander-specific",
-      "commander_unit_id": "wicket",
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Wicket",
@@ -3662,13 +4150,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mercenary Ewok Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mercenary Ewok Cards v1.2 (April 2025), current on AMG rules page 2026-08-24",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "wicket"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "close-formation",
       "name": "Close Formation",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": "2 Clan Kryze units",
@@ -3679,13 +4170,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mandalorian Clans Battle Force cards / 2026 Mandalorian Transmissions, current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mandalorian Clans Battle Force cards / 2026 Mandalorian Transmissions, current on AMG rules page 2026-08-24",
-      "notes": "May only be used when a Clan Kryze Commander or Operative can satisfy the card's affiliation requirement."
+      "notes": "May only be used when a Clan Kryze Commander or Operative can satisfy the card's affiliation requirement.",
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "out-of-the-shadows",
       "name": "Out of the Shadows",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": "2 Children of the Watch units",
@@ -3696,13 +4188,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mandalorian Clans Battle Force cards / 2026 Mandalorian Transmissions, current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mandalorian Clans Battle Force cards / 2026 Mandalorian Transmissions, current on AMG rules page 2026-08-24",
-      "notes": "Current roster and 2-pip status are verified; effect text was left blank because the official Battle Force PDF could not be rendered reliably in this pass."
+      "notes": "Current roster and 2-pip status are verified; effect text was left blank because the official Battle Force PDF could not be rendered reliably in this pass.",
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "death-before-defeat",
       "name": "Death Before Defeat",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": null,
       "units_activated": 3,
       "unit_activation_restriction": "3 Clan Saxon units",
@@ -3713,13 +4206,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mandalorian Clans Battle Force cards / 2026 Mandalorian Transmissions, current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Legion Dev Diaries: Clan Saxon (2026-06-17)",
-      "notes": "Pip count left null because the official article states the three orders and effect but not the pip value in accessible text."
+      "notes": "Pip count left null because the official article states the three orders and effect but not the pip value in accessible text.",
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "we-protect-our-own",
       "name": "We Protect Our Own",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 3,
       "units_activated": null,
       "unit_activation_restriction": null,
@@ -3730,13 +4224,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mandalorian Clans Battle Force cards / 2026 Mandalorian Transmissions, current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mandalorian Clans Battle Force cards / 2026 Mandalorian Transmissions, current on AMG rules page 2026-08-24",
-      "notes": "Current 3-pip roster status verified from current 2026 list evidence; exact order line and effect left blank pending a directly readable card image."
+      "notes": "Current 3-pip roster status verified from current 2026 list evidence; exact order line and effect left blank pending a directly readable card image.",
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "a-higher-purpose",
       "name": "A Higher Purpose",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Bo-Katan Kryze",
@@ -3747,13 +4242,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mandalorian Clans Battle Force cards / 2026 Mandalorian Transmissions, current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Scene to Stats: Mandalorian Leaders (2026-05-26)",
-      "notes": "Pip count cross-checked against current June 2026 tournament lists."
+      "notes": "Pip count cross-checked against current June 2026 tournament lists.",
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "mandalore-will-survive",
       "name": "Mandalore Will Survive",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 3,
       "units_activated": 3,
       "unit_activation_restriction": "Bo-Katan Kryze & 2 units",
@@ -3764,13 +4260,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mandalorian Clans Battle Force cards / 2026 Mandalorian Transmissions, current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Scene to Stats: Mandalorian Leaders (2026-05-26)",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "we-shape-ourselves",
       "name": "We Shape Ourselves",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 3,
       "units_activated": 3,
       "unit_activation_restriction": "The Armorer & 2 units",
@@ -3781,13 +4278,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mandalorian Clans Battle Force cards / 2026 Mandalorian Transmissions, current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Scene to Stats: Mandalorian Leaders (2026-05-26)",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "both-hunter-and-prey",
       "name": "Both Hunter and Prey",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": "The Armorer & 1 unit",
@@ -3798,13 +4296,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mandalorian Clans Battle Force cards / 2026 Mandalorian Transmissions, current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Scene to Stats: Mandalorian Leaders (2026-05-26)",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "go-there-are-too-many",
       "name": "Go, There Are Too Many...",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 1,
       "units_activated": 1,
       "unit_activation_restriction": "Paz Vizsla",
@@ -3815,13 +4314,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mandalorian Clans Battle Force cards / 2026 Mandalorian Transmissions, current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Scene to Stats: Mandalorian Leaders (2026-05-26)",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "no-one-threatens-our-family",
       "name": "No One Threatens Our Family",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": null,
       "units_activated": 1,
       "unit_activation_restriction": "Ursa Wren",
@@ -3832,13 +4332,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mandalorian Clans Battle Force cards / 2026 Mandalorian Transmissions, current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Scene to Stats: Clan Wren Mandalorians (2026-06-03)",
-      "notes": "Pip count and full order line left null where not directly visible in the official article text."
+      "notes": "Pip count and full order line left null where not directly visible in the official article text.",
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "vengeful-strike",
       "name": "Vengeful Strike",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": null,
       "units_activated": 2,
       "unit_activation_restriction": "Rook Kast & 1 Clan Saxon unit",
@@ -3849,13 +4350,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mandalorian Clans Battle Force cards / 2026 Mandalorian Transmissions, current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Legion Dev Diaries: Clan Saxon (2026-06-17)",
-      "notes": "Pip count left null because the official article text used here does not state it."
+      "notes": "Pip count left null because the official article text used here does not state it.",
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "make-the-impossible-possible",
       "name": "Make the Impossible Possible",
       "category": "commander-specific",
-      "commander_unit_id": "sabine-wren",
       "pips": 2,
       "units_activated": 2,
       "unit_activation_restriction": "Sabine Wren, Back in the Fold & 1 Clan Wren unit",
@@ -3866,13 +4368,16 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mandalorian Clans Battle Force cards / 2026 Mandalorian Transmissions, current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Legion Dev Diaries: Clan Wren (2026-07-01)",
-      "notes": null
+      "notes": null,
+      "commander_unit_ids": [
+        "sabine-wren"
+      ],
+      "commander_ownership": null
     },
     {
       "id": "we-are-mandalorians",
       "name": "We Are Mandalorians",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 1,
       "units_activated": null,
       "unit_activation_restriction": null,
@@ -3883,13 +4388,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mandalorian Clans Battle Force cards / 2026 Mandalorian Transmissions, current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mandalorian Clans Battle Force cards / 2026 Mandalorian Transmissions, current on AMG rules page 2026-08-24",
-      "notes": "Card name and 1-pip value verified in current June/July 2026 army lists; effect/order line left blank."
+      "notes": "Card name and 1-pip value verified in current June/July 2026 army lists; effect/order line left blank.",
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "aerial-assault",
       "name": "Aerial Assault",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 2,
       "units_activated": null,
       "unit_activation_restriction": null,
@@ -3900,13 +4406,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mandalorian Clans Battle Force cards / 2026 Mandalorian Transmissions, current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mandalorian Clans Battle Force cards / 2026 Mandalorian Transmissions, current on AMG rules page 2026-08-24",
-      "notes": "Card name and 2-pip value verified in current June/July 2026 army lists; effect/order line left blank."
+      "notes": "Card name and 2-pip value verified in current June/July 2026 army lists; effect/order line left blank.",
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "weapons-are-our-religion",
       "name": "Weapons Are Our Religion",
       "category": "generic",
-      "commander_unit_id": null,
       "pips": 3,
       "units_activated": null,
       "unit_activation_restriction": null,
@@ -3917,13 +4424,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mandalorian Clans Battle Force cards / 2026 Mandalorian Transmissions, current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mandalorian Clans Battle Force cards / 2026 Mandalorian Transmissions, current on AMG rules page 2026-08-24",
-      "notes": "Card name and 3-pip value verified in current June/July 2026 army lists; effect/order line left blank."
+      "notes": "Card name and 3-pip value verified in current June/July 2026 army lists; effect/order line left blank.",
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "honor-and-strength",
       "name": "Honor and Strength",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": 3,
       "units_activated": 3,
       "unit_activation_restriction": "3 units",
@@ -3934,13 +4442,14 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mandalorian Clans Battle Force cards / 2026 Mandalorian Transmissions, current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mandalorian Clans Battle Force cards / 2026 Mandalorian Transmissions, current on AMG rules page 2026-08-24",
-      "notes": "Owned by the customizable Mandalorian Leader. Card name, 3-pip value, and three-order behavior are verified in current 2026 play sources; effect text left blank."
+      "notes": "Owned by the customizable Mandalorian Leader. Card name, 3-pip value, and three-order behavior are verified in current 2026 play sources; effect text left blank.",
+      "commander_unit_ids": [],
+      "commander_ownership": null
     },
     {
       "id": "no-escape",
       "name": "No Escape",
       "category": "commander-specific",
-      "commander_unit_id": null,
       "pips": null,
       "units_activated": null,
       "unit_activation_restriction": null,
@@ -3951,7 +4460,9 @@
       "roster_verified": true,
       "roster_source": "Atomic Mass Games Mandalorian Clans Battle Force cards / 2026 Mandalorian Transmissions, current on AMG rules page 2026-08-24",
       "source": "Atomic Mass Games Mandalorian Clans Battle Force cards / 2026 Mandalorian Transmissions, current on AMG rules page 2026-08-24",
-      "notes": "Owned by the customizable Mandalorian Hunter. Current roster verified; pip, order line, and effect left blank."
+      "notes": "Owned by the customizable Mandalorian Hunter. Current roster verified; pip, order line, and effect left blank.",
+      "commander_unit_ids": [],
+      "commander_ownership": null
     }
   ]
 }

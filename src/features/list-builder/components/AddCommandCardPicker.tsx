@@ -32,16 +32,25 @@ function isInScope(
     return true;
   }
 
-  // Commander-specific: legal in "army" scope only if its owning
-  // commander/operative is actually in the list; "faction" scope also
-  // allows any commander-specific card whose owner belongs to the chosen
-  // faction, even if that unit isn't in the army yet ("other cards from
-  // the same army type").
-  if (!card.commander_unit_id) return false;
-  if (presentUnitIds.includes(card.commander_unit_id)) return true;
+  // Commander-specific: legal in "army" scope only if its owner(s) are
+  // actually in the list -- "all" (joint ownership) needs every listed
+  // unit present, "any" (either-ownership) needs just one. A single-owner
+  // card (the common case) is "all" and "any" alike, since there's only
+  // one id to check either way. "faction" scope also allows any
+  // commander-specific card whose owner(s) belong to the chosen faction,
+  // even if not in the army yet ("other cards from the same army type") --
+  // "all" requires every owner to belong to the faction, "any" just one.
+  if (card.commander_unit_ids.length === 0) return false;
+  const requireAll = card.commander_ownership === "all" || card.commander_unit_ids.length === 1;
+  const inArmy = (id: string) => presentUnitIds.includes(id);
+  if (requireAll ? card.commander_unit_ids.every(inArmy) : card.commander_unit_ids.some(inArmy)) {
+    return true;
+  }
   if (scope !== "faction") return false;
-  const owner = unitsById.get(card.commander_unit_id);
-  return owner ? owner.factions.includes(dbFaction) : false;
+  const inFaction = (id: string) => unitsById.get(id)?.factions.includes(dbFaction) ?? false;
+  return requireAll
+    ? card.commander_unit_ids.every(inFaction)
+    : card.commander_unit_ids.some(inFaction);
 }
 
 /**
@@ -123,7 +132,11 @@ export default function AddCommandCardPicker({
                 {c.pips ?? "?"}-pip · {c.name} —{" "}
                 {c.category === "generic"
                   ? "Any Commander"
-                  : unitsById.get(c.commander_unit_id ?? "")?.name ?? "Unknown Commander"}
+                  : c.commander_unit_ids.length === 0
+                  ? "Unknown Commander"
+                  : c.commander_unit_ids
+                      .map((id) => unitsById.get(id)?.name ?? id)
+                      .join(c.commander_ownership === "any" ? " or " : " & ")}
               </option>
             ))}
           </select>

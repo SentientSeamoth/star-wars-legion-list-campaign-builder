@@ -517,13 +517,18 @@ and CC handoffs instead of getting silently forgotten.
 - [x] Tauri commands for collection CRUD (add/remove owned product, set
       an override) -- built 2026-08-23. See "Backend bootstrap status"
       below.
-- [ ] No UI concept for this yet either (a "my collection" screen,
-      how owned-vs-missing is shown in the list builder).
+- [x] **Owned-vs-missing now shown in the list builder -- 2026-08-25.**
+      See the matching entry in this file's "Resolved" section and
+      `docs/ROADMAP.md`'s P1 breakdown. The Collection screen itself
+      (browse catalog, track owned expansions) was already real as of
+      2026-08-23 -- what was missing was the *list builder* consuming
+      that same data, which is now built.
 - [ ] The dozens of upgrade/command-card names seen in the 501st
-      Starter Set's box contents but not yet catalogued (Force Choke,
-      EMP Droid Poppers, Smoke Grenades, JT-12 Jetpacks, etc. -- listed
-      in `data/expansions.json`'s notes) are still an open gap in
-      `upgrades.json`, not resolved by this pass.
+      Starter Set's box contents but not yet catalogued -- **narrower
+      now**: Force Choke, EMP "Droid Poppers", and Smoke Grenades were
+      added to `upgrades.json` in the 2026-08-25 upgrade expansion
+      pass; JT-12 Jetpacks and the rest of that list (still noted in
+      `data/expansions.json`'s notes) remain an open gap.
 
 ## Affiliations/Battle Forces/Factions status -- READ FIRST
 
@@ -980,6 +985,52 @@ unit batches are already written into the workflow script at
         unverified against exact current wording, same caveat as before
         this pass -- only Standing Orders' "returns to hand" mechanic has
         higher confidence.
+- [x] **Multi-owner cards resolved, real schema change -- 2026-08-25.**
+      The 56-card gap above included joint-owner cards ("both required")
+      and either-owner cards ("one suffices") that a single nullable
+      `commander_unit_id` field genuinely could not represent -- not a
+      resolver limitation, a data-model limitation. Fixed for real:
+      `commander_unit_id` (single, nullable) replaced with
+      `commander_unit_ids` (array) + `commander_ownership` ("all"/"any",
+      null when moot), in the JSON schema, `data/command-cards.json`,
+      `types/command_card.rs`, and `manual_seed.ts`. On the DB side,
+      replaced the single column with a real `command_card_commanders`
+      join table (`migrations/0005_command_card_commanders.sql`, same
+      create-new/copy/drop-old/rename rebuild procedure as 0004 -- see
+      that migration's own "don't edit shipped migrations" rule, which
+      this correctly followed instead of touching 0001 or 0004 again).
+      Resolved 11 joint-owner cards (Fifth Brother & Seventh Sister ×3,
+      Chewbacca & {Yoda, Luke Skywalker, Leia Organa, Han Solo}, Ahsoka
+      Tano/Fulcrum & Sabine Wren, K-2SO & Cassian Andor, Leia Organa &
+      Wicket, Han Solo & Luke Skywalker) and 4 either-owner cards (Jedi
+      Knight or Jedi Knight General ×2, Kalani or Kraken, IG-11 or
+      IG-88) against the real `units.json` roster -- **one genuine
+      disambiguation caught in the process**: "Size Matters Sometimes"
+      names bare "Chewbacca," but its `source` field cites the Galactic
+      *Republic* Command Cards PDF, and a separate `chewbacca-republic`
+      unit (Commander rank) exists distinct from the bare Rebel
+      `chewbacca` (Operative rank) -- resolved to the Republic variant
+      based on that sourcing signal rather than defaulting to the
+      textually-closer bare-name match, which would have been wrong.
+      `AddCommandCardPicker.tsx`'s scope-gating logic updated to check
+      "all owners present" vs. "any owner present" instead of a single
+      id. **41 of the original 56 remain unresolved** -- named
+      characters still not in `units.json` (Grand Admiral Thrawn, Grand
+      Moff Tarkin, General Tagge, Bo-Katan Kryze, The Armorer, Paz
+      Vizsla, Ursa Wren, Rook Kast) or generic restriction text with no
+      named owner at all (e.g. "2 Trooper units") -- a real content gap,
+      not attempted further this pass. Two cases deliberately left
+      unresolved rather than guessed: "We Do What We Do" names "The Bad
+      Batch," which matches 3 different units (Rebel/Republic/Shadow
+      Collective variants) with no way to tell which from the text; "You
+      Serve Your Master Well"/"I Am a Jedi" name "Luke Skywalker, Jedi
+      Knight," which is plausibly just flavor text for the base
+      `luke-skywalker` unit but not confidently so. New regression tests
+      in `db::migrate` (one reproduces a pre-0005 single-column database,
+      proves the migration backfills its data into the join table, and
+      proves the join table then accepts a SECOND owner the old schema
+      could never store). Verified via `npm run validate:data` (9/9),
+      `cargo test` (24/24), and `npm run build`/`npm test` (25/25).
 - [ ] Should double check whether the newer 2025-era commander kits
       (Customizable Jedi General/Knight, etc.) changed the "each
       commander has ~3 personal cards" assumption -- some newer units
@@ -1138,6 +1189,30 @@ here.)
 
 ## Resolved
 
+- **2026-08-25** -- P1 core-functionality pass (docs/ROADMAP.md),
+  everything codable without waiting on the project owner's upcoming
+  scenarios.json content pass:
+  - **Collection tracking now talks to list building.** The army
+    builder shows real owned-vs-needed counts per entry and an
+    "Owned only" filter in the unit picker, sourced from the same
+    `getUserUnitOwnership` data the Collection screen uses -- gated
+    off entirely for a profile with no recorded collection data, so it
+    never shows false "not owned" warnings to someone who's never used
+    that screen. See "Collection tools status" below.
+  - **Command-card ownership: real multi-owner data model.** See the
+    matching 2026-08-25 entry under "Command cards library gaps" above
+    for the full breakdown -- replaced the single `commander_unit_id`
+    column with a real `command_card_commanders` join table
+    (migration 0005) plus `commander_ownership` ("all"/"any"),
+    resolving 15 more of the 56 previously-unresolved commander-specific
+    cards (11 joint-owner, 4 either-owner).
+  - Two new regression tests in `db::migrate`, verified against the
+    full chain: `npm run validate:data` (9/9), `cargo test` (24/24),
+    `npm run build`/`npm test` (25/25).
+  - **Explicitly not done this pass** (blocked on content the project
+    owner hasn't provided yet, not a code gap): command hand/battle
+    deck still preview-only pending the scenarios.json pass;
+    `upgrade_bar` still null for all units, no source material exists.
 - **2026-08-25** -- Fixed a real launch-crashing bug found during a
   full audit pass (see `docs/ROADMAP.md`): `0001_init.sql` had been
   edited in place twice (2026-08-23 Faction rename, 2026-08-24
