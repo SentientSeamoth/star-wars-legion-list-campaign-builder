@@ -1,0 +1,407 @@
+{
+  "_meta": {
+    "description": "Battle Force reference table -- alternative, themed ways to build an army with their own allowed-unit lists, rank requirements, and special rules, distinct from a standard faction army.",
+    "index_source": "https://starwarslegion.fandom.com/wiki/BattleForces",
+    "important_correction": "An earlier pass on this project nearly treated the Shadow Collective PDF's rank-requirement numbers as a generic 'standard army' rule applicable to all factions. Comparing it against the 501st Legion PDF caught this: EACH Battle Force has its OWN distinct rank requirement table, not a shared universal one. The true generic, non-Battle-Force standard-army rank requirement table was sourced for real on 2026-08-24, directly from the official Core Rulebook PDF text (not a summary) -- see data/factions.json's `standard_army_rank_requirements` field.",
+    "known_gap": "This index (and therefore this file) reflects 10 battle forces found via a wiki page that may predate newer 2025/2026 additions. The Mandalorian Clans Battle Force was CONFIRMED real and shipped (June 19, 2026) via research on 2026-08-24, but deliberately not added here yet -- see docs/TODO.md, several of its units had unconfirmed classifications and one (Grogu) likely already exists in data/units.json under the Shadow Collective faction, risking a duplicate. Inferno Squad, Delta Squad, and a '212th Attack Battalion' remain unconfirmed as real Battle Forces at all. See docs/TODO.md.",
+    "last_reviewed": "2026-08-24",
+    "verification_status": "Names, faction, and theme for all 10 are confirmed via a live index page linking directly to official PDFs. 9 of 10 (501st Legion, Shadow Collective, plus Blizzard Force/Imperial Remnant/Bright Tree Village/Separatist Invasion Force/Experimental Droids/Wookiee Defenders/Echo Base Defenders, all added or updated 2026-08-24 via real research directly against each one's official PDF, with every referenced unit id cross-checked against the real data/units.json roster afterward) are fully populated with real allowed-units/rank-requirements/special-rules data. Only Tempest Force remains fully_detailed:false -- its primary PDF exceeds fetchable size limits and every alternate source tried was blocked or dead; see its own allowed_units_note for the partial secondary-source leads gathered instead."
+  },
+  "battle_forces": [
+    {
+      "id": "blizzard-force",
+      "name": "Blizzard Force",
+      "faction": "empire",
+      "theme_description": "The Imperial invasion of Hoth and assault on Echo Base (The Empire Strikes Back).",
+      "source_pdf_url": "https://cdn.svc.asmodee.net/production-amgcom/uploads/2023/09/Star-Wars-Legion-BF-Rules-Sheet-BF2.1.pdf",
+      "roster_verified": true,
+      "roster_source": "https://starwarslegion.fandom.com/wiki/BattleForces (index page, fetched 2026-08-22), linking to each official AMG/Asmodee PDF",
+      "fully_detailed": true,
+      "allowed_units": {
+        "commander": ["darth-vader", "general-veers", "imperial-officer"],
+        "operative": [],
+        "corps": ["snowtroopers", "stormtroopers"],
+        "special_forces": [],
+        "support": ["74-z-speeder-bikes", "e-web-heavy-blaster-team"],
+        "heavy": ["at-st"]
+      },
+      "allowed_units_note": "Corps 'Stormtroopers' entry is capped at 0-2 per the sheet, and per a unit card reproduced in the same PDF refers to a unique 'Stormtroopers (Heavy Response Unit)' card (Flexible Response 2, Precise 1, Unhindered, 'Special Issue: Blizzard Force' -- may only be included in a Blizzard Force army) -- likely distinct from the generic core-box Stormtroopers Corps unit already in data/units.json under the same id; not disambiguated here, flagging for a follow-up pass. All ids were cross-checked against the real data/units.json roster on 2026-08-24 and confirmed to exist.",
+      "rank_requirements_standard": {
+        "commander": "Each army must include one to two commander units.",
+        "corps": "Each army must include three to six corps units.",
+        "support": "Each army must include one to four support units.",
+        "heavy": "Each army may include up to two heavy units.",
+        "verified": true
+      },
+      "rank_requirements_skirmish": {
+        "commander": "Each army must include one to two commander units.",
+        "corps": "Each army must include two to four corps units.",
+        "support": "Each army must include one to three support units.",
+        "heavy": "Each army may include up to one heavy unit.",
+        "verified": true
+      },
+      "special_rules": "A Blizzard Force Battle Force is part of the Galactic Empire faction. The Field Commander keyword cannot be used in a Blizzard Force army. The rules sheet also includes Battle-Force-exclusive Command Cards (Unrelenting Fire, Overwhelming Barrage, Debark for Ground Assault) and a unique 'Stormtroopers (Heavy Response Unit)' unit card marked 'Special Issue: Blizzard Force.'",
+      "unique_upgrades": ["General Weiss"],
+      "pdf_currency_warning": "Filename indicates version 'BF2.1' (Sept 2023 upload), suggesting an already-revised edition. Could not cross-check against atomicmassgames.com/swlegiondocs/ (returned HTTP 403 to automated fetch on 2026-08-24) to confirm no newer revision exists -- treat as unverified-current rather than confirmed-latest."
+    },
+    {
+      "id": "imperial-remnant",
+      "name": "Imperial Remnant",
+      "faction": "empire",
+      "theme_description": "The fractured post-Empire warlord militaries, specifically Moff Gideon's forces (The Mandalorian).",
+      "source_pdf_url": "https://cdn.svc.asmodee.net/production-amgcom/uploads/2023/09/ImperialRemnantRulesSheet.pdf",
+      "roster_verified": true,
+      "roster_source": "https://starwarslegion.fandom.com/wiki/BattleForces (index page, fetched 2026-08-22), linking to each official AMG/Asmodee PDF",
+      "fully_detailed": true,
+      "allowed_units": {
+        "commander": ["moff-gideon", "imperial-officer"],
+        "operative": [],
+        "corps": ["stormtroopers", "shoretroopers"],
+        "special_forces": ["scout-troopers", "imperial-death-troopers"],
+        "support": ["74-z-speeder-bikes", "e-web-heavy-blaster-team"],
+        "heavy": ["imperial-dark-troopers"]
+      },
+      "allowed_units_note": "Corps 'Stormtroopers'/'Shoretroopers' each capped at 1-2 per the sheet. Special Forces 'Scout Troopers' carries a printed '(No Strike Teams)' restriction. Per this Battle Force's special rules, Scout Troopers and Imperial Death Troopers count as Corps units for army-building purposes despite being listed under Special Forces here, and no more than 1 of each Corps-ranked unit type may be taken until at least 1 of each has been taken. All ids were cross-checked against the real data/units.json roster on 2026-08-24 and confirmed to exist, including 'imperial-dark-troopers' which the research pass itself flagged as an uncertain name match -- it is in fact correct.",
+      "rank_requirements_standard": {
+        "commander_operative": "Each army must include one to two commander and operative units. At least one unit must be a commander.",
+        "corps": "Each army must include three to six corps units. (Scout Troopers and Imperial Death Troopers count toward this total, see special_rules.)",
+        "support": "Each army may include up to two support units.",
+        "heavy": "Each army may include up to two heavy units.",
+        "verified": true
+      },
+      "rank_requirements_skirmish": {
+        "commander_operative": "Each army must include one to two commander and operative units. At least one unit must be a commander.",
+        "corps": "Each army must include two to four corps units. (Scout Troopers and Imperial Death Troopers count toward this total, see special_rules.)",
+        "support": "Each army may include up to one support unit.",
+        "heavy": "Each army may include up to one heavy unit.",
+        "verified": true
+      },
+      "special_rules": "An Imperial Remnant Battle Force is part of the Galactic Empire faction. Scout Troopers and Imperial Death Troopers count as Corps units for army building; no more than 1 of each Corps-ranked unit type may be taken until at least 1 of each has been taken. This army may not include detachments. When issuing orders, a nominated Corps unit can only issue orders at range 1-2; units beyond range 2 of a friendly Corps unit gain Independent: Aim 1 or Dodge 1, and units may only use the courage value of a friendly Corps unit at range 1-2 instead of 1-3. Any non-droid Trooper unit with an upgrade-slot icon may equip an upgrade with a 'Stormtroopers only'/'Shoretroopers only'/'Scout Troopers only'/'Imperial Death Troopers only' restriction, ignoring that restriction.",
+      "unique_upgrades": ["The Darksaber"],
+      "pdf_currency_warning": "The URL originally on file (static1.squarespace.com, Feb 2023) is dead (404) -- replaced 2026-08-24 with a working official Asmodee/AMG CDN URL located via search, same 2023/09 upload batch as the Blizzard Force sheet. An AMG social post (July 2024) announced updates to several Battle Force documents including this one; whether this specific file was updated in place afterward is unconfirmed (atomicmassgames.com/swlegiondocs/ returned HTTP 403 to automated fetch)."
+    },
+    {
+      "id": "tempest-force",
+      "name": "Tempest Force",
+      "faction": "empire",
+      "theme_description": "The Imperial Shield Control bunker defense force on Endor's forest moon (Return of the Jedi).",
+      "source_pdf_url": "https://cdn.svc.asmodee.net/production-amgcom/uploads/2023/07/SWL_TempestForce.pdf",
+      "roster_verified": true,
+      "roster_source": "https://starwarslegion.fandom.com/wiki/BattleForces (index page, fetched 2026-08-22), linking to each official AMG/Asmodee PDF",
+      "fully_detailed": false,
+      "allowed_units": null,
+      "allowed_units_note": "PARTIAL, secondary-source research only (2026-08-24) -- the primary PDF is too large to fetch directly (>10MB) and every alternate host/mirror tried (official AMG site, forums, a bit.ly redirect to a dead Squarespace copy) was either blocked (403) or dead (404). From cross-referenced community coverage (thefifthtrooper.com, spikeybits.com, AMG's own 'Scene to Stat' preview article), NOT a full structured list: Commander appears to be 'Major Marquand,' described as a unique AT-ST field-commander unit with the Direct: Vehicle keyword -- this unit is NOT yet in data/units.json and was not added speculatively. Other units mentioned as part of the force: Stormtroopers, Scout Troopers, Imperial Officer, (Imperial) Speeder Bikes, AT-ST. Heavy is notably expanded to allow up to 3 AT-STs (vs. the usual 2-heavy cap seen elsewhere). Special Forces requirement is 2 to 6 units. Corps requirement is 1 to 3 units (at least 1). Operative and Support allowed-units/requirements were not found in any source checked. None of this is confident enough to mark fully_detailed:true -- needs a real primary-source read (e.g. from a machine with a PDF tool that can handle the full file size) before trusting it for list validation.",
+      "rank_requirements_standard": null,
+      "rank_requirements_skirmish": null,
+      "special_rules": "PARTIAL, same sourcing caveat as allowed_units_note: a Tempest Force army is part of the Galactic Empire faction. Reported special rules (not verbatim-quoted, paraphrased from secondary coverage): all vehicles in the army gain Scout 2; a unit without a friendly Commander in range and without a comms upgrade equipped removes 1 fewer suppression token during the Remove Tokens step; the army may 'rapid reinforce' one Special Forces or Support unit (exact mechanic not confirmed). Treat as a lead for the next research pass, not confirmed rules text.",
+      "unique_upgrades": null,
+      "pdf_currency_warning": "Source PDF (2023/07 upload) was never successfully fetched in full during this project -- currency relative to the July 2024 '2.6' refresh is unknown."
+    },
+    {
+      "id": "echo-base-defenders",
+      "name": "Echo Base Defenders",
+      "faction": "rebel",
+      "theme_description": "The rebel forces who delayed Blizzard Force to cover the Echo Base evacuation (The Empire Strikes Back).",
+      "source_pdf_url": "https://cdn.svc.asmodee.net/production-amgcom/uploads/2024/07/SWQ_EchoBaseDefenders_Updated.pdf",
+      "roster_verified": true,
+      "roster_source": "https://starwarslegion.fandom.com/wiki/BattleForces (index page, fetched 2026-08-22), linking to each official AMG/Asmodee PDF",
+      "fully_detailed": true,
+      "allowed_units": {
+        "commander": ["leia-organa", "luke-skywalker", "han-solo", "rebel-officer"],
+        "operative": ["r2-d2"],
+        "corps": ["rebel-veterans", "mark-ii-medium-blaster-trooper"],
+        "special_forces": [],
+        "support": ["1-4-fd-laser-cannon-team", "tauntaun-riders"],
+        "heavy": ["t-47-airspeeder"]
+      },
+      "allowed_units_note": "Sheet prints the Operative entry as 'R2-D2 (C-3PO)' -- read as R2-D2's card bundling an attached C-3PO companion mini (matching the 'attached' rank convention this project already uses for c-3po-human-cyborg-relations elsewhere), not two separate operative choices, so only 'r2-d2' is listed here. All ids directly cross-checked against the real data/units.json roster on 2026-08-24 and confirmed to exist.",
+      "rank_requirements_standard": {
+        "commander_operative": "Each army must include one to four commander and operative units. At least one unit must be a commander.",
+        "corps": "Each army must include three to six corps units.",
+        "support": "Each army must include one to four support units.",
+        "heavy": "Each army may include up to two heavy units.",
+        "verified": true
+      },
+      "rank_requirements_skirmish": {
+        "commander_operative": "Each army must include one to three commander and operative units. At least one unit must be a commander.",
+        "corps": "Each army must include two to four corps units.",
+        "support": "Each army must include one to three support units.",
+        "heavy": "Each army may include up to one heavy unit.",
+        "verified": true
+      },
+      "special_rules": "An Echo Base Defenders Battle Force is part of the Rebel Alliance faction. The Field Commander keyword cannot be used in an Echo Base Defenders army. The sheet includes 3 Battle-Force-specific Command Cards from the '2024 Echo Base Defenders Updates' page: 'Delaying Tactics' (1 unit -- at the end of the Command Phase, your opponent must choose 1 of their non-Commander units that has a faceup order token, if able, and return it to their order pool), 'Courage of the Rebellion' (2 units -- each friendly trooper unit issued an order using this card may recover), and 'Hold at Any Cost' (3 Corps or Support units -- each friendly trooper unit issued an order using this card gains 1 aim and 1 standby token).",
+      "unique_upgrades": ["Wedge Antilles"],
+      "pdf_currency_warning": "This is Version 1.1 of the rules sheet, explicitly dated '2024 Echo Base Defenders Updates' on its second page -- a real post-2.6-refresh (July 2024) revision, not the stale 2022-era document previously on file (whose URL was also dead/404). This is the most current version found, superseding the file this project had before."
+    },
+    {
+      "id": "bright-tree-village",
+      "name": "Bright Tree Village",
+      "faction": "rebel",
+      "theme_description": "The Ewoks who aided the rebel commando raid on Endor's moon (Return of the Jedi).",
+      "source_pdf_url": "https://cdn.svc.asmodee.net/production-amgcom/uploads/2023/07/StarWarsLegionBFRulesSheetBrightTreeVillage1.pdf",
+      "roster_verified": true,
+      "roster_source": "https://starwarslegion.fandom.com/wiki/BattleForces (index page, fetched 2026-08-22), linking to each official AMG/Asmodee PDF",
+      "fully_detailed": true,
+      "allowed_units": {
+        "commander": ["c-3po-golden-god", "han-solo", "leia-organa", "logray", "wicket"],
+        "operative": ["chewbacca"],
+        "corps": ["ewok-skirmishers", "rebel-troopers"],
+        "special_forces": ["ewok-slingers", "rebel-commandos"],
+        "support": [],
+        "heavy": ["chewbacca-let-the-wookiee-win"]
+      },
+      "allowed_units_note": "PDF prints plain 'C-3PO' for Commander -- matched to 'c-3po-golden-god' (Rebel faction, commander rank) rather than the separate attached-rank 'c-3po-human-cyborg-relations' card, based on faction/rank fit; fairly confident but not certain which C-3PO sculpt is meant. 'Chewbacca' is printed as BOTH Operative and Heavy in the source -- these map to two distinct real cards: Operative 'chewbacca' and Heavy 'chewbacca-let-the-wookiee-win', matching the real Bright Tree Village box bundling a new heavy-weapon Chewbacca sculpt alongside the pre-existing Operative version. 'Rebel Troopers'/'Rebel Commandos' are each capped at 0-2 on top of the rank requirements below; Rebel Commandos is further restricted to '(No Strike Teams)' -- only the base card, not the Strike Team variant. No Support-rank units are on the allowed list despite Support appearing in the rank requirements. All ids cross-checked against the real data/units.json roster on 2026-08-24 and confirmed to exist.",
+      "rank_requirements_standard": {
+        "commander_operative": "Each army must include 1 to 5 commander or operative units. At least one unit must be a commander.",
+        "special_forces": "Each army may include up to 3 special forces units.",
+        "corps": "Each army must include 3 to 6 corps units.",
+        "support": "Each army may include up to 2 support units.",
+        "heavy": "Each army may include up to 2 heavy units.",
+        "verified": true
+      },
+      "rank_requirements_skirmish": {
+        "commander_operative": "Each army must include 1 to 4 commander or operative units. At least one unit must be a commander.",
+        "special_forces": "Each army may include up to 3 special forces units.",
+        "corps": "Each army must include 2 to 4 corps units.",
+        "support": "Each army may include up to 1 support unit.",
+        "heavy": "Each army may include up to 1 heavy unit.",
+        "verified": true
+      },
+      "special_rules": "A Bright Tree Village Battle Force is part of the Rebel Alliance faction. This Battle Force may take any number of Mercenary units; these units count toward the minimum rank requirements, and the army may include any number of Mercenaries at each rank. Must take at least 2 non-Rebel units. During the End Phase, Rebel units in this army remove one fewer suppression token during the Remove Tokens step. The printed unit list also caps Rebel Troopers/Rebel Commandos at 0-2 each and restricts Rebel Commandos to the non-Strike-Team card.",
+      "unique_upgrades": ["Call to Arms", "Herbal Medicine", "Onwards to Victory", "Secret Ingredients"],
+      "pdf_currency_warning": "Fetched from the official AMG CDN, path dated 2023/07 matching this Battle Force's original release. Embedded PDF metadata reporting 'created Nov 2016 / modified Nov 2019' almost certainly reflects a shared AMG template file, not real content dates. Legion has received further faction/points/rules updates since mid-2023; the Battle-Force-specific army-building structure itself (allowed units, rank requirements, special rules) is not known to have been revised since this PDF, but unit stats/points/keywords referenced by it may be stale relative to current official documents."
+    },
+    {
+      "id": "separatist-invasion-force",
+      "name": "Separatist Invasion Force",
+      "faction": "separatist",
+      "theme_description": "A Separatist planetary incursion emphasizing Trade Federation droid units (The Clone Wars).",
+      "source_pdf_url": "https://cdn.svc.asmodee.net/production-amgcom/uploads/2022/10/StarWarsLegionBFRulesSheetSI.pdf",
+      "roster_verified": true,
+      "roster_source": "https://starwarslegion.fandom.com/wiki/BattleForces (index page, fetched 2026-08-22), linking to each official AMG/Asmodee PDF",
+      "fully_detailed": true,
+      "allowed_units": {
+        "commander": ["count-dooku", "general-grievous", "t-series-tactical-droid"],
+        "operative": ["maul"],
+        "special_forces": ["ig-100-magnaguards"],
+        "corps": ["b1-battle-droids"],
+        "support": ["droidekas", "stap-riders"],
+        "heavy": ["aat-battle-tank"]
+      },
+      "allowed_units_note": "PDF prints 'Maul (Impatient Apprentice)' -- matched to 'maul' (subtitle 'Impatient Apprentice', Separatist faction, operative rank), distinct from the Shadow-Collective-faction 'maul-shadow-collective' card, which is NOT eligible for this Battle Force. PDF prints 'IG-100 Magnaguard' (singular) -- matched to the base 'ig-100-magnaguards' card, not the 'Prototype Assassin Droids' variant. 'AAT Trade Federation Battle Tank' matched to 'aat-battle-tank'. All ids cross-checked against the real data/units.json roster on 2026-08-24 and confirmed to exist.",
+      "rank_requirements_standard": {
+        "commander": "Each army must include one commander unit.",
+        "operative": "Each army may include up to one operative unit.",
+        "special_forces": "Each army may include 1 to 2 special forces units.",
+        "corps": "Each army must include 4 to 8 corps units.",
+        "support": "Each army may include up to 3 support units.",
+        "heavy": "Each army must include 1 to 2 heavy units.",
+        "verified": true
+      },
+      "rank_requirements_skirmish": {
+        "commander": "Each army must include one commander unit.",
+        "operative": "Each army may include up to one operative unit.",
+        "special_forces": "Each army may include up to one special forces unit.",
+        "corps": "Each army must include 2 to 6 corps units.",
+        "support": "Each army may include up to 2 support units.",
+        "heavy": "Each army must include one heavy unit.",
+        "verified": true
+      },
+      "special_rules": "A Separatist Invasion Battle Force is part of the Separatist Alliance faction. The Field Commander keyword cannot be used in a Separatist Invasion army. The rules sheet includes 3 Battle-Force-specific Command Cards: 'AI Coordination' (each friendly unit issued an order gains 1 standby token), 'Unrelenting Assault' (after a friendly Corps unit's ranged attack spending an aim token, another friendly unit at range 1-2 may gain 1 aim token), and 'Unstoppable Advance' (each friendly trooper unit issued an order may perform a speed-1 move).",
+      "unique_upgrades": ["DT-57 \"Annihilator\""],
+      "pdf_currency_warning": "The URL originally on file (static1.squarespace.com) is dead (404) -- replaced 2026-08-24 with a working official AMG CDN URL, path dated 2022/10, predating this game's subsequent 2023-2026 waves and points/FAQ refreshes. The Battle-Force-specific structure (allowed units, rank requirements, special rules, command cards) is not known to have been revised, but has not been independently re-confirmed against a newer source."
+    },
+    {
+      "id": "experimental-droids",
+      "name": "Experimental Droids",
+      "faction": "separatist",
+      "theme_description": "Alternate droid units that didn't see mass production, referencing The Clone Wars.",
+      "source_pdf_url": "https://cdn.svc.asmodee.net/production-amgcom/uploads/2023/09/SWL_ExperimentalDroids-1.pdf",
+      "roster_verified": true,
+      "roster_source": "https://starwarslegion.fandom.com/wiki/BattleForces (index page, fetched 2026-08-22), linking to each official AMG/Asmodee PDF",
+      "fully_detailed": true,
+      "allowed_units": {
+        "commander": ["super-tactical-command-droid", "t-series-tactical-droid"],
+        "operative": [],
+        "corps": ["b1-battle-droids", "b2-super-battle-droids"],
+        "special_forces": ["bx-series-droid-commandos", "ig-100-magnaguards-prototype-assassin-droids"],
+        "support": ["droidekas"],
+        "heavy": ["nr-n99-persuader-class-tank-droid-prototype-tank-droid"]
+      },
+      "allowed_units_note": "Corps capped at 0-2 B1 Battle Droids and 0-2 B2 Super Battle Droids, still bound by the overall 3-6 corps requirement. BX-series Droid Commandos restricted to '(No Strike Teams)'. IG-100 MagnaGuard restricted to the 'Prototype Assassin Droids' variant specifically, confirmed by a reproduced unit card in the PDF. 'Super Tactical Droid' (PDF's printed name) has no exact id match -- mapped to 'super-tactical-command-droid' as the only plausible candidate. All ids cross-checked against the real data/units.json roster on 2026-08-24 and confirmed to exist.",
+      "rank_requirements_standard": {
+        "commander_operative": "Each army must include one to two commander units. (No operative units are on the allowed list.)",
+        "special_forces": "Each army may include up to three special forces units.",
+        "corps": "Each army must include three to six corps units.",
+        "support": "Each army may include up to three support units.",
+        "heavy": "Each army may include up to two heavy units.",
+        "verified": true
+      },
+      "rank_requirements_skirmish": {
+        "commander_operative": "Each army must include one to two commander units.",
+        "special_forces": "Each army may include up to three special forces units.",
+        "corps": "Each army must include two to four corps units.",
+        "support": "Each army may include up to one support unit.",
+        "heavy": "Each army may include up to one heavy unit.",
+        "verified": true
+      },
+      "special_rules": "An Experimental Droids Battle Force is part of the Separatist Alliance faction. IG-100 MagnaGuard (Prototype Assassin Droids) counts as a Corps unit for army building and battle cards despite being listed under Special Forces. At the start of each Activation Phase, choose up to 1 Corps unit and put 3 surge tokens on its card; once during its activation, a friendly Special Forces/Corps/Support unit with the AI keyword may perform a free action to spend a surge token on that chosen unit (if at range 3) to: increase its speed by 1 during its next move this turn; gain 1 aim or dodge token; add 1 black + 1 white die to its next attack pool this turn; or remove up to 2 suppression tokens.",
+      "unique_upgrades": [],
+      "pdf_currency_warning": "PDF upload path dated 2023/09, predating any Legion balance/errata updates issued after that point -- allowed units and rank requirements are current as printed, but points costs or keyword text on reproduced unit cards could have since been superseded by later official updates."
+    },
+    {
+      "id": "501st-legion",
+      "name": "501st Legion",
+      "faction": "republic",
+      "theme_description": "Anakin Skywalker's 501st Clone Legion, featuring ARC Troopers and Captain Rex during the Umbara arc (The Clone Wars).",
+      "source_pdf_url": "https://cdn.svc.asmodee.net/production-amgcom/uploads/2022/10/StarWarsLegionBFRulesSheet501.pdf",
+      "roster_verified": true,
+      "roster_source": "https://starwarslegion.fandom.com/wiki/BattleForces (index page, fetched 2026-08-22), linking to each official AMG/Asmodee PDF",
+      "fully_detailed": true,
+      "allowed_units": {
+        "commander": [
+          "anakin-skywalker",
+          "clone-captain-rex",
+          "clone-commander"
+        ],
+        "operative": [],
+        "corps": [
+          "phase-ii-clone-troopers"
+        ],
+        "special_forces": [
+          "arc-troopers"
+        ],
+        "support": [
+          "at-rt-galactic-republic",
+          "barc-speeder"
+        ],
+        "heavy": [
+          "laat-le-patrol-transport"
+        ]
+      },
+      "allowed_units_note": "IMPORTANT CROSS-FILE FLAG: this PDF lists 'Phase II Clone Troopers' as an allowed Corps unit, but data/units.json marks that same unit legality:'removed' (i.e. not available for standard list-building) based on the general unit-roster source. Likely explanation: Phase II Clone Troopers may still be a valid pick specifically WITHIN the 501st Legion Battle Force even though it's no longer available in standard army building -- Battle Forces are documented elsewhere in this project as having their own allowed-unit lists distinct from the standard roster. Not resolved here -- see docs/TODO.md, don't silently drop either data point.",
+      "rank_requirements_standard": {
+        "commander_operative": "1 to 2 commander/operative units, at least 1 must be a commander",
+        "corps": "1 to 4 corps units",
+        "special_forces": "1 to 4 special forces units",
+        "support": "1 to 2 support units",
+        "heavy": "0 to 1 heavy unit",
+        "verified": true
+      },
+      "rank_requirements_skirmish": {
+        "commander_operative": "Exactly 1 commander unit, plus up to 1 operative unit",
+        "corps": "1 to 4 corps units",
+        "special_forces": "1 to 4 special forces units",
+        "support": "1 to 2 support units",
+        "heavy": "0 to 1 heavy unit",
+        "verified": true
+      },
+      "special_rules": "Part of the Galactic Republic faction. During army building, may include 1 ARC Troopers Strike Team unit for each non-Strike-Team ARC Troopers unit already in the army, paying points normally for each.",
+      "unique_upgrades": [
+        "Echo and Fives"
+      ],
+      "pdf_currency_warning": "Source PDF is a 2022/2023 upload, predating the July 2024 '2.6' Core Rulebook refresh confirmed elsewhere in this project (see data/scenarios.json). The wiki links to this file as 'most recent' as of 2026-08-22, which suggests it may have been reprinted at the same URL with updated numbers -- but that reprint was NOT independently confirmed. Treat rank requirements/allowed units as needing a currency re-check, not just a one-time source check."
+    },
+    {
+      "id": "wookiee-defenders",
+      "name": "Wookiee Defenders",
+      "faction": "republic",
+      "theme_description": "The combined clone army and Wookiee defense of Kashyyyk prior to Order 66 (Revenge of the Sith).",
+      "source_pdf_url": "https://cdn.svc.asmodee.net/production-amgcom/uploads/2023/09/SWL_WookieesDefenders-1.pdf",
+      "roster_verified": true,
+      "roster_source": "https://starwarslegion.fandom.com/wiki/BattleForces (index page, fetched 2026-08-22), linking to each official AMG/Asmodee PDF",
+      "fully_detailed": true,
+      "allowed_units": {
+        "commander": ["yoda", "chewbacca-republic", "wookiee-chieftain"],
+        "operative": [],
+        "corps": ["phase-ii-clone-troopers"],
+        "special_forces": ["arc-troopers", "wookiee-warriors-noble-fighters"],
+        "support": ["barc-speeder", "raddaugh-gnasp-fluttercraft-attack-craft"],
+        "heavy": ["infantry-support-platform", "tx-130-saber-class-fighter-tank"]
+      },
+      "allowed_units_note": "Special Forces capped at 0-1 ARC Troopers, restricted to '(No Strike Teams)'. Corps capped at 0-2 Phase II Clone Troopers. Support capped at 0-1 BARC Speeder. Heavy capped at 0-1 each of Infantry Support Platform and TX-130 Saber-class Fighter Tank. 'Chewbacca' printed without a subtitle -- mapped to 'chewbacca-republic' since this is a Galactic Republic Battle Force, but the PDF doesn't print that exact subtitle so this is inferred, not confirmed verbatim. 'Raddaugh Gnasp Fluttercraft' mapped to 'raddaugh-gnasp-fluttercraft-attack-craft' per a reproduced card in the PDF titled 'Raddaugh Gnasp Fluttercraft / Attack Craft'. Wookiee Warriors mapped specifically to 'wookiee-warriors-noble-fighters' per the special rules text. All ids cross-checked against the real data/units.json roster on 2026-08-24 and confirmed to exist.",
+      "rank_requirements_standard": {
+        "commander_operative": "Each army must include one to two commander units. (No operative units are on the allowed list.)",
+        "special_forces": "Each army may include up to four special forces units.",
+        "corps": "Each army must include three to six corps units.",
+        "support": "Each army may include up to three support units.",
+        "heavy": "Each army may include up to one heavy unit.",
+        "verified": true
+      },
+      "rank_requirements_skirmish": {
+        "commander_operative": "Each army must include one to two commander units.",
+        "special_forces": "Each army may include up to three special forces units.",
+        "corps": "Each army must include two to four corps units.",
+        "support": "Each army may include up to one support unit.",
+        "heavy": "Each army may include up to one heavy unit.",
+        "verified": true
+      },
+      "special_rules": "A Wookiee Defenders Battle Force is part of the Galactic Republic faction. Wookiee Warriors (Noble Fighters) counts as a Corps unit for army building and battle cards despite being listed under Special Forces. The army must include at least three Wookiee Trooper units. The first time a miniature in each Wookiee Trooper unit is defeated each round, that unit may make a speed-1 move.",
+      "unique_upgrades": [],
+      "pdf_currency_warning": "PDF upload path dated 2023/09, predating any Legion balance/errata updates issued after that point -- allowed units and rank requirements are current as printed, but points costs or keyword text on reproduced unit cards could have since been superseded by later official updates."
+    },
+    {
+      "id": "shadow-collective",
+      "name": "Shadow Collective",
+      "faction": "shadow_collective",
+      "theme_description": "Maul's criminal underworld collective attacking Mandalore (The Clone Wars).",
+      "source_pdf_url": "https://cdn.svc.asmodee.net/production-amgcom/uploads/2022/10/StarWarsLegionBFRulesSheetSC.pdf",
+      "roster_verified": true,
+      "roster_source": "https://starwarslegion.fandom.com/wiki/BattleForces (index page, fetched 2026-08-22), linking to each official AMG/Asmodee PDF",
+      "fully_detailed": true,
+      "allowed_units": {
+        "commander": [
+          "black-sun-vigo",
+          "gar-saxon",
+          "pyke-syndicate-capo"
+        ],
+        "operative": [
+          "maul-shadow-collective",
+          "bossk",
+          "cad-bane"
+        ],
+        "corps": [
+          "black-sun-enforcers",
+          "pyke-syndicate-foot-soldiers"
+        ],
+        "special_forces": [
+          "mandalorian-super-commandos"
+        ],
+        "support": [
+          "swoop-bike-riders"
+        ],
+        "heavy": [
+          "a-a5-speeder-truck"
+        ]
+      },
+      "allowed_units_note": "PDF lists this unit as 'Maul (A Rival)' -- data/units.json currently has it as 'maul-shadow-collective' / display name 'Maul (Shadow Collective)'. Same unit, naming inconsistency between sources not yet reconciled -- see docs/TODO.md.",
+      "rank_requirements_standard": {
+        "commander_operative": "1 to 4 commander/operative units, at least 1 must be a commander",
+        "corps": "2 to 6 corps units",
+        "special_forces": "0 to 4 special forces units",
+        "support": "0 to 3 support units",
+        "heavy": "0 to 2 heavy units",
+        "verified": true
+      },
+      "rank_requirements_skirmish": {
+        "commander_operative": "1 to 2 commander/operative units, at least 1 must be a commander",
+        "corps": "1 to 4 corps units",
+        "special_forces": "0 to 3 special forces units",
+        "support": "0 to 2 support units",
+        "heavy": "0 to 1 heavy unit",
+        "verified": true
+      },
+      "special_rules": "Must be composed entirely of Mercenary units. Unlike a normal army, Mercenary units in this Battle Force DO count toward minimum rank requirements, and the army may include any number of Mercenaries at each rank (the standard 2-Corps/1-other Mercenary cap doesn't apply here). This Battle Force is aligned with the Dark Side.",
+      "unique_upgrades": [
+        "The Darksaber",
+        "Raiding Party Leader",
+        "Rook Kast",
+        "Saxon's Combat Shield",
+        "Saxon's Galar-90 Rifle",
+        "Saxon's Z-3X Jetpack Rockets",
+        "Saxon's ZX Flame Projector"
+      ],
+      "pdf_currency_warning": "Source PDF is a 2022/2023 upload, predating the July 2024 '2.6' Core Rulebook refresh confirmed elsewhere in this project (see data/scenarios.json). The wiki links to this file as 'most recent' as of 2026-08-22, which suggests it may have been reprinted at the same URL with updated numbers -- but that reprint was NOT independently confirmed. Treat rank requirements/allowed units as needing a currency re-check, not just a one-time source check."
+    }
+  ]
+}

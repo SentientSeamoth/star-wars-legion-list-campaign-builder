@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Shared across every feature screen per docs/UI_DESIGN.md: numeric
+   readouts (points, quantities, pip counts) use IBM Plex Mono so they read
+   as distinct from prose at a glance. */
+.font-mono {
+  font-family: 'IBM Plex Mono', monospace;
+}

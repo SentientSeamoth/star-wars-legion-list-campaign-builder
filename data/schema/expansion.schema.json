@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://legion-app.local/schema/expansion.schema.json",
+  "title": "Legion Product/Expansion Reference",
+  "type": "object",
+  "required": ["_meta", "expansions"],
+  "properties": {
+    "_meta": { "type": "object" },
+    "expansions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "product_type", "roster_verified"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+          "name": { "type": "string" },
+          "product_type": {
+            "type": "string",
+            "enum": ["core-set","unit-expansion","commander-expansion","operative-expansion",
+                     "battle-force-starter-set","upgrade-card-pack","battle-card-pack","other"]
+          },
+          "release_date": { "type": ["string", "null"] },
+          "contains_units": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["unit_id", "quantity"],
+              "properties": {
+                "unit_id": { "type": "string" },
+                "quantity": { "type": "integer", "minimum": 1 }
+              },
+              "additionalProperties": false
+            }
+          },
+          "contains_upgrades": { "type": "array", "items": { "type": "string" } },
+          "contains_command_cards": { "type": "array", "items": { "type": "string" } },
+          "roster_verified": { "type": "boolean" },
+          "roster_source": { "type": "string" },
+          "notes": { "type": ["string", "null"] }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

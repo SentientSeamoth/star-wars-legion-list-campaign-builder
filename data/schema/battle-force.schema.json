@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://legion-app.local/schema/battle-force.schema.json",
+  "title": "Legion Battle Force Reference",
+  "type": "object",
+  "required": ["_meta", "battle_forces"],
+  "properties": {
+    "_meta": { "type": "object" },
+    "battle_forces": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "faction", "roster_verified", "fully_detailed"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+          "name": { "type": "string" },
+          "faction": { "type": "string", "enum": ["empire","separatist","rebel","republic","shadow_collective"] },
+          "theme_description": { "type": ["string", "null"] },
+          "source_pdf_url": { "type": ["string", "null"] },
+          "roster_verified": { "type": "boolean" },
+          "roster_source": { "type": "string" },
+          "fully_detailed": { "type": "boolean" },
+          "allowed_units": { "type": ["object", "null"] },
+          "allowed_units_note": { "type": ["string", "null"] },
+          "rank_requirements_standard": { "type": ["object", "null"] },
+          "rank_requirements_skirmish": { "type": ["object", "null"] },
+          "special_rules": { "type": ["string", "null"] },
+          "unique_upgrades": { "type": ["array", "null"] },
+          "pdf_currency_warning": { "type": ["string", "null"] }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

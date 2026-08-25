@@ -1,0 +1,59 @@
+{
+  "_meta": {
+    "description": "Reference table for the four playable factions plus the Shadow Collective pseudo-faction. UI display info (names/descriptions/alignment) only -- army-building numeric rules live in data/battle-forces.json where they've actually been confirmed, plus `standard_army_rank_requirements` below for the non-Battle-Force case.",
+    "descriptions_verified": false,
+    "descriptions_note": "Short descriptions above are general Star Wars/Legion background knowledge (which faction is which, thematically), not sourced to a specific citation this session -- low risk (settled setting facts) but not independently re-verified either, flagged for consistency with this project's verification discipline.",
+    "game_formats_reference": "See data/scenarios.json for the confirmed current game formats (standard-1000 / recon-600).",
+    "last_reviewed": "2026-08-24"
+  },
+  "standard_army_rank_requirements": {
+    "description": "The generic rank-requirement table for a normal 1,000-point standard-format army using NO Battle Force structure. Distinct from any Battle-Force-specific table (see data/battle-forces.json) -- comparing the 501st Legion and Shadow Collective Battle Force PDFs earlier in this project proved those numbers are Battle-Force-specific, not this generic rule, which is why this had been a real, explicitly-tracked gap until now.",
+    "structure_note": "2026-08-24: each rank's value restructured from a plain prose string to {text, min, max} so src-tauri/src/domain/list_validation.rs can actually check a list against these numbers -- min/max are the same already-verified bounds the prose describes, not a new claim. 'attached' is deliberately absent: the sourced rulebook text doesn't cover it (those are companion/detachment units, not an independently-chosen rank pool), so it's left unconstrained rather than guessed. Nothing consumed the old plain-string shape before this change (checked).",
+    "commander": { "text": "Each army must include one to two commander units.", "min": 1, "max": 2 },
+    "operative": { "text": "Each army may include up to two operative units.", "min": 0, "max": 2 },
+    "corps": { "text": "Each army must include three to six corps units.", "min": 3, "max": 6 },
+    "special_forces": { "text": "Each army may include up to three special forces units.", "min": 0, "max": 3 },
+    "support": { "text": "Each army may include up to three support units.", "min": 0, "max": 3 },
+    "heavy": { "text": "Each army may include up to two heavy units.", "min": 0, "max": 2 },
+    "verified": true,
+    "source": "Star Wars: Legion Core Rulebook, Version 2.6.0, Effective 7.24.2024 (official Atomic Mass Games PDF, https://cdn.svc.asmodee.net/production-amgcom/uploads/2024/07/SWQ_Rulebook_2.6.0-1.pdf, linked from atomicmassgames.com/swlegiondocs/), section \"RANKS AND RANK REQUIREMENTS.\"",
+    "verification_note": "Sourced 2026-08-24 via a real multi-agent research pass: fetched the actual current Core Rulebook PDF and extracted its text directly (not a secondary summary). Exact rulebook wording: \"Each unit in Star Wars: Legion has a rank. When building an army, a player is restricted on the number of units of each rank they may include as follows: Commander: Each army must include one to two commander units. Operative: Each army may include up to two operative units. Corps: Each army must include three to six corps units. Special Forces: Each army may include up to three special forces units. Support: Each army may include up to three support units. Heavy: Each army may include up to two heavy units.\""
+  },
+  "factions": [
+    {
+      "id": "empire",
+      "name": "Galactic Empire",
+      "alignment": "dark-side",
+      "era": "Imperial Era (post-Republic)",
+      "description": "The authoritarian regime that replaced the Galactic Republic, fielding Stormtroopers, walkers, and Sith-aligned commanders such as Darth Vader."
+    },
+    {
+      "id": "rebel",
+      "name": "Rebel Alliance",
+      "alignment": "light-side",
+      "era": "Imperial Era (post-Republic)",
+      "description": "The Alliance to Restore the Republic, an underdog insurgency fielding Rebel Troopers, guerrilla specialists, and heroes like Luke Skywalker and Leia Organa; includes an Ewok sub-theme (Bright Tree Village)."
+    },
+    {
+      "id": "republic",
+      "name": "Galactic Republic",
+      "alignment": "light-side",
+      "era": "Clone Wars Era",
+      "description": "The Republic's Grand Army of clone troopers led by Jedi Generals during the Clone Wars, fielding Clone Troopers, ARC Troopers, and Jedi commanders; includes a Wookiee sub-theme (Kashyyyk defenders)."
+    },
+    {
+      "id": "separatist",
+      "name": "Separatist Alliance",
+      "alignment": "dark-side",
+      "era": "Clone Wars Era",
+      "description": "The Confederacy of Independent Systems, fielding mass-produced battle droid armies (B1, B2, droidekas) under Separatist leaders like Count Dooku and General Grievous."
+    },
+    {
+      "id": "shadow_collective",
+      "name": "Shadow Collective",
+      "alignment": "neutral",
+      "era": null,
+      "description": "This app's catch-all faction id for units that don't belong to one of the four aligned factions -- covers the real Star Wars: Legion 'Mercenary' affiliation-type units (unaligned, hireable into any of the four factions' armies at no point premium; see data/affiliations.json), as well as units playable as their own army via the Shadow Collective Battle Force (see data/battle-forces.json). Not a playable faction on its own in standard army building. Named 'Shadow Collective' rather than 'Mercenary' in this app's data model per an explicit 2026-08-23 naming decision (see docs/DECISIONS.md) -- 'Mercenary' remains the real, distinct in-game affiliation/keyword term printed on unit cards themselves (see data/keywords.json's 'mercenary' entry), not a synonym for this id."
+    }
+  ]
+}

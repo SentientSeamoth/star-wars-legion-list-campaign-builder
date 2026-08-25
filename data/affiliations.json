@@ -1,0 +1,67 @@
+{
+  "_meta": {
+    "description": "Affiliation reference table. An affiliation is a narrower loyalty tag than a faction, shown as an icon in a unit card's upper-left corner (where a faction icon would normally sit) on Mercenary units. Units sharing an affiliation can issue each other orders even inside a larger faction army.",
+    "mercenary_rules_summary": "Direct quote from the official source (read in full 2026-08-24, not paraphrased from a summary): \"Every Mercenary unit has an affiliation. Their affiliation is where their true loyalty lies... A unit with an affiliation can be issued orders only by a friendly unit that has the same affiliation... Mercenary units are not loyal to any of the game's four factions. However, factions and some Battle Forces can hire certain Mercenary units and field them in their armies. The unit card of a Mercenary unit indicates each faction that can include that Mercenary unit in an army. There is no additional cost to fielding a Mercenary unit in an army. Mercenary units do not count toward the minimum number of ranks required in an army, but they do count toward the maximum ranks allowed. An army may include only two Mercenary units of the Corps rank and only one Mercenary unit of each other rank... A Mercenary unit is friendly to the other units in its army but is not considered part of that army's faction. When including Mercenary units in an army, use order tokens with a back that corresponds to the faction of the army.\"",
+    "mercenary_rules_summary_verified": true,
+    "mercenary_rules_source": "https://cdn.svc.asmodee.net/production-amgcom/uploads/2022/10/StarWarsLegionBFRulesSheetSC.pdf",
+    "last_reviewed": "2026-08-24",
+    "verification_status": "Affiliation NAMES, icons, and the order-issuing/mercenary rules are confirmed directly from a full read of the official AMG PDF on 2026-08-24 (upgraded from a 2026-08-22 paraphrase to a verbatim quote) -- high confidence. Per-affiliation flavor descriptions are general Star Wars background knowledge, not independently sourced to a specific citation, same honesty flag as data/factions.json's descriptions. The exact unit-to-affiliation mapping is now confirmed for Maul Loyalists (maul-shadow-collective, gar-saxon, mandalorian-super-commandos -- corroborated by the real 'Maul Loyalists: Leaders of the Shadow Collective' product bundle and AMG's own 'Scene to Stats: Mandalorian Super Commandos' article) in addition to the already-known Black Sun and The Pyke Syndicate. Raiders and Rogues remain genuinely unmapped despite real effort (multiple targeted searches, a full PDF read) -- see each entry's notes and docs/TODO.md. This PDF is dated to a 2022 upload; the affiliation list itself is a simple/stable kind of fact but hasn't been re-confirmed against anything newer than 2022."
+  },
+  "affiliations": [
+    {
+      "id": "black-sun",
+      "name": "Black Sun",
+      "description": "A galaxy-spanning criminal syndicate active from the late Republic through the early Empire, run by a shadowy council of Vigos (regional crime lords).",
+      "description_verified": false,
+      "order_rule": "A unit with an affiliation can only be issued orders by a friendly unit that shares the same affiliation.",
+      "order_rule_verified": true,
+      "roster_verified": true,
+      "roster_source": "https://cdn.svc.asmodee.net/production-amgcom/uploads/2022/10/StarWarsLegionBFRulesSheetSC.pdf (official AMG PDF, read in full 2026-08-24)",
+      "notes": "Criminal syndicate; Black Sun Vigo (commander) and Black Sun Enforcers (corps) carry this affiliation. Description is general Star Wars background knowledge, not independently sourced to a specific citation this pass -- see _meta.verification_status."
+    },
+    {
+      "id": "the-pyke-syndicate",
+      "name": "The Pyke Syndicate",
+      "description": "A spice-trafficking criminal cartel run by the Pyke species, prominent in the Outer Rim spice trade and allied with Maul's Shadow Collective during the Clone Wars.",
+      "description_verified": false,
+      "order_rule": "A unit with an affiliation can only be issued orders by a friendly unit that shares the same affiliation.",
+      "order_rule_verified": true,
+      "roster_verified": true,
+      "roster_source": "https://cdn.svc.asmodee.net/production-amgcom/uploads/2022/10/StarWarsLegionBFRulesSheetSC.pdf (official AMG PDF, read in full 2026-08-24)",
+      "notes": "Spice-trade criminal syndicate; Pyke Syndicate Capo (commander) and Pyke Syndicate Foot Soldiers (corps) carry this affiliation. Description is general Star Wars background knowledge, not independently sourced to a specific citation this pass -- see _meta.verification_status."
+    },
+    {
+      "id": "raiders",
+      "name": "Raiders",
+      "description": null,
+      "description_verified": false,
+      "order_rule": "A unit with an affiliation can only be issued orders by a friendly unit that shares the same affiliation.",
+      "order_rule_verified": true,
+      "roster_verified": true,
+      "roster_source": "https://cdn.svc.asmodee.net/production-amgcom/uploads/2022/10/StarWarsLegionBFRulesSheetSC.pdf (official AMG PDF, read in full 2026-08-24)",
+      "notes": "Listed as an official affiliation icon (name/icon confirmed via a full read of the official PDF, 2026-08-24). Specific units carrying it are STILL not identified despite real effort this pass (multiple targeted searches for bounty-hunter-type mercenary units found no confirmed card-level match) -- see docs/TODO.md."
+    },
+    {
+      "id": "rogues",
+      "name": "Rogues",
+      "description": null,
+      "description_verified": false,
+      "order_rule": "A unit with an affiliation can only be issued orders by a friendly unit that shares the same affiliation.",
+      "order_rule_verified": true,
+      "roster_verified": true,
+      "roster_source": "https://cdn.svc.asmodee.net/production-amgcom/uploads/2022/10/StarWarsLegionBFRulesSheetSC.pdf (official AMG PDF, read in full 2026-08-24)",
+      "notes": "Listed as an official affiliation icon (name/icon confirmed via a full read of the official PDF, 2026-08-24). Specific units carrying it are STILL not identified despite real effort this pass -- note the real 'Rogues & Rebels' unit expansion (SWQ50, released 2026-07-17) is a DIFFERENT thing (a Rebel-faction product name featuring Lando Calrissian/Sabine Wren/Ahsoka Tano), not confirmed to be about this Mercenary affiliation icon -- don't conflate the two. See docs/TODO.md."
+    },
+    {
+      "id": "maul-loyalists",
+      "name": "Maul Loyalists",
+      "description": "Maul's own personal criminal organization and inner circle within the broader Shadow Collective, distinct from the Black Sun/Pyke Syndicate/Mandalorian factions he also commands.",
+      "description_verified": false,
+      "order_rule": "A unit with an affiliation can only be issued orders by a friendly unit that shares the same affiliation.",
+      "order_rule_verified": true,
+      "roster_verified": true,
+      "roster_source": "https://cdn.svc.asmodee.net/production-amgcom/uploads/2022/10/StarWarsLegionBFRulesSheetSC.pdf (official AMG PDF, read in full 2026-08-24); unit mapping corroborated 2026-08-24 by the real 'Maul Loyalists: Leaders of the Shadow Collective' product bundle and Atomic Mass Games' own 'Scene to Stats: Mandalorian Super Commandos' article.",
+      "notes": "Followers of Maul specifically, distinct from the broader Shadow Collective umbrella. Unit mapping now reasonably confident (2026-08-24, corroborated by two independent sources, not card-by-card verbatim confirmed): maul-shadow-collective, gar-saxon, mandalorian-super-commandos. 'Rook Kast' is also associated with this group per the same product bundle, but exists in this project only as a unique upgrade card name (see data/battle-forces.json's shadow-collective entry), not a standalone fieldable unit -- consistent, not a gap."
+    }
+  ]
+}

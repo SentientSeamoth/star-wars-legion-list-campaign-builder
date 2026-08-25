@@ -1,0 +1,1642 @@
+{
+  "_meta": {
+    "description": "Seed library of Star Wars: Legion keywords for the app's rules engine and card viewer.",
+    "source_notes": "Descriptions are paraphrased summaries for gameplay reference, not verbatim rulebook text. Always defer to the official Core Rulebook / Errata Reference for tournament-legal rulings.",
+    "rules_baseline": "2024 Core Rulebook Refresh (v2.6.0), updated through the April 2026 Development Update",
+    "last_reviewed": "2026-08-23",
+    "verification_status": "PARTIAL VERIFICATION PASS on 2026-08-22 against legionquickguide.com (fan-maintained but tracks the live Core Rulebook, effective 5.29.2026). Keywords A-D were cross-checked directly against that source; corrections and additions from that pass are marked verified=true with a verification_note. Everything else (E-Z) still traces back to the original fan-wiki-based draft and is marked verified=false -- treat those as unconfirmed until a follow-up pass checks them against the current rules. KEYWORD-RESOLUTION PASS on 2026-08-23: added 55 new entries to resolve raw printed keyword strings from the 2026-08-23 card-extraction batches (data/units.json) against this library -- 44 sourced from swgametools.gyozaguy.com/legion/keywords (marked verified=true) or a corroborated secondary source, 11 left as honest verified=false placeholders where no rules text could be found (Combat Shield, Death from Above, Distract, Hold the Line, Hunted, \"I'm Part of the Squad Too\", Infinite Power, Interrogate, One Step Ahead, Small, Weighed Down). See db/seed.rs::resolve_keyword_id for the mechanical raw-string-to-id resolver and its `cargo test -- --nocapture unresolved_keywords` diagnostic."
+  },
+  "keywords": [
+    {
+      "id": "ai",
+      "name": "AI: [Action]",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": false,
+      "description": "If the unit has no faceup order token, it must attempt one of its listed actions as part of its Make Action step when it's suppressed, has a vehicle damage token, or (for vehicles) has lost half or more of its starting minis. If it can't take a listed action, it makes one fewer action that step.",
+      "rules_note": "Reworked in the April 2026 update; previously only triggered while suppressed and orderless.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "arm-x",
+      "name": "Arm X: [Charge Type]",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": true,
+      "description": "Card action: place X charge tokens of the listed type within range 1 and line of sight of your unit leader.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "armor",
+      "name": "Armor X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": true,
+      "description": "While defending, cancel up to X hit results, removed during the Modify Attack Dice step of the attack sequence.",
+      "verified": true,
+      "verification_note": "CORRECTED: original entry described an unparameterized 'Armor' (cancel all hits) that no longer appears as a distinct keyword in the current Core Rulebook glossary; only Armor X exists now."
+    },
+    {
+      "id": "arsenal-x",
+      "name": "Arsenal X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": true,
+      "description": "While attacking, each mini in the unit may use up to X of its weapons in the same attack pool.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "authoritative",
+      "name": "Authoritative",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "Once per Command Phase, when this unit would be issued an order, you may instead issue that order to a different friendly unit at range 1-2.",
+      "verified": true,
+      "verification_note": "CORRECTED: original said 'range 2' only; current rules are range 1-2."
+    },
+    {
+      "id": "block",
+      "name": "Block",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "While defending and spending a dodge token, gain a surge-to-block conversion, in melee or ranged combat (but not while using Guardian).",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "bounty",
+      "name": "Bounty",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "During setup, choose an enemy commander or operative unit; it gains a Bounty token. After an allied unit with this keyword defeats an enemy unit holding a Bounty token, you immediately score 1 VP.",
+      "verified": true,
+      "verification_note": "CORRECTED: original described an old victory-token-transfer/end-of-game mechanic. Current rules score 1 VP immediately on the qualifying kill; no token changes hands or is banked."
+    },
+    {
+      "id": "charge",
+      "name": "Charge",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "After a move action, you may perform a free melee attack immediately, interruptible only by an enemy standby.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "claim",
+      "name": "Claim",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "Card action: claim an objective token in base contact with your unit leader.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "climbing-vehicle",
+      "name": "Climbing Vehicle",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "Treated as a trooper unit for vertical-movement purposes.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "compel",
+      "name": "Compel",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "After another allied non-Droid Trooper unit at range 1-2 (matching a listed rank/unit type, if specified) rallies while suppressed but not panicked, at the start of its Make Actions step it may gain a suppression token to perform a free move.",
+      "verified": true,
+      "verification_note": "CORRECTED/CLARIFIED: added the 'non-Droid Trooper' restriction and exact timing (start of Make Actions step) present in the current glossary."
+    },
+    {
+      "id": "coordinate-x",
+      "name": "Coordinate: X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": false,
+      "description": "After being issued an order, you may issue an order to a friendly unit of the listed type at range 1.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "cover-x",
+      "name": "Cover X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": true,
+      "description": "While defending against a ranged attack, improve your cover value by X.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "cunning",
+      "name": "Cunning",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "When this unit's commander/operative-specific command card is revealed and would tie for priority, treat it as having 1 fewer pip (minimum 0). If both players reveal a Cunning-eligible card, the tie remains a tie.",
+      "verified": true,
+      "verification_note": "CLARIFIED: added the 'minimum 0' floor and the both-players-have-Cunning edge case, both present in the current glossary but missing from the original entry."
+    },
+    {
+      "id": "danger-sense-x",
+      "name": "Danger Sense X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": true,
+      "description": "May keep suppression tokens during rally/end phase; while defending a ranged attack, roll one extra defense die per suppression token held, up to X.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "dauntless",
+      "name": "Dauntless",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "After rallying while suppressed but not panicked, may gain a suppression token to perform a free move.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "deflect",
+      "name": "Deflect",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "While defending a ranged attack and spending a dodge token, gain surge-to-block; the attacker suffers a wound per surge rolled.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "demoralize-x",
+      "name": "Demoralize X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": true,
+      "description": "After your rally step, an enemy unit at range 1-2 gains up to X suppression tokens.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "detonate-x-y",
+      "name": "Detonate X: [Charge Type]",
+      "type": "weapon",
+      "parameterized": true,
+      "stacks": true,
+      "description": "After any unit performs an action, a unit with this weapon may detonate up to X friendly charge tokens of the listed type.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "disciplined-x",
+      "name": "Disciplined X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": true,
+      "description": "When issued an order, may remove up to X suppression tokens.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "disengage",
+      "name": "Disengage",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "Can perform move actions while engaged with one enemy unit.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "enrage-x",
+      "name": "Enrage X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": false,
+      "description": "While holding X or more wound tokens, courage is treated as '-' and the unit gains Charge.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "entourage-x",
+      "name": "Entourage: X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": true,
+      "description": "Ignores rank restrictions for the listed unit type when building an army; during the Command Phase may issue an order to a friendly unit of that type at range 1-2.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "exemplar",
+      "name": "Exemplar",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "Friendly units at range 1-2 and in line of sight may spend this unit's aim, dodge, and surge tokens as if they had them.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "expert-climber",
+      "name": "Expert Climber",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "May climb terrain up to height 2 in a single climb action.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "fire-support",
+      "name": "Fire Support",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "When another friendly unit makes a ranged attack, if this unit has a faceup order token, each of its minis may add an eligible weapon to that attack pool, then flip the order token facedown. Limit one Fire Support contribution per attack pool.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "full-pivot",
+      "name": "Full Pivot",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "May pivot up to 360 degrees instead of the normal pivot limit.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "generator-x",
+      "name": "Generator X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": true,
+      "description": "During the End Phase, flip up to X inactive shield tokens to active.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "grounded",
+      "name": "Grounded",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "Cannot perform climb actions.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "guardian-x",
+      "name": "Guardian X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": true,
+      "description": "When a friendly unit at range 1 defends a ranged attack, may intercept up to X hit results, rolling a defense die for each as if this unit were the defender.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "gunslinger",
+      "name": "Gunslinger",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "After a ranged attack action, may perform an additional ranged attack against a different unit.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "heavy-weapon-team",
+      "name": "Heavy Weapon Team",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "Must equip a Heavy Weapon upgrade; the mini it adds becomes the unit leader.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "high-velocity",
+      "name": "High Velocity",
+      "type": "weapon",
+      "parameterized": false,
+      "stacks": null,
+      "description": "If every weapon in the attack pool has High Velocity, the defender cannot spend dodge tokens against the attack.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "immune-x",
+      "name": "Immune: [Blast/Deflect/Melee/Pierce]",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": false,
+      "description": "The named keyword or attack type cannot be used against this unit.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "impact-x",
+      "name": "Impact X",
+      "type": "weapon",
+      "parameterized": true,
+      "stacks": true,
+      "description": "While attacking a unit with Armor, upgrade up to X hit results to crit results. Resolves after cover, before Armor.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "impervious",
+      "name": "Impervious",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "While defending against an attack pool with Pierce X, roll X additional defense dice.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "incognito",
+      "name": "Incognito",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "Cannot be attacked from beyond range 1 until this unit has made an attack or used an objective card action this game.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "inconspicuous",
+      "name": "Inconspicuous",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "While holding a suppression token, enemy attackers must target another unit if able; may choose not to remove suppression during Rally.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "independent-x",
+      "name": "Independent: [Token] X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": false,
+      "description": "At the start of the Activation Phase, if this unit has no order, it gains the listed number of the listed token type.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "indomitable",
+      "name": "Indomitable",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "Rolls red rather than white defense dice during the Rally step.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "infiltrate",
+      "name": "Infiltrate",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "May deploy anywhere beyond range 3 of all enemy units regardless of deployment zones, but still cannot begin the game in base contact with an objective token.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "inspire-x",
+      "name": "Inspire X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": true,
+      "description": "After your rally step, remove up to X total suppression tokens from other friendly units at range 1-2, split however you like.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "jedi-hunter",
+      "name": "Jedi Hunter",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "While attacking a unit with a Force upgrade icon, gain a surge-to-crit conversion.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "jump-x",
+      "name": "Jump X (card action)",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": false,
+      "description": "Perform a move action that ignores terrain up to height X.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "leader",
+      "name": "Leader",
+      "type": "upgrade",
+      "parameterized": false,
+      "stacks": null,
+      "description": "The mini added by this upgrade card becomes the unit leader; only one Leader upgrade may be equipped per unit.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "low-profile",
+      "name": "Low Profile",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "While defending with cover, cancel one additional hit result during the Apply Cover step, unless the attacker's Sharpshooter X meets or exceeds the defender's cover value.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "marksman",
+      "name": "Marksman",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "After converting surges, may spend aim tokens to upgrade individual die results (blank to hit, hit to crit, or two aims for blank to crit) without rerolling.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "nimble",
+      "name": "Nimble",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "After defending while spending one or more dodge tokens, gain a dodge token.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "noncombatant",
+      "name": "Noncombatant",
+      "type": "upgrade",
+      "parameterized": false,
+      "stacks": null,
+      "description": "The mini added by this upgrade cannot use weapons and is not the first mini wounds are assigned to (aside from the unit leader).",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "observe-x",
+      "name": "Observe X (card action)",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": true,
+      "description": "Choose an enemy unit at range 1-3 in line of sight; it gains X observation tokens.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "plodding",
+      "name": "Plodding",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "May only perform a single standard move during its activation.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "precise-x",
+      "name": "Precise X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": true,
+      "description": "When spending an aim token, may reroll up to X additional dice.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "pulling-the-strings",
+      "name": "Pulling the Strings (card action)",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "Choose a friendly trooper unit at range 1-2; it may perform a free attack or move action.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "quick-thinking",
+      "name": "Quick Thinking (card action)",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "Gain one aim token and one dodge token.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "ready-x",
+      "name": "Ready X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": true,
+      "description": "After performing a standby action, gain X aim tokens.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "regenerate-x",
+      "name": "Regenerate X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": true,
+      "description": "At the end of your activation, roll one white defense die per wound token held, up to X; remove a wound per surge or block result.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "relentless",
+      "name": "Relentless",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "After a move action, may perform a free attack action (melee or ranged) immediately, interruptible by triggered standby actions.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "repair",
+      "name": "Repair (upgrade, free card action)",
+      "type": "upgrade",
+      "parameterized": false,
+      "stacks": null,
+      "description": "Place a wound token on this card to remove one wound, ion, or vehicle damage token from a friendly ground vehicle at range 1 in line of sight; limited uses per card.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "reposition",
+      "name": "Reposition",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "Before or after a standard move, may perform a free pivot.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "scale",
+      "name": "Scale",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "Does not need to reduce speed to perform a climb action.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "scout-x",
+      "name": "Scout X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": false,
+      "description": "After deployment, may perform a speed-X move, but still cannot start the Activation Phase in base contact with an objective token.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "sentinel",
+      "name": "Sentinel",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "Standby range is extended to 1-3 instead of the normal range.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "sharpshooter-x",
+      "name": "Sharpshooter X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": true,
+      "description": "While attacking at range, reduce the defender's cover value by X.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "shielded-x",
+      "name": "Shielded X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": true,
+      "description": "The unit has X shield tokens, shared across all its minis.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "sidearm",
+      "name": "Sidearm: [Melee/Ranged]",
+      "type": "upgrade",
+      "parameterized": true,
+      "stacks": false,
+      "description": "The mini added by this upgrade can only attack using the upgrade's own weapon, restricted to the listed attack type if specified.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "spotter-x",
+      "name": "Spotter X (card action)",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": false,
+      "description": "Choose up to X friendly units at range 1; each gains an aim token.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "steady",
+      "name": "Steady",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "After a move action, may perform a free ranged attack action immediately, interruptible like Relentless.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "suppressive",
+      "name": "Suppressive",
+      "type": "weapon",
+      "parameterized": false,
+      "stacks": null,
+      "description": "After an attack using this weapon, the defender gains a suppression token.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "take-cover-x",
+      "name": "Take Cover X (card action)",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": false,
+      "description": "Choose up to X friendly trooper units at range 1; each gains a dodge token.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "transport-x-open",
+      "name": "Transport X: Open",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": false,
+      "description": "May carry X friendly trooper units, which can still act, gain/spend tokens, and attack/be attacked while transported; treated as having heavy cover.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "transport-x-closed",
+      "name": "Transport X: Closed",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": false,
+      "description": "May carry X friendly trooper units; transported units can only Disembark on activation and cannot attack or be targeted until they do. If the transport is destroyed, the transported unit takes a wound and a suppression token.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "treat-x-y",
+      "name": "Treat X: Y (upgrade, free card action)",
+      "type": "upgrade",
+      "parameterized": true,
+      "stacks": false,
+      "description": "Place a wound token on this card to remove X wounds from a friendly non-droid trooper unit at range 1 in line of sight, up to Y times per activation; does not stack with other Treat sources.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "unhindered",
+      "name": "Unhindered",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "Ignores the effects of difficult terrain.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "uncanny-luck-x",
+      "name": "Uncanny Luck X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": true,
+      "description": "While defending, may reroll up to X defense dice.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "outmaneuver",
+      "name": "Outmaneuver",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "May spend dodge tokens to cancel crit results.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "weak-point-x-y",
+      "name": "Weak Point X: [Arc Y]",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": false,
+      "description": "While defending, if the attacker's unit leader is inside the listed arc, the attack pool gains Impact X.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "beam-x",
+      "name": "Beam X",
+      "type": "weapon",
+      "parameterized": true,
+      "stacks": false,
+      "description": "After attacking with this weapon, may perform up to X extra attacks with it against different eligible, undefended enemy units at range 1 of the previous defender.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "blast",
+      "name": "Blast",
+      "type": "weapon",
+      "parameterized": false,
+      "stacks": null,
+      "description": "The defender cannot apply cover against an attack pool containing this weapon.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "ion-x",
+      "name": "Ion X",
+      "type": "weapon",
+      "parameterized": true,
+      "stacks": true,
+      "description": "A vehicle or droid wounded by this weapon gains X ion tokens.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "critical-x",
+      "name": "Critical X",
+      "type": "weapon",
+      "parameterized": true,
+      "stacks": true,
+      "description": "While converting offensive surges, may change up to X surge results to crit results.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "cumbersome",
+      "name": "Cumbersome",
+      "type": "weapon",
+      "parameterized": false,
+      "stacks": null,
+      "description": "Cannot be used if the unit moved with its first action that activation; using it doesn't prevent moving with the second action, and it can still be used on out-of-activation attacks (e.g. standby).",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "fixed",
+      "name": "Fixed: [Front/Rear/Side]",
+      "type": "weapon",
+      "parameterized": true,
+      "stacks": false,
+      "description": "The defender must be within the listed firing arc for this weapon to be used against it.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "pierce-x",
+      "name": "Pierce X",
+      "type": "weapon",
+      "parameterized": true,
+      "stacks": true,
+      "description": "While attacking, ignore up to X block results.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "poison-x",
+      "name": "Poison X",
+      "type": "weapon",
+      "parameterized": true,
+      "stacks": true,
+      "description": "A trooper wounded by this weapon gains X poison tokens.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "ram-x",
+      "name": "Ram X",
+      "type": "weapon",
+      "parameterized": true,
+      "stacks": true,
+      "description": "While attacking after a full-speed standard move, may convert up to X attack dice to crit results.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "scatter",
+      "name": "Scatter",
+      "type": "weapon",
+      "parameterized": false,
+      "stacks": null,
+      "description": "After attacking a small-based trooper unit, may reposition its non-leader minis as if the unit leader had made a standard move, following cohesion rules.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "spray",
+      "name": "Spray",
+      "type": "weapon",
+      "parameterized": false,
+      "stacks": null,
+      "description": "Adds this weapon's dice to the attack pool once per defending mini to which line of sight isn't blocked.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "tow-cable",
+      "name": "Tow Cable",
+      "type": "weapon",
+      "parameterized": false,
+      "stacks": null,
+      "description": "After a vehicle is wounded by this weapon, the attacker may perform a pivot with that vehicle.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "versatile",
+      "name": "Versatile",
+      "type": "weapon",
+      "parameterized": false,
+      "stacks": null,
+      "description": "Can be used to perform ranged attacks even while engaged in melee.",
+      "verified": false,
+      "verification_note": "NOT YET CROSS-CHECKED against the current (post-2024-refresh) official rules glossary. Original entry was sourced from a fan wiki that predates the refresh and may be outdated -- confirm before relying on this for rules enforcement."
+    },
+    {
+      "id": "advanced-targeting-x",
+      "name": "Advanced Targeting: [Unit Type] X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": null,
+      "description": "While attacking an enemy unit of the listed type, during Form Attack Pool you may gain X aim tokens; this restricts you to only 1 attack pool and skips Declare Additional Defender.",
+      "verified": true,
+      "verification_note": "NEW: added, confirmed in current glossary. Not present in original library."
+    },
+    {
+      "id": "agile-x",
+      "name": "Agile X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": null,
+      "description": "Each time you perform a standard move as part of an action or free action, gain X dodge tokens.",
+      "verified": true,
+      "verification_note": "NEW: added, confirmed in current glossary."
+    },
+    {
+      "id": "aid",
+      "name": "Aid: [Affiliation/Unit Type]",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": null,
+      "description": "Each time this unit would gain an aim, dodge, or surge token, another allied unit of the listed affiliation/type at range 2 in LOS may gain it instead; if so, this unit gains a suppression token.",
+      "verified": true,
+      "verification_note": "NEW: added, confirmed in current glossary."
+    },
+    {
+      "id": "assault-x",
+      "name": "Assault X",
+      "type": "weapon",
+      "parameterized": true,
+      "stacks": null,
+      "description": "When this weapon is added to an attack pool, if the defender is within range 1 of the attacker's unit leader, you may upgrade up to X of that weapon's attack dice.",
+      "verified": true,
+      "verification_note": "NEW: added, confirmed in current glossary."
+    },
+    {
+      "id": "associate",
+      "name": "Associate: [Unit Name]",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": null,
+      "description": "While building an army, this unit's rank doesn't count toward that rank's maximum if the named unit is also included in the army.",
+      "verified": true,
+      "verification_note": "NEW: added, confirmed in current glossary."
+    },
+    {
+      "id": "ataru-mastery",
+      "name": "Ataru Mastery",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "May make up to 2 attack actions per activation; gain a dodge token after attacking, and an aim token after defending.",
+      "verified": true,
+      "verification_note": "NEW: added, confirmed in current glossary."
+    },
+    {
+      "id": "attack-run",
+      "name": "Attack Run",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "At the start of your activation, you may increase or decrease your speed by 1 until the end of that activation.",
+      "verified": true,
+      "verification_note": "NEW: added, confirmed in current glossary."
+    },
+    {
+      "id": "backup",
+      "name": "Backup",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "A commander/operative trooper unit defending a ranged attack from beyond range 2 may cancel up to 2 hit results if it's at half range and in LOS of an eligible, unsuppressed friendly Corps trooper unit.",
+      "verified": true,
+      "verification_note": "NEW: added, confirmed in current glossary. Not tied to a unit keyword icon -- it's a rules concept some units grant."
+    },
+    {
+      "id": "barrage",
+      "name": "Barrage",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "May make 2 attack actions during your activation instead of 1, as long as you don't use Arsenal that activation.",
+      "verified": true,
+      "verification_note": "NEW: added, confirmed in current glossary."
+    },
+    {
+      "id": "bolster-x",
+      "name": "Bolster X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": null,
+      "description": "Card action: choose up to X allied units at range 2; each gains a surge token.",
+      "verified": true,
+      "verification_note": "NEW: added, confirmed in current glossary."
+    },
+    {
+      "id": "cache",
+      "name": "Cache",
+      "type": "upgrade",
+      "parameterized": false,
+      "stacks": null,
+      "description": "During setup, an equipped upgrade with this keyword places its listed tokens on the card; the unit may spend them even after the mini that card added is defeated.",
+      "verified": true,
+      "verification_note": "NEW: added, confirmed in current glossary."
+    },
+    {
+      "id": "calculate-odds",
+      "name": "Calculate Odds",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "Card action: choose an allied trooper unit at range 2 in LOS; it gains an aim token, a dodge token, and a suppression token.",
+      "verified": true,
+      "verification_note": "NEW: added, confirmed in current glossary."
+    },
+    {
+      "id": "command-vehicle-x",
+      "name": "Command Vehicle X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": null,
+      "description": "Allied same-affiliation/faction units at range 3 checking for panic treat this unit as a commander with courage X.",
+      "verified": true,
+      "verification_note": "NEW: added, confirmed in current glossary."
+    },
+    {
+      "id": "complete-the-mission",
+      "name": "Complete the Mission",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "During setup, place a Priority Mission token in contested territory; while at range 1 of it, gain surge-to-block; attacks against enemies at range 1 of it gain Critical 2.",
+      "verified": true,
+      "verification_note": "NEW: added, confirmed in current glossary."
+    },
+    {
+      "id": "contingencies-x",
+      "name": "Contingencies X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": true,
+      "description": "When building a command hand, set aside X extra facedown Contingency Cards; when you reveal a command card, you may swap in a same-pip Contingency Card before other effects resolve.",
+      "verified": true,
+      "verification_note": "NEW: added, confirmed in current glossary."
+    },
+    {
+      "id": "coordinate-unit-name-type",
+      "name": "Coordinate: [Unit Name/Type]",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "After being issued an order, may issue an order to an allied unit at range 1 matching a listed name/type; multiple instances let you choose the target but don't grant extra orders.",
+      "verified": true,
+      "verification_note": "NEW: added, confirmed in current glossary. Supersedes/clarifies the old 'Coordinate: X' entry in the original library, which used outdated range-1-only wording without the multi-instance clarification."
+    },
+    {
+      "id": "counterpart",
+      "name": "Counterpart: [Unit Name]",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "A companion mini permanently attached to another unit via a Counterpart Card; wounds can be diverted to it under specific conditions, and losing it strips the unit of the Counterpart Card's keywords/abilities.",
+      "verified": true,
+      "verification_note": "NEW: added, confirmed in current glossary."
+    },
+    {
+      "id": "covert-ops",
+      "name": "Covert Ops",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "During setup, may switch this unit's rank to Operative for the rest of the game (only if another Commander is in your army), gaining Infiltrate for that game.",
+      "verified": true,
+      "verification_note": "NEW: added, confirmed in current glossary."
+    },
+    {
+      "id": "cycle",
+      "name": "Cycle",
+      "type": "upgrade",
+      "parameterized": false,
+      "stacks": null,
+      "description": "At the end of the unit's activation, ready this exhausted upgrade card if it wasn't used that activation.",
+      "verified": true,
+      "verification_note": "NEW: added, confirmed in current glossary."
+    },
+    {
+      "id": "allies-of-convenience",
+      "name": "Allies of Convenience",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "This unit may issue orders to friendly Mercenary units regardless of affiliation. Additionally, when building an army, players may include one extra Mercenary unit in their army regardless of rank if there is at least one unit with the Allies of Convenience keyword, though they cannot take more units of a particular rank than normally allowed.",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass, sourced from swgametools.gyozaguy.com/legion/keywords."
+    },
+    {
+      "id": "combat-shield",
+      "name": "Combat Shield",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "NOT YET SOURCED. Printed on a real card (confirmed via the 2026-08-23 Shadow Collective extraction batch) but no rules text has been located from any checked source.",
+      "verified": false,
+      "verification_note": "UNSOURCED as of 2026-08-23: checked swgametools.gyozaguy.com/legion/keywords (no match) plus targeted web searches; nothing found. Description is an honest placeholder, not rules text -- do not use for gameplay until a real source is found."
+    },
+    {
+      "id": "death-from-above",
+      "name": "Death from Above",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "NOT YET SOURCED. Printed on a real card (confirmed via the 2026-08-23 Separatist extraction batch) but no rules text has been located from any checked source.",
+      "verified": false,
+      "verification_note": "UNSOURCED as of 2026-08-23: checked swgametools.gyozaguy.com/legion/keywords (no match) plus targeted web searches; nothing found. Description is an honest placeholder, not rules text -- do not use for gameplay until a real source is found."
+    },
+    {
+      "id": "defend-x",
+      "name": "Defend X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": null,
+      "description": "After you are issued an order, gain X dodge token(s).",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass, sourced from swgametools.gyozaguy.com/legion/keywords (site phrasing: 'issued an order token'; treated as equivalent to 'issued an order' per this library's phrasing elsewhere)."
+    },
+    {
+      "id": "detachment",
+      "name": "Detachment: [Unit Name]",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": null,
+      "description": "During army building, a unit with this keyword can only be included in a player's army if a unit matching the listed name is also included in that army. Each unit with this keyword needs its own matching unit.",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass. Template generalized from 4 confirmed identical instances (Detachment: Cassian Andor / Maul / Rebel Veterans / Shoretroopers) on swgametools.gyozaguy.com/legion/keywords; the named-unit variants on real cards (ARC Troopers, BX-Series Droid Commandos, Rebel Commandos, Scout Troopers) weren't individually listed there but follow the same confirmed template."
+    },
+    {
+      "id": "direct",
+      "name": "Direct: [Unit Type]",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": null,
+      "description": "During the Command Phase, you may issue an order to a friendly unit of the listed type at range 1-2.",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass, sourced from swgametools.gyozaguy.com/legion/keywords (4 confirmed instances: Direct: AI Unit / Corps Clone Trooper Unit / Corps Droid Trooper Unit / Vehicle, all sharing this template)."
+    },
+    {
+      "id": "distract",
+      "name": "Distract",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "NOT YET SOURCED. Printed on a real card (confirmed via the 2026-08-23 extraction batches) but no rules text has been located from any checked source.",
+      "verified": false,
+      "verification_note": "UNSOURCED as of 2026-08-23: checked swgametools.gyozaguy.com/legion/keywords (no match) plus targeted web searches; nothing found. Description is an honest placeholder, not rules text -- do not use for gameplay until a real source is found."
+    },
+    {
+      "id": "djem-so-mastery",
+      "name": "Djem So Mastery",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "While defending, if you spend a dodge token, you gain 'Surge Block: Block'; if at least one Hit or Critical result was canceled, the attacker suffers one wound.",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass, sourced from swgametools.gyozaguy.com/legion/keywords."
+    },
+    {
+      "id": "duelist",
+      "name": "Duelist",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "While performing a melee attack, if you spend an aim token, gain Pierce 1. While defending against a melee attack, if you spend a dodge token, gain Immune: Pierce.",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass, sourced from swgametools.gyozaguy.com/legion/keywords."
+    },
+    {
+      "id": "equip",
+      "name": "Equip: [Upgrade/Unit Name]",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": null,
+      "description": "You must equip the listed upgrade card(s) or unit(s) during army building.",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass. Template from 2 confirmed identical instances (Equip: Del Meeko, Gideon Hask / Equip: Tristan Wren, Ursa Wren) on swgametools.gyozaguy.com/legion/keywords; other named variants on real cards (A280, Katarn Pattern Armor, Crosshair/Echo/Hunter/Tech/Wrecker) weren't individually listed there but follow the same confirmed template."
+    },
+    {
+      "id": "field-commander",
+      "name": "Field Commander",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "After a friendly neutral command card is played, you can be nominated as a commander.",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass, sourced from swgametools.gyozaguy.com/legion/keywords."
+    },
+    {
+      "id": "flexible-response-x",
+      "name": "Flexible Response X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": null,
+      "description": "This unit must equip X Heavy Weapon upgrades.",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass, sourced from swgametools.gyozaguy.com/legion/keywords."
+    },
+    {
+      "id": "guidance",
+      "name": "Guidance: [Unit Type]",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": null,
+      "description": "Card action: choose another friendly trooper unit at range 1-2; it may perform a free non-attack action.",
+      "verified": false,
+      "verification_note": "PARTIALLY SOURCED 2026-08-23: swgametools.gyozaguy.com/legion/keywords lists a plain 'Guidance' entry with this text and no type restriction, but real cards print colon-suffixed variants (Guidance: Ground Vehicle, Guidance: Trooper, Guidance: Trooper Unit) implying the target may actually be restricted to the listed type -- that restriction isn't confirmed by the source found. Treat the 'trooper unit' wording as possibly outdated/incomplete until a better source is checked."
+    },
+    {
+      "id": "hold-the-line",
+      "name": "Hold the Line",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "NOT CONFIRMED. Search results (not a direct source fetch) suggest this strengthens a unit once engaged, granting surge-to-hit and surge-to-block, introduced with the Imperial Riot Control Squad -- but no exact rules text was found from a checked primary source.",
+      "verified": false,
+      "verification_note": "UNSOURCED as of 2026-08-23: only a low-confidence search-engine summary was found (no direct page fetch succeeded), referencing the Imperial Riot Control Squad. Description is not verbatim rules text -- do not use for gameplay until a real source is found."
+    },
+    {
+      "id": "hover-air-x",
+      "name": "Hover: Air X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": null,
+      "description": "While moving, ignore terrain height X or lower.",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass, sourced from swgametools.gyozaguy.com/legion/keywords. Distinct mechanic from Hover: Ground despite the shared 'Hover' prefix -- resolved via an explicit raw-text-prefix override in db/seed.rs, since the two don't share a template."
+    },
+    {
+      "id": "hover-ground",
+      "name": "Hover: Ground",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "You can reverse, strafe, and standby. You are treated as a ground vehicle by other units.",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass, sourced from swgametools.gyozaguy.com/legion/keywords. Distinct mechanic from Hover: Air X despite the shared 'Hover' prefix -- resolved via an explicit raw-text-prefix override in db/seed.rs, since the two don't share a template."
+    },
+    {
+      "id": "hunted",
+      "name": "Hunted",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "NOT YET SOURCED. Printed on a real card (confirmed via the 2026-08-23 Shadow Collective extraction batch, on Grogu) but no rules text has been located from any checked source.",
+      "verified": false,
+      "verification_note": "UNSOURCED as of 2026-08-23: checked swgametools.gyozaguy.com/legion/keywords (no match) plus targeted web searches; nothing found. Description is an honest placeholder, not rules text -- do not use for gameplay until a real source is found."
+    },
+    {
+      "id": "i-m-part-of-the-squad-too",
+      "name": "\"I'm Part of the Squad Too\"",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "NOT YET SOURCED. Printed on a real card (confirmed via the 2026-08-23 Shadow Collective extraction batch, on the Shadow Collective 'The Bad Batch' variant) but no rules text has been located from any checked source.",
+      "verified": false,
+      "verification_note": "UNSOURCED as of 2026-08-23: checked swgametools.gyozaguy.com/legion/keywords (no match) plus targeted web searches; nothing found. Description is an honest placeholder, not rules text -- do not use for gameplay until a real source is found."
+    },
+    {
+      "id": "infinite-power",
+      "name": "Infinite Power",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "NOT YET SOURCED. Printed on a real card (confirmed via the 2026-08-23 Shadow Collective extraction batch, on Grogu) but no rules text has been located from any checked source.",
+      "verified": false,
+      "verification_note": "UNSOURCED as of 2026-08-23: checked swgametools.gyozaguy.com/legion/keywords (no match) plus targeted web searches; nothing found. Description is an honest placeholder, not rules text -- do not use for gameplay until a real source is found."
+    },
+    {
+      "id": "interrogate",
+      "name": "Interrogate",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "NOT YET SOURCED. Printed on a real card (confirmed via the 2026-08-23 Empire extraction batch) but no rules text has been located from any checked source.",
+      "verified": false,
+      "verification_note": "UNSOURCED as of 2026-08-23: checked swgametools.gyozaguy.com/legion/keywords (no match) plus targeted web searches; nothing found. Description is an honest placeholder, not rules text -- do not use for gameplay until a real source is found."
+    },
+    {
+      "id": "jar-kai-mastery",
+      "name": "Jar'Kai Mastery",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "While performing a melee attack, after converting attack surges, may spend any number of dodge tokens: each spent token changes a blank result to a Hit result, a Hit result to a Critical result, or two spent tokens change a blank result to a Critical result.",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass, sourced from swgametools.gyozaguy.com/legion/keywords."
+    },
+    {
+      "id": "juyo-mastery",
+      "name": "Juyo Mastery",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "While you are wounded, you can perform one additional action during your activation. Limit two move actions.",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass, sourced from swgametools.gyozaguy.com/legion/keywords."
+    },
+    {
+      "id": "makashi-mastery",
+      "name": "Makashi Mastery",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "While performing a melee attack, you may reduce the Pierce value of your melee weapon by 1. If you do, the defender cannot use Immune: Pierce.",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass, sourced from swgametools.gyozaguy.com/legion/keywords."
+    },
+    {
+      "id": "master-of-the-force-x",
+      "name": "Master of the Force X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": null,
+      "description": "At the end of your activation, you may ready X of your Force upgrade cards.",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass, sourced from swgametools.gyozaguy.com/legion/keywords."
+    },
+    {
+      "id": "mercenary",
+      "name": "Mercenary",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "Printed on units belonging to the Mercenary affiliation. A unit's affiliation icon governs which friendly units can issue it orders (normally only units sharing the same affiliation); see the Allies of Convenience keyword for the exception that lets non-Mercenary units order Mercenary ones, and Self-Preservation for the affiliation-scoped panic-check interaction. Distinct from the playable faction/army identity elsewhere in this app's data referred to as 'shadow_collective' -- Mercenary is a real, separate affiliation-system concept, not another name for that faction.",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass. Synthesized from the Allies of Convenience and Self-Preservation entries on swgametools.gyozaguy.com/legion/keywords plus corroborating Atomic Mass Games forum discussion of affiliation rules -- no single page gives a standalone 'Mercenary' keyword definition, since it's fundamentally an affiliation tag rather than a triggered ability."
+    },
+    {
+      "id": "one-step-ahead",
+      "name": "One Step Ahead",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "NOT YET SOURCED. Printed on a real card (confirmed via the 2026-08-23 Rebel extraction batch) but no rules text has been located from any checked source.",
+      "verified": false,
+      "verification_note": "UNSOURCED as of 2026-08-23: checked swgametools.gyozaguy.com/legion/keywords (no match) plus targeted web searches; nothing found. Description is an honest placeholder, not rules text -- do not use for gameplay until a real source is found."
+    },
+    {
+      "id": "override-x",
+      "name": "Override X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": null,
+      "description": "When a friendly unit begins its activation while at range X, this unit may gain one suppression token. If it does, the activating unit ignores the AI keyword during its activation.",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass, sourced from swgametools.gyozaguy.com/legion/keywords."
+    },
+    {
+      "id": "prepared-position",
+      "name": "Prepared Position",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "During the Deploy in Prepared Positions step of Setup, a unit with this keyword may deploy by placing its unit leader completely within allied territory, and gains a dodge token when placed. Starting with the blue player, players alternate placing units with this keyword.",
+      "verified": false,
+      "verification_note": "PARTIALLY SOURCED 2026-08-23: no direct page fetch succeeded (Legion Helper and Tabletop Admiral pages are JS-rendered and returned no content to WebFetch); this description is a search-engine synthesis referencing the Atomic Mass Games rules-questions forum, not a verbatim quote from an official document. Treat as a reasonable lead, not confirmed rules text, until a direct source is checked."
+    },
+    {
+      "id": "programmed",
+      "name": "Programmed",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "Equip at least one Protocol Upgrade Card during army building.",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass, sourced from swgametools.gyozaguy.com/legion/keywords."
+    },
+    {
+      "id": "recharge-x",
+      "name": "Recharge X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": null,
+      "description": "When this unit recovers, it may flip up to X inactive shield tokens to their active side.",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass, sourced from swgametools.gyozaguy.com/legion/keywords."
+    },
+    {
+      "id": "reinforcements",
+      "name": "Reinforcements",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "This unit may deploy after all other units without the Reinforcements keyword have deployed.",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass, sourced from swgametools.gyozaguy.com/legion/keywords."
+    },
+    {
+      "id": "reliable-x",
+      "name": "Reliable X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": null,
+      "description": "At the start of the Activation Phase, gain X surge token(s).",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass, sourced from swgametools.gyozaguy.com/legion/keywords."
+    },
+    {
+      "id": "retinue",
+      "name": "Retinue: [Commander/Unit Name]",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": null,
+      "description": "At the start of the Activation Phase, if you are at range 1-2 of the listed commander or named unit, gain 1 aim or dodge token.",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass. Template from 4 confirmed identical instances (Retinue: Commander / Iden Versio / Maul / Sabine Wren) on swgametools.gyozaguy.com/legion/keywords; Retinue: Poggle the Lesser on a real card wasn't individually listed there but follows the same confirmed template."
+    },
+    {
+      "id": "ruthless",
+      "name": "Ruthless",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "When another friendly Corps trooper unit at range 2 and in line of sight that has a faceup order token activates, it may suffer one wound to perform one free action.",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass, sourced from swgametools.gyozaguy.com/legion/keywords."
+    },
+    {
+      "id": "scouting-party-x",
+      "name": "Scouting Party X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": null,
+      "description": "After you use Scout, choose up to X friendly troopers at range 1-2; each may perform a move with speed equal to your Scout value.",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass, sourced from swgametools.gyozaguy.com/legion/keywords."
+    },
+    {
+      "id": "secret-mission",
+      "name": "Secret Mission",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "Once per game, if you are within an enemy deployment zone, place one victory token on you. At the end of the game, if you have a victory token, gain that token.",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass, sourced from swgametools.gyozaguy.com/legion/keywords."
+    },
+    {
+      "id": "self-destruct-x",
+      "name": "Self-Destruct X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": null,
+      "description": "A unit can perform a free Self-Destruct attack during its activation if it has at least X wound tokens, attacking each unit at range 1 and in line of sight (even if engaged) using its Self-Destruct weapon. Self-Destruct attacks are ranged attacks even though Self-Destruct weapons are not ranged weapons, and may not be made by a unit embarked on a transport.",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass, sourced from swgametools.gyozaguy.com/legion/keywords."
+    },
+    {
+      "id": "self-preservation",
+      "name": "Self-Preservation",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "When checking to see if this unit panics, it cannot use the courage value of units that are not of the same affiliation.",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass, sourced from swgametools.gyozaguy.com/legion/keywords."
+    },
+    {
+      "id": "small",
+      "name": "Small",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "NOT YET SOURCED as a discrete keyword's rules text. Printed on a real card (confirmed via the 2026-08-23 Shadow Collective extraction batch, on Grogu) but no rules text has been located from any checked source -- likely related to, but not confirmed identical to, the base-size classification separately used for cover/movement rules.",
+      "verified": false,
+      "verification_note": "UNSOURCED as of 2026-08-23: checked swgametools.gyozaguy.com/legion/keywords (no match) plus targeted web searches; found general base-size context but no discrete 'Small' keyword rules text. Description is an honest placeholder, not rules text -- do not use for gameplay until a real source is found."
+    },
+    {
+      "id": "soresu-mastery",
+      "name": "Soresu Mastery",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "While defending or using Guardian, if you spend a dodge token, you gain 'Surge Block: Block' and the attacker suffers one wound for each Surge Block rolled.",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass, sourced from swgametools.gyozaguy.com/legion/keywords."
+    },
+    {
+      "id": "special-issue",
+      "name": "Special Issue: [Battle Force]",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": null,
+      "description": "This unit may only be included in the listed Battle Force.",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass. Template from 2 confirmed identical instances (Special Issue: Blizzard Force / Tempest Force) on swgametools.gyozaguy.com/legion/keywords; other named variants on real cards (Experimental Droids, Rapid Interdiction Force, Wookiee Defenders) weren't individually listed there but follow the same confirmed template."
+    },
+    {
+      "id": "speeder-x",
+      "name": "Speeder X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": null,
+      "description": "While performing a move, this unit can move over or end its movement on terrain equal to or less than height X. Additionally, it must perform a free compulsory move action at the start or end of its Perform Actions step; compulsory moves do not satisfy the requirements of an AI keyword.",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass, sourced from swgametools.gyozaguy.com/legion/keywords."
+    },
+    {
+      "id": "spur",
+      "name": "Spur",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "When performing a move, this unit's controlling player may assign it one suppression token to increase its maximum speed by 1 for that move, to a maximum of 3. Effects that increase maximum speed apply before effects that reduce it.",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass, sourced from swgametools.gyozaguy.com/legion/keywords."
+    },
+    {
+      "id": "stationary",
+      "name": "Stationary",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "You cannot perform moves, except pivots.",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass, sourced from swgametools.gyozaguy.com/legion/keywords."
+    },
+    {
+      "id": "strategize-x",
+      "name": "Strategize X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": null,
+      "description": "Card action: gain one suppression token, then choose X friendly units at range 1; each gains one aim and one dodge token.",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass, sourced from swgametools.gyozaguy.com/legion/keywords."
+    },
+    {
+      "id": "tactical-x",
+      "name": "Tactical X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": null,
+      "description": "After you perform a standard move, gain X aim token(s).",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass, sourced from swgametools.gyozaguy.com/legion/keywords."
+    },
+    {
+      "id": "target-x",
+      "name": "Target X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": null,
+      "description": "After you are issued an order, gain X aim token(s).",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass, sourced from swgametools.gyozaguy.com/legion/keywords."
+    },
+    {
+      "id": "teamwork",
+      "name": "Teamwork: [Unit Name]",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": null,
+      "description": "While you are at range 1-2 of the listed unit, when you or that unit gains an aim or dodge token, the other unit gains a token of the same type.",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass. Template from 2 confirmed identical instances (Teamwork: Cassian Andor / Han Solo) on swgametools.gyozaguy.com/legion/keywords."
+    },
+    {
+      "id": "tempted",
+      "name": "Tempted",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "You can equip Force upgrades of any alignment.",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass, sourced from swgametools.gyozaguy.com/legion/keywords."
+    },
+    {
+      "id": "unconcerned",
+      "name": "Unconcerned",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "This unit cannot benefit from cover, and its miniatures cannot be repaired or restored.",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass, sourced from swgametools.gyozaguy.com/legion/keywords."
+    },
+    {
+      "id": "unstoppable",
+      "name": "Unstoppable",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "This unit is eligible to activate during the Activation Phase while it has one or fewer facedown order tokens, and may never have more than one faceup order token. While it is not defeated, its controlling player adds an additional order token of this unit's rank to their order pool when creating it.",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass, sourced from swgametools.gyozaguy.com/legion/keywords."
+    },
+    {
+      "id": "we-re-not-regs",
+      "name": "We're Not Regs",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "A unit with this keyword may not spend green tokens on other Clone Trooper units, and other Clone Trooper units may not spend that unit's green tokens.",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass, sourced from frontlinegaming.org's coverage of a Core Rulebook keyword update."
+    },
+    {
+      "id": "weighed-down",
+      "name": "Weighed Down",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "NOT YET SOURCED. Printed on a real card (confirmed via the 2026-08-23 Separatist extraction batch) but no rules text has been located from any checked source.",
+      "verified": false,
+      "verification_note": "UNSOURCED as of 2026-08-23: checked swgametools.gyozaguy.com/legion/keywords (no match) plus targeted web searches; nothing found. Description is an honest placeholder, not rules text -- do not use for gameplay until a real source is found."
+    },
+    {
+      "id": "wheel-mode",
+      "name": "Wheel Mode",
+      "type": "unit",
+      "parameterized": false,
+      "stacks": null,
+      "description": "When you activate, you may increase your maximum speed to 3. If you do, until the end of the round, you gain Cover 2 and cannot attack or flip active shield tokens.",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass, sourced from swgametools.gyozaguy.com/legion/keywords."
+    },
+    {
+      "id": "wound-x",
+      "name": "Wound X",
+      "type": "unit",
+      "parameterized": true,
+      "stacks": null,
+      "description": "The first time a unit with this keyword enters play, that unit suffers X wounds.",
+      "verified": true,
+      "verification_note": "NEW: added 2026-08-23 during the keyword-resolution pass, sourced from swgametools.gyozaguy.com/legion/keywords."
+    }
+  ]
+}

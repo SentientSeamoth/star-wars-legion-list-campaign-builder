@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://legion-app.local/schema/scenario.schema.json",
+  "title": "Legion Scenario/Objective Card Library",
+  "type": "object",
+  "required": [
+    "_meta", "primary_objectives", "secondary_objectives",
+    "advantage_cards", "recon_format_cards", "official_narrative_scenarios"
+  ],
+  "properties": {
+    "_meta": { "type": "object" },
+    "primary_objectives": { "type": "array", "items": { "$ref": "#/definitions/objective" } },
+    "secondary_objectives": { "type": "array", "items": { "$ref": "#/definitions/objective" } },
+    "advantage_cards": { "type": "array", "items": { "$ref": "#/definitions/objective" } },
+    "recon_format_cards": { "type": "array", "items": { "$ref": "#/definitions/objective" } },
+    "official_narrative_scenarios": { "type": "array", "items": { "$ref": "#/definitions/objective" } }
+  },
+  "definitions": {
+    "objective": {
+      "type": "object",
+      "required": ["id", "name", "category", "game_format", "roster_verified"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+        "name": { "type": "string", "minLength": 1 },
+        "category": {
+          "type": "string",
+          "enum": ["primary", "secondary", "advantage", "recon", "narrative-scenario"]
+        },
+        "game_format": {
+          "type": "string",
+          "enum": ["standard-1000", "recon-600", "narrative"]
+        },
+        "game_format_verified": { "type": "boolean" },
+        "roster_verified": { "type": "boolean" },
+        "roster_source": { "type": "string" },
+        "map_card": { "type": ["string", "null"] },
+        "deployment_note": { "type": ["string", "null"] },
+        "points_of_interest": { "type": ["array", "null"] },
+        "points_of_interest_verified": { "type": "boolean" },
+        "victory_condition": { "type": ["string", "null"] },
+        "victory_condition_verified": { "type": "boolean" },
+        "notes": { "type": ["string", "null"] }
+      },
+      "additionalProperties": false
+    }
+  }
+}

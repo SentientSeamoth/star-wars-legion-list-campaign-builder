@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://legion-app.local/schema/affiliation.schema.json",
+  "title": "Legion Affiliation Reference",
+  "type": "object",
+  "required": ["_meta", "affiliations"],
+  "properties": {
+    "_meta": { "type": "object" },
+    "affiliations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "roster_verified"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+          "name": { "type": "string" },
+          "description": { "type": ["string", "null"] },
+          "description_verified": { "type": "boolean" },
+          "order_rule": { "type": ["string", "null"] },
+          "order_rule_verified": { "type": "boolean" },
+          "roster_verified": { "type": "boolean" },
+          "roster_source": { "type": "string" },
+          "notes": { "type": ["string", "null"] }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

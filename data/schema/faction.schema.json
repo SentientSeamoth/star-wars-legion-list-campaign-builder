@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://legion-app.local/schema/faction.schema.json",
+  "title": "Legion Faction Reference",
+  "type": "object",
+  "required": ["_meta", "factions"],
+  "properties": {
+    "_meta": { "type": "object" },
+    "factions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "alignment", "description"],
+        "properties": {
+          "id": { "type": "string", "enum": ["empire","separatist","rebel","republic","shadow_collective"] },
+          "name": { "type": "string" },
+          "alignment": { "type": "string", "enum": ["dark-side","light-side","neutral"] },
+          "era": { "type": ["string", "null"] },
+          "description": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

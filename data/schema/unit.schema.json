@@ -1,0 +1,98 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://legion-app.local/schema/unit.schema.json",
+  "title": "Legion Unit Roster Library",
+  "type": "object",
+  "required": ["_meta", "units"],
+  "properties": {
+    "_meta": { "type": "object" },
+    "units": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/unit" }
+    }
+  },
+  "definitions": {
+    "unit": {
+      "type": "object",
+      "required": [
+        "id", "name", "unique", "factions", "rank", "unit_types",
+        "legality", "roster_verified", "stats", "stats_verified"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+        "name": { "type": "string", "minLength": 1 },
+        "subtitle": {
+          "type": ["string", "null"],
+          "description": "Flavor title printed on the card under the name (e.g. 'Master Tactician', 'Dark Lord of the Sith'). Distinct from the parenthetical variant tags already folded into some units' `name` (e.g. 'Stormtroopers (Heavy Response Unit)') -- those remain part of `name` for id-stability; this field is purely the character's epithet."
+        },
+        "unique": { "type": "boolean" },
+        "unique_verified": { "type": "boolean" },
+        "factions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": ["empire", "separatist", "rebel", "republic", "shadow_collective"]
+          }
+        },
+        "affiliation": { "type": ["string", "null"] },
+        "affiliation_verified": { "type": "boolean" },
+        "rank": {
+          "type": "string",
+          "enum": ["commander", "operative", "corps", "special-forces", "support", "heavy", "attached"],
+          "description": "'attached' is not one of the six standard army-building ranks -- it's for companion/detachment units (e.g. a Counterpart droid, a weapon-upgrade-granted sub-unit) that aren't independently selected in list building. Added because real extracted card data included units of this kind; confirm against rules text before relying on it for list validation."
+        },
+        "unit_types": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": ["trooper", "vehicle", "droid", "creature", "emplacement"]
+          },
+          "description": "Overlap is expected and allowed -- e.g. a droid unit is also a trooper for most rules purposes; a creature-mounted rider may be trooper+creature."
+        },
+        "unit_types_verified": { "type": "boolean" },
+        "legality": { "type": "string", "enum": ["active", "removed"] },
+        "roster_verified": { "type": "boolean" },
+        "roster_source": { "type": "string" },
+        "roster_source_note": { "type": "string" },
+        "stats": {
+          "type": "object",
+          "properties": {
+            "base_count": { "type": ["integer", "null"] },
+            "base_size": { "type": ["string", "null"] },
+            "points": { "type": ["integer", "null"] },
+            "points_verified": { "type": "boolean" },
+            "points_source": { "type": ["string", "null"] },
+            "wound_threshold": { "type": ["integer", "null"] },
+            "courage": { "type": ["integer", "string", "null"] },
+            "resilience": {
+              "type": ["integer", "null"],
+              "description": "Distinct from courage -- vehicles use resilience, not courage, per real card data. Mutually exclusive with courage in practice."
+            },
+            "speed": { "type": ["integer", "null"] },
+            "defense_die": { "type": ["string", "null"], "enum": ["white", "red", null] },
+            "attack_surge": { "type": ["string", "null"], "description": "e.g. 'hit', 'crit', 'none' -- what the attack surge icon converts to on this unit's default profile." },
+            "defense_surge": { "type": ["string", "null"], "description": "e.g. 'block', 'none' -- what the defense surge icon converts to." },
+            "surge_chart": { "type": ["object", "null"] },
+            "weapons": { "type": ["array", "null"] },
+            "weapons_verified": { "type": "boolean" },
+            "keywords": { "type": ["array", "null"] },
+            "keywords_resolved_to_library": {
+              "type": "boolean",
+              "description": "false means stats.keywords contains raw printed keyword strings (with card parameters, e.g. 'Precise 1') that have NOT been cross-referenced/mapped to ids in data/keywords.json. Many won't resolve at all since keywords.json's E-Z range is itself unverified/incomplete."
+            },
+            "upgrade_bar": { "type": ["array", "null"] }
+          },
+          "additionalProperties": false
+        },
+        "stats_verified": { "type": "boolean" },
+        "stats_note": { "type": "string" },
+        "expansion": { "type": ["string", "null"] },
+        "notes": { "type": ["string", "null"] }
+      },
+      "additionalProperties": false
+    }
+  }
+}

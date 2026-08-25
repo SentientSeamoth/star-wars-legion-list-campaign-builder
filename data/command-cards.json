@@ -1,0 +1,81 @@
+{
+  "_meta": {
+    "description": "Command card library for the Legion app. A command hand is built from exactly 7 cards: 2x 1-pip, 2x 2-pip, 2x 3-pip, and the 4-pip 'Standing Orders' -- no duplicates allowed. Generic cards (this seed) can be played by any commander in any army; commander-specific cards are owned by a named commander unit (see data/units.json) and only usable if that unit is in the army.",
+    "command_hand_rule": "2x one-pip + 2x two-pip + 2x three-pip + 1x Standing Orders (four-pip) = 7 cards total, no duplicate card names.",
+    "command_hand_rule_verified": true,
+    "priority_rule": "Whoever plays the command card with the fewest pips wins priority for the round and acts first in the Activation Phase; ties are broken by a defense die roll (see keywords.json/rules notes on 'Command Phase').",
+    "priority_rule_verified": true,
+    "last_reviewed": "2026-08-22",
+    "verification_status": "SEED ONLY. Populated: the 4 faction-neutral generic command cards (Ambush/Push/Assault/Standing Orders) with pips and units-activated counts confirmed via multiple convergent sources. Effect text is paraphrased and mostly NOT verified against current exact wording (post-2024-refresh reprints may have changed details) -- see effect_verified per card. NOT populated: commander-specific command cards. Every commander unit in units.json (35 of them) typically owns ~2-3 personal command cards of their own -- that's roughly 70-100+ additional cards not yet catalogued here, plus faction-restricted and battle-force-restricted generic-ish cards (e.g. '501st Legion only') seen during research but not enumerated. See docs/TODO.md."
+  },
+  "command_cards": [
+    {
+      "id": "ambush",
+      "name": "Ambush",
+      "category": "generic",
+      "commander_unit_id": null,
+      "pips": 1,
+      "units_activated": 1,
+      "unit_activation_restriction": null,
+      "faction_restriction": null,
+      "battle_force_restriction": null,
+      "effect_description": "Issue an order to 1 unit. No additional special effect beyond a fast, narrow order -- lowest pip count of the four generics, so it's the most likely to win priority, at the cost of only ordering a single unit.",
+      "effect_verified": false,
+      "roster_verified": true,
+      "roster_source": "Multiple convergent sources (FFG 2018 article, wiki card pages, community rules summaries), confirmed 2026-08-22",
+      "source": "Legion Core Set (all four generics ship in the Core Set and remain in the current card pool per 2025 Updated Battle Cards reprints)",
+      "notes": null
+    },
+    {
+      "id": "push",
+      "name": "Push",
+      "category": "generic",
+      "commander_unit_id": null,
+      "pips": 2,
+      "units_activated": 2,
+      "unit_activation_restriction": null,
+      "faction_restriction": null,
+      "battle_force_restriction": null,
+      "effect_description": "Issue orders to 2 units. Straightforward order-issuing card with no additional special effect noted in available sources.",
+      "effect_verified": false,
+      "roster_verified": true,
+      "roster_source": "Multiple convergent sources (FFG 2018 article, wiki card pages, community rules summaries), confirmed 2026-08-22",
+      "source": "Legion Core Set (all four generics ship in the Core Set and remain in the current card pool per 2025 Updated Battle Cards reprints)",
+      "notes": null
+    },
+    {
+      "id": "assault",
+      "name": "Assault",
+      "category": "generic",
+      "commander_unit_id": null,
+      "pips": 3,
+      "units_activated": 3,
+      "unit_activation_restriction": null,
+      "faction_restriction": null,
+      "battle_force_restriction": null,
+      "effect_description": "Issue orders to 3 units. Straightforward order-issuing card with no additional special effect noted in available sources.",
+      "effect_verified": false,
+      "roster_verified": true,
+      "roster_source": "Multiple convergent sources (FFG 2018 article, wiki card pages, community rules summaries), confirmed 2026-08-22",
+      "source": "Legion Core Set (all four generics ship in the Core Set and remain in the current card pool per 2025 Updated Battle Cards reprints)",
+      "notes": null
+    },
+    {
+      "id": "standing-orders",
+      "name": "Standing Orders",
+      "category": "generic",
+      "commander_unit_id": null,
+      "pips": 4,
+      "units_activated": 1,
+      "unit_activation_restriction": null,
+      "faction_restriction": null,
+      "battle_force_restriction": null,
+      "effect_description": "Issue an order to 1 unit. Unlike every other command card, Standing Orders returns to your hand at the end of the Command Phase instead of being spent/discarded, so it can be replayed round after round -- trades speed (highest pip count, so you're unlikely to win priority) for reusability.",
+      "effect_verified": true,
+      "roster_verified": true,
+      "roster_source": "Multiple convergent sources (FFG 2018 article, wiki card pages, community rules summaries), confirmed 2026-08-22",
+      "source": "Legion Core Set (all four generics ship in the Core Set and remain in the current card pool per 2025 Updated Battle Cards reprints)",
+      "notes": "The 'returns to your hand' mechanic is directly and consistently confirmed across sources; this is the one effect description in this generic seed with higher confidence."
+    }
+  ]
+}

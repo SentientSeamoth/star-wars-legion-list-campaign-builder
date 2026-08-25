@@ -1,0 +1,97 @@
+{
+  "_meta": {
+    "description": "Reference library of retail products (core sets, unit expansions, Battle Force starter sets, card packs). This is the missing link between 'what a person owns' and 'which units/upgrades/command cards they therefore have physical miniatures/cards for' -- it's what data/units.json's currently-empty `expansion` field should eventually point back into, and what the collection-tracking database tables in src-tauri/migrations/0002_collection.sql are built against.",
+    "product_types": [
+      "core-set",
+      "unit-expansion",
+      "commander-expansion",
+      "operative-expansion",
+      "battle-force-starter-set",
+      "upgrade-card-pack",
+      "battle-card-pack",
+      "other"
+    ],
+    "last_reviewed": "2026-08-22",
+    "verification_status": "EARLY SEED -- only 2 products populated out of what is realistically 100+ retail products released for this game since 2018. Both entries here were cross-checked against units.json/upgrades.json ids successfully. This library needs substantial future work before collection tracking is genuinely useful -- see docs/TODO.md. Every individual Unit Expansion box (one per unit, roughly) is a gap."
+  },
+  "expansions": [
+    {
+      "id": "upgrade-card-pack",
+      "name": "Upgrade Card Pack",
+      "product_type": "upgrade-card-pack",
+      "release_date": null,
+      "contains_units": [],
+      "contains_upgrades": [
+        "aggressive-tactics",
+        "commanding-presence",
+        "esteemed-leader",
+        "improvised-orders",
+        "strict-orders",
+        "comms-jammer",
+        "comms-relay",
+        "hq-uplink",
+        "linked-targeting-array",
+        "long-range-comlink",
+        "battle-meditation",
+        "force-guidance",
+        "force-push",
+        "force-reflexes",
+        "saber-throw",
+        "electrobinoculars",
+        "emergency-stims",
+        "environmental-gear",
+        "grappling-hooks",
+        "recon-intel",
+        "targeting-scopes",
+        "concussion-grenades",
+        "fragmentation-grenades",
+        "impact-grenades",
+        "duck-and-cover",
+        "endurance",
+        "hunter",
+        "overwatch",
+        "tenacity"
+      ],
+      "contains_command_cards": [],
+      "roster_verified": true,
+      "roster_source": "https://starwarslegion.fandom.com/wiki/Upgrade_Card_Pack (fetched earlier this session)",
+      "notes": "Generic, non-faction upgrade card pack -- exactly matches the 29 generic entries already seeded in data/upgrades.json. Quantities of each card in the physical pack (some cards likely print in multiples) were not confirmed, so contains_upgrades lists unique cards only, not physical counts."
+    },
+    {
+      "id": "501st-legion-battle-force-starter-set",
+      "name": "501st Legion Battle Force Starter Set",
+      "product_type": "battle-force-starter-set",
+      "release_date": null,
+      "contains_units": [
+        {
+          "unit_id": "phase-ii-clone-troopers",
+          "quantity": 2
+        },
+        {
+          "unit_id": "arc-troopers",
+          "quantity": 3
+        },
+        {
+          "unit_id": "at-rt-galactic-republic",
+          "quantity": 1
+        },
+        {
+          "unit_id": "anakin-skywalker",
+          "quantity": 1
+        }
+      ],
+      "contains_upgrades": [
+        "saber-throw",
+        "force-reflexes",
+        "hq-uplink",
+        "targeting-scopes",
+        "endurance",
+        "tenacity"
+      ],
+      "contains_command_cards": [],
+      "roster_verified": true,
+      "roster_source": "https://starwars.fandom.com/wiki/501st_Legion_Battle_Force_Starter_Set (Wookieepedia, fetched earlier this session); box contents cross-checked against starwarslegion.fandom.com's card list for the same product",
+      "notes": "SWL123, released Sept 16 2022: 37 miniatures, 37 bases, 10 unit cards, 11 command cards, 34 upgrade cards. The unit contents (2x Phase II Clone Troopers, 3x ARC Troopers, 1x Republic AT-RT, 1x Anakin Skywalker) are confirmed. Of the 34 upgrade cards, only the 6 listed here were identifiable as cards already in data/upgrades.json (the generic pack). Several more upgrade names were seen in source material (Force Choke, EMP Droid Poppers, Smoke Grenades, JT-12 Jetpacks, Phase 2 Clone Trooper Personnel Upgrade, Phase 2 Mortar Trooper, Phase 2 Z6 Trooper, DC-15x ARC Trooper, Fives, Echo, ATRT Flamethrower/Laser Cannon/Rotary Blaster) but were NOT added here or to upgrades.json since they're not yet catalogued there -- see docs/TODO.md. None of the 11 command card names were identified in this pass."
+    }
+  ]
+}
