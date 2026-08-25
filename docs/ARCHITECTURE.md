@@ -123,6 +123,12 @@ legion-app/
   "here's what changed" diff for you to review and apply — not a silent
   auto-patch. Respect robots.txt / ToS on any source; official AMG PDFs are
   the safest source of truth since they're published for free public use.
+  **Superseded 2026-08-25** — never built, and the project owner redirected
+  this plan: instead of the app scraping/parsing AMG's site itself, a
+  simpler "Update Data" button pulls the already-curated `data/*.json` files
+  from this project's own GitHub repo. See `docs/ROADMAP.md`'s P3 entry for
+  the current plan and the real architecture prerequisite it depends on
+  (data currently loads at compile time, not runtime).
 
 ## List builder — two modes
 - **Official mode**: validated against faction, rank limits, unique-card

@@ -97,8 +97,15 @@ and CC handoffs instead of getting silently forgotten.
       possible: https://www.atomicmassgames.com/swlegiondocs/
 - [ ] Card image/text database is unpopulated. No scraper has been
       built yet.
-- [ ] `src-tauri/src/scraper/rules_update_checker.rs` is an unbuilt
-      stub -- the "check for new rules" feature doesn't exist yet.
+- [x] **Plan redirected 2026-08-25, not built**: the "check for new
+      rules" feature (`src-tauri/src/scraper/rules_update_checker.rs`,
+      an unbuilt stub) was never going to be a real AMG-site scraper --
+      the project owner redirected it to a simpler "Update Data" button
+      that pulls curated `data/*.json` from this project's own GitHub
+      repo instead. See `docs/ROADMAP.md`'s P3 entry for the plan and
+      the real architecture prerequisite (data currently loads at
+      compile time, not runtime) it depends on, and
+      `docs/DECISIONS.md`'s matching entry for why.
 
 ## Library build order (per project owner's instruction)
 

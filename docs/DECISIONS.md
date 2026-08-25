@@ -7,6 +7,20 @@ a sentence of "why" if it's not obvious) whenever a real decision gets
 made. Don't log routine implementation details here -- only things that
 would be annoying to accidentally reverse.
 
+- **2026-08-25** — Dropped the originally-planned AMG-site rules-update
+  scraper (`src-tauri/src/scraper/`, never built) in favor of a simpler
+  "Update Data" button that pulls curated `data/*.json` from this
+  project's own GitHub repo. Reasoning: the actual workflow that's
+  emerged is the project owner curating/verifying new card data (often
+  via a separate research pass) and handing it off already-finished --
+  the app scraping and parsing AMG's site itself was always going to be
+  the fragile, high-maintenance part of that plan (PDF text layers are
+  image-baked per docs/TODO.md's "real technical limitation" note,
+  page layouts change, ToS/robots.txt considerations), for no benefit
+  once a human is curating the data anyway. Not built yet -- see
+  `docs/ROADMAP.md`'s P3 entry for the plan and its real prerequisite
+  (data currently loads at compile time via `include_str!`, not
+  runtime -- an update button has nothing to overwrite yet).
 - **2026-08-25** — Attempted live GUI click-through testing (screen
   coordinates + simulated mouse/keyboard via PowerShell) during a full
   audit pass, as a way to catch real UI bugs beyond what `cargo

@@ -106,6 +106,10 @@ The app's code is structurally sound; the data needed is still a work in progres
 
 This is an unofficial fan-made tool. *Star Wars: Legion* is a trademark of Atomic Mass Games / Lucasfilm Ltd. This project isn't endorsed by or affiliated with either.
 
+## License
+
+MIT (see [LICENSE](LICENSE)) for the application's own source code. That doesn't extend to `data/*.json`'s Star Wars: Legion card names/stats/rules text, which belongs to Atomic Mass Games / Lucasfilm.
+
 ## Authorship
 
 JJusek - SentientSeamoth

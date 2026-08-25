@@ -133,15 +133,48 @@ right.
       11 left over from the 2026-08-23 resolution pass — are marked
       `verified: false` pending a real glossary cross-check.
 
-## P3 — Unbuilt features from the original plan
+## P3 — Data update mechanism (redirected 2026-08-25, not built yet)
 
-- [ ] **Rules-update checker / scraper**
-      (`src-tauri/src/scraper/`): zero code — the directory holds only
-      a `_PURPOSE.md` file. This was one of the original project goals
-      (detect new official rules/points/errata and surface a diff for
-      approval) and hasn't been started.
-- [ ] Card scraper (the thing that would actually populate the image/
-      text database above): same status, unbuilt.
+- [ ] **Plan changed**: the original architecture called for
+      `src-tauri/src/scraper/` to scrape AMG's own rules/points/errata
+      pages directly and surface a diff. Never built (still just a
+      `_PURPOSE.md` file), and the project owner redirected the plan
+      instead of pursuing it: **an in-app "Update Data" button that
+      pulls the already-curated `data/*.json` files from this project's
+      own GitHub repo**, rather than the app doing its own scraping/
+      parsing against AMG's site. Matches how data actually gets
+      updated in practice -- the project owner curates/verifies new
+      card data (as in every pass this session) and pushes it to
+      GitHub; the app's job is just to fetch what's already there, not
+      re-derive it. `src-tauri/src/scraper/` and the "detect changes on
+      AMG's own site" goal are dropped, not deferred.
+- [ ] **Real prerequisite this needs first, not optional polish: data
+      currently loads at compile time, not runtime.** Every
+      `data/*.json` file is embedded into the compiled binary via
+      `include_str!` in `db/seed.rs` (see e.g.
+      `const COMMAND_CARDS_JSON: &str = include_str!(...)`) -- there is
+      currently **no code path that reads a data file at runtime at
+      all**. An "Update Data" button can't just overwrite
+      `data/*.json` on disk and expect the running app to notice; it
+      needs the app to load its seed data from a writable runtime
+      location (the app-data directory, falling back to the bundled
+      defaults on first run / if nothing's been downloaded yet), with
+      the compile-time-embedded copies becoming the fallback rather
+      than the only source. This is a real architecture change to
+      `db/seed.rs` and `db/mod.rs`'s init sequence, not a small
+      addition -- scope it as its own pass before the fetch-and-update
+      button itself.
+- [ ] Once that exists, the actual update mechanism: a Tauri command
+      that checks a version/commit marker against this GitHub repo
+      (e.g. compare a stored data-version against the latest release
+      tag or the `data/` tree's latest commit via the GitHub API),
+      downloads the newer `data/*.json` files if any exist (raw file
+      URLs or a release asset), writes them to the runtime data
+      location from the prerequisite above, and re-runs `seed::run`
+      against them -- surfaced as a real button/status in the UI
+      (checking / up to date / downloading / error), not a silent
+      background job. Needs a real answer for offline/failed-fetch
+      handling before it ships.
 
 ## P4 — Test coverage gaps
 
