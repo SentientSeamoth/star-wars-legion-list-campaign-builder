@@ -114,10 +114,10 @@ and CC handoffs instead of getting silently forgotten.
        2026-08-24 from the original 4-card generic-only seed to **232
        cards**, `commander_unit_id` resolved for 117 of the 173
        commander-specific ones. See "Command cards library gaps" below.
-5. [x] Scenarios/objectives library (`data/scenarios.json`) --
-       **thinnest seed yet.** See "Scenarios library gaps" below --
-       this one surfaced a genuinely important finding, not just a
-       coverage gap.
+5. [x] Scenarios/objectives library (`data/scenarios.json`) -- grown
+       2026-08-25 to all **10 current Primary Objectives** plus 1
+       Secondary Objective. See "Scenarios library gaps" below --
+       Secondary/Advantage/Recon/narrative coverage is still thin.
 6. [x] Code scaffolding for CC -- Rust canonical types
        (`src-tauri/src/types/*.rs`), a hand-written TypeScript mirror
        (`src/lib/types/manual_seed.ts`), and a SQLite migration
@@ -869,7 +869,7 @@ unit batches are already written into the workflow script at
 
 ## Scenarios library gaps (data/scenarios.json) -- READ FIRST
 
-- [ ] **Important finding, not just a gap**: Star Wars Legion replaced
+- [x] **Important finding, not just a gap**: Star Wars Legion replaced
       its entire competitive objective system in the "2.6"/"Legion 260"
       Core Rulebook update (~July 2024). The OLD system (separate
       Objective / Deployment / Condition cards, 800pt standard / 500pt
@@ -881,12 +881,33 @@ unit batches are already written into the workflow script at
       "Objective/Deployment/Condition" terminology referenced anywhere
       else (old notes, your own memory of the game, older community
       content), treat it as outdated.
-- [ ] Only **3 of an estimated 6 total Primary Objective cards** have
-      confirmed names (Shifting Priorities, Recover the Research,
-      Close the Pocket). 3 more names surfaced (Outflank, Supply Run,
-      Bunker Assault) but could not be confirmed as current/correctly
-      categorized -- flagged `roster_verified: false`.
-- [ ] **Zero Secondary Objective cards** catalogued.
+- [x] **All 10 current Standard Primary Objectives catalogued --
+      2026-08-25.** Grown from 3 confirmed + 3 unconfirmed to all 10:
+      the 6 original 2.6 objectives (Breakthrough, Bunker Assault, Close
+      the Pocket, Intercept Signals, Recover the Research, Shifting
+      Priorities) confirmed against AMG's official errata-reference PDF,
+      plus the 4 added in Battle Deck Card Pack II, released 2026-03-20
+      (Cauldron, Contact Contact!, Outflank, Payload). Real
+      `victory_condition`/`points_of_interest` text filled in for 7 of
+      10 (the 6 originals plus Outflank); Cauldron, Contact Contact!,
+      and Payload intentionally keep those fields blank pending a clean
+      card-text transcription rather than guessing from secondary
+      summaries. **Schema/type correction this required**:
+      `points_of_interest` is prose ("4 POIs, with 2 in each player's
+      territory."), not a structured array -- was typed
+      `["array","null"]`/`Option<Value>` before real data settled the
+      shape; now `["string","null"]`/`Option<String>` in the schema,
+      `types/scenario.rs`, and `manual_seed.ts`. **Supply Run
+      recategorized**: was seeded as an unverified Primary Objective,
+      confirmed as a real Secondary Objective instead (from the same
+      Battle Deck Card Pack II) and moved to `secondary_objectives`.
+      Verified via `npm run validate:data` (9/9), `cargo test` (24/24),
+      `npm run build`/`npm test` (25/25). `ArmyCreationScreen.tsx`'s
+      battle-deck preview banner updated to reflect real counts instead
+      of the stale "~6 Primary, zero Secondary/Advantage" text.
+- [ ] **Only 1 Secondary Objective card** catalogued (Supply Run, moved
+      from the Primary seed above) -- a real card count against however
+      many actually exist currently (unconfirmed, but more than 1).
 - [ ] **Zero Advantage cards** catalogued.
 - [ ] **Zero Recon-format (600pt) cards** catalogued -- this whole
       smaller-game-size format is uncovered.
@@ -895,14 +916,10 @@ unit batches are already written into the workflow script at
       cards, and are NOT the same thing as this app's user-facing
       Campaigns feature -- that stays a placeholder per earlier
       decisions. Don't conflate the two when populating this later.
-- [ ] Every `victory_condition` and `points_of_interest` field is
-      `null` across all entries -- not filled from memory, same
-      reasoning as every other library.
-- [ ] Should find and read the actual current Core Rulebook PDF
-      (https://www.atomicmassgames.com/swlegiondocs/) directly for
-      this one rather than relying on secondary community sources --
-      the objective/mission system is central enough to list-building
-      and setup that it's worth the extra verification pass.
+- [ ] Cauldron, Contact Contact!, and Payload have real roster entries
+      (name, map card, source) but null `victory_condition`/
+      `points_of_interest` -- need a clean primary-source transcription,
+      not a guess from secondary summaries.
 
 ## Command cards library gaps (data/command-cards.json)
 
@@ -1189,6 +1206,21 @@ here.)
 
 ## Resolved
 
+- **2026-08-25** -- Scenarios library expansion landed: all 10 current
+  Standard Primary Objectives catalogued (was 3 confirmed + 3
+  unconfirmed), Supply Run recategorized from an unverified Primary to
+  its real Secondary Objective slot, and real `victory_condition`/
+  `points_of_interest` text filled in for 7 of 10 objectives. Required
+  a real type correction, not just data: `points_of_interest` is prose
+  text, not a structured array -- schema, `types/scenario.rs`, and
+  `manual_seed.ts` all tightened from `array`/`Value` to `string` to
+  match the real shape. `ArmyCreationScreen.tsx`'s battle-deck preview
+  banner and class doc comment updated to stop citing stale "~6
+  Primary, zero Secondary/Advantage" counts. See "Scenarios library
+  gaps" below for the full breakdown, including which 3 objectives
+  still have blank gameplay text pending a clean transcription.
+  Verified via `npm run validate:data` (9/9), `cargo test` (24/24),
+  `npm run build`/`npm test` (25/25).
 - **2026-08-25** -- P1 core-functionality pass (docs/ROADMAP.md),
   everything codable without waiting on the project owner's upcoming
   scenarios.json content pass:

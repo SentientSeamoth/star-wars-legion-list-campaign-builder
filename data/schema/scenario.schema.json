@@ -35,7 +35,7 @@
         "roster_source": { "type": "string" },
         "map_card": { "type": ["string", "null"] },
         "deployment_note": { "type": ["string", "null"] },
-        "points_of_interest": { "type": ["array", "null"] },
+        "points_of_interest": { "type": ["string", "null"] },
         "points_of_interest_verified": { "type": "boolean" },
         "victory_condition": { "type": ["string", "null"] },
         "victory_condition_verified": { "type": "boolean" },

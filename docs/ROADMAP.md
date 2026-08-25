@@ -45,17 +45,19 @@ right.
 ## P1 — Core functionality gaps (the app does less than it claims)
 
 - [ ] **Command hand and battle deck are still previews, not the real
-      thing, for most factions -- blocked on content, not code.** The
-      command-card library is 232 entries now, but a legal 7-card hand
-      (2×1-pip + 2×2-pip + 2×3-pip + Standing Orders, no duplicates)
-      needs enough commander-specific cards per character to actually
-      fill it -- still thin outside the pattern established for
-      characters already covered. Battle deck is worse:
-      `data/scenarios.json` has 3 confirmed Primary Objective cards and
-      zero Secondary/Advantage cards, against a real 9-card (3+3+3)
-      deck requirement. Both pickers are honestly banner-flagged as
-      previews in the UI already. **Waiting on the project owner's
-      scenarios.json content pass** before this can move further.
+      thing, for most factions -- blocked on remaining content, not
+      code.** The command-card library is 232 entries now, but a legal
+      7-card hand (2×1-pip + 2×2-pip + 2×3-pip + Standing Orders, no
+      duplicates) needs enough commander-specific cards per character to
+      actually fill it -- still thin outside the pattern established for
+      characters already covered. Battle deck is **partly unblocked as
+      of 2026-08-25**: `data/scenarios.json` now has all 10 current
+      Primary Objectives (was 3), but still only 1 Secondary Objective
+      and zero Advantage cards, against a real 9-card (3+3+3) deck
+      requirement -- a full deck genuinely can't be built yet no matter
+      how good the Primary coverage is. Both pickers are honestly
+      banner-flagged as previews in the UI. Full breakdown in
+      `docs/TODO.md`'s "Scenarios library gaps."
 - [ ] **`upgrade_bar` is null for all 155 units -- blocked on content,
       not code.** The per-unit upgrade picker (`UnitDetailModal.tsx`)
       is explicitly "best-effort" because there's no real slot data to

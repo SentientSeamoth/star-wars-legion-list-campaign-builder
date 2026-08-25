@@ -55,15 +55,15 @@ import type { CommandCard, GameFormat, ScenarioObjective } from "../../lib/types
  * units rather than silently treating them as free. This screen doesn't
  * invent numbers that haven't been verified.
  *
- * Command cards are real and pickable as of 2026-08-24 (see
- * useArmyListBuilder's `toggleCommandCard`) -- but the library only has
- * the 4 generic cards (`data/command-cards.json` has zero commander-
- * specific ones yet), so hands built here are an honest preview, not a
- * complete 7-card hand. The battle deck is pickable too (same day,
- * `toggleBattleDeckCard`) -- data/scenarios.json only has ~6 Primary
- * Objective cards and ZERO Secondary/Advantage cards, an even sparser
- * gap than command cards, against a 9-card (3+3+3) real deck rule. See
- * docs/DECISIONS.md.
+ * Command cards are real and pickable via useArmyListBuilder's
+ * `toggleCommandCard` -- `data/command-cards.json` has 232 entries as of
+ * 2026-08-24/25 (commander ownership resolved for most, including real
+ * joint/either-owner support), but hands built here are still an honest
+ * preview, not a guaranteed-complete 7-card hand, since coverage per
+ * character varies. The battle deck is pickable too (`toggleBattleDeckCard`)
+ * -- data/scenarios.json has all 10 current Primary Objectives as of
+ * 2026-08-25 but only 1 Secondary Objective and zero Advantage cards, against
+ * a 9-card (3+3+3) real deck rule. See docs/DECISIONS.md and docs/TODO.md.
  */
 
 interface FactionMeta {
@@ -617,8 +617,8 @@ export default function ArmyCreationScreen({ userId }: ArmyCreationScreenProps) 
             <AlertTriangle size={13} className="mt-0.5 shrink-0" />
             <span>
               A full deck needs 9 cards (3 Primary + 3 Secondary + 3 Advantage, no duplicates);
-              this library only has Primary Objective cards so far -- Secondary and Advantage
-              cards aren't catalogued yet. Pick what's available.
+              this library has all 10 current Primary Objectives but only 1 Secondary Objective
+              and zero Advantage cards so far. Pick what's available.
             </span>
           </div>
 

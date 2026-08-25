@@ -224,7 +224,7 @@ export interface ScenarioObjective {
   roster_source?: string;
   map_card: string | null;
   deployment_note: string | null;
-  points_of_interest: unknown | null;
+  points_of_interest: string | null;
   points_of_interest_verified: boolean;
   victory_condition: string | null;
   victory_condition_verified: boolean;

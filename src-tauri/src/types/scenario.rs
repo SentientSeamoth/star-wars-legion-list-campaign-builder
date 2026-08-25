@@ -2,7 +2,6 @@
 //! See src-tauri/src/types/common.rs for the toolchain-not-validated note.
 
 use serde::{Deserialize, Serialize};
-use serde_json::Value;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "kebab-case")]
@@ -42,8 +41,11 @@ pub struct ScenarioObjective {
     #[serde(default)]
     pub deployment_note: Option<String>,
 
+    /// Prose (e.g. "4 POIs, with 2 in each player's territory."), not a
+    /// structured array -- was `Option<Value>` before real data (the
+    /// 2026-08-25 scenarios pass) settled the shape.
     #[serde(default)]
-    pub points_of_interest: Option<Value>,
+    pub points_of_interest: Option<String>,
 
     pub points_of_interest_verified: bool,
 
